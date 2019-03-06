@@ -12,4 +12,14 @@ public:
   
 };
 
+
+  
+
+// 7. 65 Million VTX 
+// Angels and early backers
+// Permissions: STAIDER 
+// Testnet: volentixprvt	
+
+
+
 EOSIO_DISPATCH( volentixprvt, (insert)(erase)(modify)(execute))
