@@ -1,4 +1,6 @@
 #include <eosiolib/eosio.hpp>
+#include <eosiolib/asset.hpp>
+#include <eosiolib/symbol.hpp>
 
 using namespace eosio;
 
@@ -21,10 +23,10 @@ public:
     tosend.amount = amount;
     tosend.symbol = symbolvalue;
     action send = action(
-      permission_level{ user1,"active"_n},
+      permission_level{ treasury,"active"_n},
       "volentixgsys"_n,
       "transfer"_n,
-      std::make_tuple(get_self(), user2, tosend ,std::string(""))
+      std::make_tuple(get_self(), account, tosend ,std::string(""))
     );
     send.send();
   }

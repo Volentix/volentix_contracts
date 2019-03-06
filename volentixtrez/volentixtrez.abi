@@ -1,9 +1,9 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Mar  6 13:50:07 2019",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Mar  6 13:45:31 2019",
     "version": "eosio::abi/1.0",
     "structs": [
         {
-            "name": "transfer",
+            "name": "payfee",
             "base": "",
             "fields": [
                 {
@@ -24,8 +24,8 @@
     "types": [],
     "actions": [
         {
-            "name": "transfer",
-            "type": "transfer",
+            "name": "payfee",
+            "type": "payfee",
             "ricardian_contract": ""
         }
     ],

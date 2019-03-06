@@ -1,5 +1,6 @@
 #include <eosiolib/eosio.hpp>
-
+#include <eosiolib/asset.hpp>
+#include <eosiolib/symbol.hpp>
 
 using namespace eosio;
 
@@ -18,8 +19,28 @@ public:
 // rejected. Fee stays in the public treasury. As transaction is non refundable. 
 // testnet: volentixtrez
 
+  [[eosio::action]]
+  void payfee(name treasury, name account, double amount) {
+    
+    require_auth(treasury);
+    require_auth(account);
+    std::string sym = "VTX";
+    symbol symbolvalue = symbol(symbol_code("VTX"),4);
+    eosio::asset tosend;
+    tosend.amount = amount;
+    tosend.symbol = symbolvalue;
+    action send = action(
+      permission_level{ treasury,"active"_n},
+      "volentixgsys"_n,
+      "transfer"_n,
+      std::make_tuple(account, treasury, tosend ,std::string(""))
+    );
+    send.send();
+  }
+
+
 
 
 };
 
-EOSIO_DISPATCH( volentixtrez, (insert)(erase)(modify)(execute))
+EOSIO_DISPATCH( volentixtrez, (payfee))
