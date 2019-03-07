@@ -30,6 +30,7 @@
     #create account
     #set multisig permissions
     #issue 800000000 VTX
+    #deploy volentixpool contract
 #volentixfutr
     #Generate keys active
     #Generate keys owner
@@ -38,6 +39,7 @@
     #create account
     #set multisig permissions
     #issue 130000000 VTX
+    #deploy volentixfutr contract
 #vtxcontribut
     #Generate keys active
     #Generate keys owner
@@ -46,6 +48,7 @@
     #create account
     #set multisig permissions
     #issue 156000000 VTX
+    #deploy vtxcontribut contract
 #volentixprir
     #Generate keys active
     #Generate keys owner
@@ -54,6 +57,7 @@
     #create account
     #set multisig permissions
     #issue 130000000 VTX
+    #deploy volentixprir contract
 #volentixprvt
     #Generate keys active
     #Generate keys owner
@@ -62,6 +66,7 @@
     #create account
     #set multisig permissions
     #issue 800000000 VTX
+    #deploy volentixprvt contract
 #volentixtrez
     #Generate keys active
     #Generate keys owner
@@ -70,6 +75,7 @@
     #create account
     #set multisig permissions
     #issue 455000000 VTX
+    #deploy volentixtrez contract
 
 #volentixsale
     #Generate keys active
@@ -79,6 +85,7 @@
     #create account
     #set multisig permissions
     #issue 364000000 VTX
+    #deploy volentixsale contract
     
       
 
