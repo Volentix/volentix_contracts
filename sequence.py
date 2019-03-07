@@ -21,7 +21,7 @@
     #modify eosio.token contract-or-deploy existing eosio.token contract
     #stake enough to sustain token contract
     #deploy token contract
-    #create 2,100,000,000 VTX
+    #create 2100000000 VTX
 #volentixpool
     #Generate keys active
     #Generate keys owner
@@ -29,6 +29,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 800000000 VTX
 #volentixfutr
     #Generate keys active
     #Generate keys owner
@@ -36,6 +37,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 130000000 VTX
 #vtxcontribut
     #Generate keys active
     #Generate keys owner
@@ -43,6 +45,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 156000000 VTX
 #volentixprir
     #Generate keys active
     #Generate keys owner
@@ -50,6 +53,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 130000000 VTX
 #volentixprvt
     #Generate keys active
     #Generate keys owner
@@ -57,6 +61,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 800000000 VTX
 #volentixtrez
     #Generate keys active
     #Generate keys owner
@@ -64,6 +69,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 455000000 VTX
 
 #volentixsale
     #Generate keys active
@@ -72,44 +78,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
+    #issue 364000000 VTX
+    
+      
 
-#vtxstsupport
-    #Generate keys active
-    #Generate keys owner
-    #Create wallet
-    #Import in wallet keys
-    #create account
-    #set multisig permissions
-    #volentixgsys issue 99000000 VTX  
-
-#vtxmesupport
-    #Generate keys active
-    #Generate keys owner
-    #Create wallet
-    #Import in wallet keys
-    #create account
-    #set multisig permissions
-    #volentixgsys issue 99000000 VTX
-
-#vtxsmsupport
-    #Generate keys active
-    #Generate keys owner
-    #Create wallet
-    #Import in wallet keys
-    #create account
-    #set multisig permissions
-    #volentixgsys issue 99000000 VTX
-
-#vtxmssupport
-    #Generate keys active
-    #Generate keys owner
-    #Create wallet
-    #Import in wallet keys
-    #create account
-    #set multisig permissions
-    #volentixgsys issue 67000000 VTX
-
-
-# 99 Million VTX  for medium supporters 
-# 99 Million VTX  for small supporters 
-# 67 Million VTX  for micro supporters mass distribution 
