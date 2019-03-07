@@ -25,7 +25,8 @@ public:
     require_auth(account);
     if (balance(debitaccount) < 99000000 && debitaccount ==  vtxstsupport) &&
        (balance(debitaccount) < 99000000 && debitaccount ==  vtxmesupport) &&
-       (balance(debitaccount) < 99000000 && debitaccount ==  vtxsmsupport) ) {
+       (balance(debitaccount) < 99000000 && debitaccount ==  vtxsmsupport) 
+        (balance(debitaccount) < 67000000 && debitaccount ==  vtxsmsupport)) {
       std::string sym = "VTX";
       symbol symbolvalue = symbol(symbol_code("VTX"),4);
       eosio::asset tosend;

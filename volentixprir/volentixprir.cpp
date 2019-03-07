@@ -12,11 +12,11 @@ public:
   
   volentixprir(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
  //List of accounts
- // Array of dates
+ //Array of dates
+ //Check date of last transaction 
  //transfer a % of tokens to each account if date is passed 
 [[eosio::action]]
   void transfer(name treasury, name account, double amount) {
-    
     require_auth(treasury);
     require_auth(account);
     std::string sym = "VTX";

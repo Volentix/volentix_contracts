@@ -33,7 +33,7 @@ public:
   }
 
   [[eosio::action]]
-  void payhodler(name treasury, name account, double amount) {
+  void payliquid(name treasury, name account, double amount) {
     
     require_auth(treasury);
     require_auth(account);
@@ -54,7 +54,7 @@ public:
 
 };
 
-EOSIO_DISPATCH( volentixpool, (transfer))
+EOSIO_DISPATCH( volentixpool, (transfer)(payproducer)(payliquid))
 //   1. 800 Million VTX 
 
 // Support of the vDex network
