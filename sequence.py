@@ -65,7 +65,7 @@
     #Import in wallet keys
     #create account
     #set multisig permissions
-    #issue 800000000 VTX
+    #issue 65000000 VTX” 
     #deploy volentixprvt contract
 #volentixtrez
     #Generate keys active
