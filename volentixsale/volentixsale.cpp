@@ -1,6 +1,6 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/symbol.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/symbol.hpp>
 
 using namespace eosio;
 
@@ -23,10 +23,10 @@ public:
     
     require_auth(treasury);
     require_auth(account);
-    if (balance(debitaccount) < 99000000 && debitaccount ==  vtxstsupport) &&
-       (balance(debitaccount) < 99000000 && debitaccount ==  vtxmesupport) &&
-       (balance(debitaccount) < 99000000 && debitaccount ==  vtxsmsupport) 
-        (balance(debitaccount) < 67000000 && debitaccount ==  vtxsmsupport)) {
+    if ((getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxstsupport") &&
+       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxmesupport") &&
+       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxsmsupport") &&
+        (getbalance(debitaccount) < 67000000 && debitaccount.to_string() ==  "vtxsmsupport")) {
       std::string sym = "VTX";
       symbol symbolvalue = symbol(symbol_code("VTX"),4);
       eosio::asset tosend;
@@ -41,10 +41,15 @@ public:
       send.send();
     }
   }
+
+  uint64_t getbalance(name account) {
+    // auto balance = eosio::token::get_balance(token_contract, token_holder_name, symbol_code);
+    return 1111;
+  }
   
 };
 
 // Permissions: STAIDER 
 // testnet:volentixsale
 
-EOSIO_DISPATCH( volentixsale, (insert)(erase)(modify)(execute))
+EOSIO_DISPATCH( volentixsale, (transfer))

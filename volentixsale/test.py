@@ -1,4 +1,3 @@
-      
 import os, sys, subprocess, pexpect, random, fnmatch, ast
 import random, string
 import time
@@ -50,8 +49,8 @@ def approve2(proposal_name):
 def proposal(proposal_name):
             #proposal
            
-            try:
-                out = subprocess.check_output(['cleos', '--url', 'http://api.kylin.alohaeos.com', 'multisig', 'propose',  proposal_name , '[{"actor": "vtxtstaccnt2", "permission": "active"}, {"actor": "vtxtstaccnt3", "permission": "active"}]' , '[{"actor": "vtxmltisig11", "permission": "active"}]', 'volentixfutr', 'txfds', '{"treasury":"vtxtstaccnt1", "account":"vtxtstaccnt2", "amount":"100.0000" }', '-p',  'vtxtstaccnt1@active' ])
+            try:                                                                                                                                                                                                                                                                                                                                          
+                out = subprocess.check_output(['cleos', '--url', 'http://api.kylin.alohaeos.com', 'multisig', 'propose',  proposal_name , '[{"actor": "vtxtstaccnt2", "permission": "active"}, {"actor": "vtxtstaccnt3", "permission": "active"}]' , '[{"actor": "vtxmltisig11", "permission": "active"}]', 'volentixsale', 'transfer', '{"treasury":"vtxtstaccnt1", "debitaccount":"vtxstsupport", "account":"vtxtstaccnt2", "amount":"100.0000" }', '-p',  'vtxtstaccnt1@active' ])
                 print(out)
             except Exception as e:
                 print('Could not transfer:' + str(e))

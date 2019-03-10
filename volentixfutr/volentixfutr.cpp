@@ -2,7 +2,7 @@
 #include <eosio/asset.hpp>
 #include <eosio/symbol.hpp>
 #include <eosio/time.hpp>
-#include <eosio/symbol.hpp>
+#include "/home/sylvain/eosio.contracts/contracts/eosio.token/include/eosio.token/eosio.token.hpp"
 
 
 
@@ -33,17 +33,25 @@ public:
   time_t  fouryears = starttime + 126227704;
 
   uint64_t total_tokens = 133000000;
-  //time_t  rawtime =  current_time();
-//  // struct tm * ptm = gmtime ( &rawtime );
+  uint64_t nowWithMicroseconds = time_point(current_time())
+  uint64_t nowWithSeconds = time_point_sec(now())
+
   
  
 //    //List of accounts
 //  // Array of dates
 //  //transfer a % of tokens to each account if date is passed 
 [[eosio::action]] void txfds(name treasury, name account, double amount) { 
-    // require_auth(treasury);
-    // require_auth(account);
-    // getbalance(account);
+    require_auth(treasury);
+    require_auth(account);
+    double balance = getbalance(account);
+    //if balance is less than 
+    // if()
+    // {
+
+
+
+    // }
     // std::string sym = "VTX";
     // symbol symbolvalue = symbol(symbol_code("VTX"),4);
     // eosio::asset tosend;
@@ -58,10 +66,14 @@ public:
     // send.send();
   }
 
-   void getbalance(name account) {
-    // auto balance = eosio::token::get_balance(token_contract, token_holder_name, symbol_code);
+   double getbalance(name account) {
     
+    const symbol sym(symbol_code("EOS"), 4);
+    const auto balance = eosio::token::get_balance("volentixgsys"_n, account, sym.code());
+    return balance.amount;
   }
+
+
 // 130000000 / 126227704 
 // Facilitators
 // Permissions: Facilitators, treasury
