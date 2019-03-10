@@ -4,6 +4,42 @@
     "types": [],
     "structs": [
         {
+            "name": "afacilitator",
+            "base": "",
+            "fields": [
+                {
+                    "name": "treasury",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "allocation",
+                    "type": "float64"
+                }
+            ]
+        },
+        {
+            "name": "facilitators",
+            "base": "",
+            "fields": [
+                {
+                    "name": "ID",
+                    "type": "uint64"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "allocation",
+                    "type": "float64"
+                }
+            ]
+        },
+        {
             "name": "txfds",
             "base": "",
             "fields": [
@@ -24,12 +60,25 @@
     ],
     "actions": [
         {
+            "name": "afacilitator",
+            "type": "afacilitator",
+            "ricardian_contract": ""
+        },
+        {
             "name": "txfds",
             "type": "txfds",
             "ricardian_contract": ""
         }
     ],
-    "tables": [],
+    "tables": [
+        {
+            "name": "facilitators",
+            "type": "facilitators",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
     "ricardian_clauses": [],
     "variants": []
 }
