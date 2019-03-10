@@ -1,9 +1,28 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Wed Mar  6 13:50:07 2019",
-    "version": "eosio::abi/1.0",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
     "structs": [
         {
-            "name": "transfer",
+            "name": "payliquid",
+            "base": "",
+            "fields": [
+                {
+                    "name": "treasury",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "float64"
+                }
+            ]
+        },
+        {
+            "name": "payproducer",
             "base": "",
             "fields": [
                 {
@@ -21,15 +40,19 @@
             ]
         }
     ],
-    "types": [],
     "actions": [
         {
-            "name": "transfer",
-            "type": "transfer",
+            "name": "payliquid",
+            "type": "payliquid",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "payproducer",
+            "type": "payproducer",
             "ricardian_contract": ""
         }
     ],
     "tables": [],
     "ricardian_clauses": [],
-    "abi_extensions": []
+    "variants": []
 }

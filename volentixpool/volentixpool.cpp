@@ -1,6 +1,6 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/symbol.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/symbol.hpp>
 
 using namespace eosio;
 
@@ -54,7 +54,7 @@ public:
 
 };
 
-EOSIO_DISPATCH( volentixpool, (transfer)(payproducer)(payliquid))
+EOSIO_DISPATCH( volentixpool, (payproducer)(payliquid))
 //   1. 800 Million VTX 
 
 // Support of the vDex network
