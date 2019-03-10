@@ -1,25 +1,20 @@
-#include <eosiolib/eosio.hpp>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/symbol.hpp>
-#include <eosiolib/time.hpp>
-#include <eosiolib/symbol.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/symbol.hpp>
+#include <eosio/time.hpp>
+#include <eosio/symbol.hpp>
+
 
 
 
 using namespace eosio;
 
-class [[eosio::contract]] vtxcontribut : public eosio::contract {
+class [[eosio::contract]] volentixfutr : public eosio::contract {
 
 public:
-  using contract::contract;
-
-
-
-  vtxcontribut(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
-  
-  name accounts[10] = {"user11111111"_n, "user21111111"_n, "user31111111"_n, "user41111111"_n, "user51111111"_n, "user61111111"_n,
-  "user71111111"_n, "user81111111"_n, "user91111111"_n, "user10111111"_n};
-  
+  using contract::contract; 
+  volentixfutr(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
+  name accounts[10] = {"useraaaaaaaa"_n, "userbbbbbbbb"_n, "usercccccccc"_n, "userdddddddd"_n, "usereeeeeeee"_n, "userffffffff"_n };
 
   //126227704 s = 4 YEARS
   //94670778 s = 3 YEARS
@@ -38,57 +33,43 @@ public:
   time_t  fouryears = starttime + 126227704;
 
   uint64_t total_tokens = 133000000;
-  time_t  rawtime =  current_time();
- // struct tm * ptm = gmtime ( &rawtime );
+  //time_t  rawtime =  current_time();
+//  // struct tm * ptm = gmtime ( &rawtime );
   
-[[eosio::action]]
-  void getbalance(name account) {
-    std::string sym = "VTX";
-    symbol symbolvalue = symbol(symbol_code("VTX"),4);
-    action getbalance = action(
-      permission_level{ account,"active"_n},
-      "currency"_n,
-      "balance"_n,
-      std::make_tuple("volentixgsys", account, symbolvalue)
-    );
-    getbalance.send();
-  }
-
-
-
-
-
-   //List of accounts
- // Array of dates
- //transfer a % of tokens to each account if date is passed 
-[[eosio::action]]
-  void transfer(name treasury, name account, double amount) {
-    
-    require_auth(treasury);
-    require_auth(account);
-    get_balance();
-    std::string sym = "VTX";
-    symbol symbolvalue = symbol(symbol_code("VTX"),4);
-    eosio::asset tosend;
-    tosend.amount = amount;
-    tosend.symbol = symbolvalue;
-    action send = action(
-      permission_level{ treasury,"active"_n},
-      "volentixgsys"_n,
-      "transfer"_n,
-      std::make_tuple(get_self(), account, tosend ,std::string(""))
-    );
-    send.send();
-  }
  
+//    //List of accounts
+//  // Array of dates
+//  //transfer a % of tokens to each account if date is passed 
+[[eosio::action]] void txfds(name treasury, name account, double amount) { 
+    // require_auth(treasury);
+    // require_auth(account);
+    // getbalance(account);
+    // std::string sym = "VTX";
+    // symbol symbolvalue = symbol(symbol_code("VTX"),4);
+    // eosio::asset tosend;
+    // tosend.amount = amount;
+    // tosend.symbol = symbolvalue;
+    // action send = action(
+    //   permission_level{ treasury,"active"_n},
+    //   "volentixgsys"_n,
+    //   "transfer"_n,
+    //   std::make_tuple(get_self(), account, tosend ,std::string(""))
+    // );
+    // send.send();
+  }
 
+   void getbalance(name account) {
+    // auto balance = eosio::token::get_balance(token_contract, token_holder_name, symbol_code);
+    
+  }
 // 130000000 / 126227704 
 // Facilitators
 // Permissions: Facilitators, treasury
 // Time lock 4 years.
 // 	At the discretion of the development partners management committee.
 // 	testnet:volentixfutr	
-
+private:
+  std::string balance;
 };
 
-EOSIO_DISPATCH( vtxcontribut, (transfer))
+EOSIO_DISPATCH(volentixfutr,(txfds))

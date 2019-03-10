@@ -1,10 +1,35 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Fri Mar  8 13:51:09 2019",
-    "version": "eosio::abi/1.0",
-    "structs": [],
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
     "types": [],
-    "actions": [],
+    "structs": [
+        {
+            "name": "txfds",
+            "base": "",
+            "fields": [
+                {
+                    "name": "treasury",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "float64"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "txfds",
+            "type": "txfds",
+            "ricardian_contract": ""
+        }
+    ],
     "tables": [],
     "ricardian_clauses": [],
-    "abi_extensions": []
+    "variants": []
 }
