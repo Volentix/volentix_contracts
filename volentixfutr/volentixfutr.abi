@@ -22,6 +22,16 @@
             ]
         },
         {
+            "name": "erase",
+            "base": "",
+            "fields": [
+                {
+                    "name": "ID",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
             "name": "facilitators",
             "base": "",
             "fields": [
@@ -62,6 +72,11 @@
         {
             "name": "afacilitator",
             "type": "afacilitator",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "erase",
+            "type": "erase",
             "ricardian_contract": ""
         },
         {

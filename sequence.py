@@ -28,6 +28,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 800000000 VTX
     #deploy volentixpool contract
@@ -37,6 +38,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig accounts
     #set multisig permissions
     #issue 130000000 VTX
     #deploy volentixfutr contract
@@ -46,6 +48,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 156000000 VTX
     #deploy vtxcontribut contract
@@ -55,6 +58,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 130000000 VTX
     #deploy volentixprir contract
@@ -64,6 +68,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 65000000 VTX” 
     #deploy volentixprvt contract
@@ -73,6 +78,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 455000000 VTX
     #deploy volentixtrez contract
@@ -83,6 +89,7 @@
     #Create wallet
     #Import in wallet keys
     #create account
+    #create multisig account
     #set multisig permissions
     #issue 364000000 VTX
     #deploy volentixsale contract

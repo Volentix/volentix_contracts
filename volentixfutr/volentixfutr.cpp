@@ -2,6 +2,7 @@
 #include <eosio/asset.hpp>
 #include <eosio/symbol.hpp>
 #include <eosio/time.hpp>
+#include <eosio/contract.hpp>
 #include "/home/sylvain/eosio.contracts/contracts/eosio.token/include/eosio.token/eosio.token.hpp"
 
 
@@ -84,12 +85,23 @@ public:
 
 //add a facilitator
 [[eosio::action]] void afacilitator(name treasury, name account, double allocation) { 
-    require_auth(treasury);  
+   // require_auth(treasury);  
      facilitators_index facindex(_self, _self.value);
       facindex.emplace(treasury, [&]( auto& row ) {
+       row.ID = facindex.available_primary_key(); 
        row.account = account;
        row.allocation = allocation; 
       });
+  }
+
+  //add a facilitator
+[[eosio::action]] void erase(uint64_t ID) { 
+   
+    facilitators_index facindex(_self, _self.value);
+    auto iterator = facindex.find(ID);
+    //eosio_assert(iterator != facindex.end(), "Record does not exist");
+    facindex.erase(iterator);
+   
   }
 
    struct [[eosio::table]] facilitators {
@@ -99,18 +111,14 @@ public:
         uint64_t get_secondary_1() const { return account.value;}
         uint64_t primary_key() const { return ID;}
   };
-  //typedef eosio::multi_index<"facilitators"_n, facilitators> facilitators_index;
+ 
   typedef eosio::multi_index<"facilitators"_n, facilitators, indexed_by<"byaccount"_n, const_mem_fun<facilitators, uint64_t, &facilitators::get_secondary_1>>> facilitators_index;
-  
-	
+
 private:
-
-
 
 };
 
-//EOSIO_DISPATCH(volentixfutr,(txfds))
-EOSIO_DISPATCH(volentixfutr, )
+EOSIO_DISPATCH(volentixfutr, (afacilitator) (txfds)(erase))
 
 // 130000000 / 126227704 
 // Facilitators
