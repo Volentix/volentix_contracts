@@ -1,0 +1,95 @@
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS8icmJNm1VeCnJpyEr8qxqVLaw96gu7ECwZMCirnCYRxJcXGata", "private": "5JPsYmsvj2hmZFQG1iuqG9M6wCZV6gaXpkY7hnWKD5zm16W8ihf"}, "owner_key": {"public": "EOS6eqAhHcRsuiRgGdiD6bvmTu7wLQZrsoZDmMfXxFC57FkNAqaft", "private": "5KdAapAhBJcjkvDW7LhSiqW7DRzbBXPPnbLZ29sd8FhR42hazzU"}}, "account": "volentixzero"}
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS65ksnQSKjTC9z9ZYdX5Yu4BxrbQojtonFJCRYMg2oe4hkXf5zb", "private": "5J3DZBabe8PAgb9KsHSiWKk3jXvvEkhEFY1FGCeaDpi52MKgBbp"}, "owner_key": {"public": "EOS8TLTUagBFwgC2H2J9AusnuaVhUDtTAu1vKsnuvx6UXXxGyhWF8", "private": "5KgYenWVC1eaqArN5tt7bxMFPfmp2xRNWLphif7AFuTG6BCczb7"}}, "account": "volentixprvt"}
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS7wzi3stYefvavuMYzmJ9uU7zVzFp2SQ6WxoiMHPLNiQqnUv8R5", "private": "5HxzXF5YvAmNyWm3DZteNky97Pv6CURaue3eZxAZ6qczoFfgWug"}, "owner_key": {"public": "EOS8MYzBWkF3QaYHGcbKerwB39P9ZZjpuEuTzLSS7JUupGPEVCfxw", "private": "5JH9vcHPXtyjGB54TEGNw1VzmQuQA7k1p4qrPQxxczq9PytwRtx"}}, "account": "vtxcontribut"}
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS5erSKDyonn7kNWLLndHWxYEeSdxQSK6pV1V4FrV6awx8dw39mE", "private": "5KAsLMwKs81zs7uM1LUQLgZ6mRjSEUgmDT4GPusiho26cTwLNtk"}, "owner_key": {"public": "EOS5Gzu5WYaeZy1jQaFL7pvZcBKWj4vPBYkN28a2YWqfGZEsJLze4", "private": "5JH2ameXfXog9gqthpwCUatrWdmqVwZEQQ6CXBCGQP6RNqWBJVQ"}}, "account": "volentixprir"}
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS7QDrpmkJZcwKocfiEdsmA26RQJYYfwGtTn5YgSkbbc5y58go7D", "private": "5JKWsxU8xzH7kHw4zMyKxwqF6CqzdoQc13bCNkk6LoaVXzXnmZj"}, "owner_key": {"public": "EOS7QbqKe6FQ5kUB6AmwbnbmvJioDegfmY7KZQx2K5tvwN9a8B2Bb", "private": "5KDhggpxupRTNNeFYCvWpEbH3dwLtKYPPZNjZbMG1uYQq17DftL"}}, "account": "volentixfutr"}
+
+"EOS5NqgFuBdVSWfQGtTorrj4PQgtugaQrCzQbxJQ98EtMXpPUFPsx", "5JwoxySPtyYdXyyus1B7o1UF7WULgnDoFHiJGGV1bbQqvyK2P7c"
+"EOS6xCuris3ohKCQN4xchsnZKFnQERshfQeGSL7wpn5bC78AaEwWW" "5HpTvSgCv1xWRgoaBvKmhdSv5x9VLW8xcxNVJp2skZQmKnYC9Cd" volentixtrez
+
+{"msg": "succeeded", "keys": {"active_key": {"public": "EOS5XpBfxTT9gijFnJic9hTLXyPvBRYFV8yQth9YN5h6G7mXq3LxR", "private": "5KPtMuimhDDzbiArTbEnDco3Z3kU5M9SJvGuSJ4C9nHVLWykSao"}, "owner_key": {"public": "EOS77nNfK7z76DEL74h316cThmwhF3SkUC6o2wk2DDinVw9Lab6ST", "private": "5KP3Eg5p6uTy3FZhA9xEcsZm5WatoTSK86gSrwakSSyFMnbp5YE"}}, "account": "volentixsale"}
+
+msg	"succeeded"
+keys	
+active_key	
+public	"EOS7e7BGSsRBqH65K5dV8cqvd2FkqWxqKnvt1f648ibXakJtTXhfR"
+private	"5Jn8FYfJSyVQJXqGKaEXMcT23k2AM9QRz65qccXGaae8XL1ayeY"
+owner_key	
+public	"EOS6VYnJLBNizjuHNZprXRVdjgdMw5hYsvfK4qTuG57apRWFfsE6n"
+private	"5J9in8sP8k5godepXLjY8g84MD89osfj6U95YNKRuv7Sa1t7k8h"
+account	"vtxtstaccnt3"
+
+
+active_key	
+public	"EOS7W6B4Xs1v9tbY2A83SsaBS8q5rJCto7gWtiJo8W5PkMXFe1zXe"
+private	"5HvypqAU6zAzaqq5B2wAzzgCSWCzgydfTPg6DuZeF39tYTaRZsK"
+owner_key	
+public	"EOS7Wz6op3HRrFZm4a4B4c1kDeywx5g6M6UyEGZ8bM1mzcUVg5erp"
+private	"5JwvRqNzrv7Sr2NF8D6NiY8rnmFEW9kqi8kzzUQmvTLzUCDvcEr"
+account	"vtxmltisig11"
+
+
+active_key
+public"EOS8Aw62dvJHBeYCcYV6mwGsWb9UpQTiXyvwWDPqSyRNRFgpD5zmm"private"5KTt7qg8rux1CSmcCj9guRzrZ2PCSymDb8efBnxv7yWbtCHQb2i"
+owner_key
+public"EOS6mhF5b5bz6DsTR6jWt7TnYhX7Q2wAYpbTJN8tfpjnmczABq8rK"private"5K8Gd6kXEPofgX7kMYKdKqEFRRUnVg2XtzUwrwmYgkdyUosG4FX
+"account"vtxtestleger"
+
+
+imsg	"succeeded"
+keys	
+active_key	
+public	"EOS8hEGhC23kUUWexNRHjnr4GjkNQe3YUGXYgh8cjF3oM34WJCgYD"
+private	"5J88XcNBZta2n3VwxU7e8R3KS8spMDMPHmnEVQ8ykjqS2Fz4NrG"
+owner_key	
+public	"EOS6EPFYKURPBADcX7ZWjvgBPwXutv79sVcZDu8fp3Bkq86UCTKez"
+private	"5KBCdwvatwsykUbzfNAFvJpr4aCcrERp9vGTvceLYE1S9s8wizX"
+account	"vtxtstaccnt1"
+
+
+msg	"succeeded"
+keys	
+active_key	
+public	"EOS6VzTRT78jikLNCiX4Cmrj8vrVs5UiKLsSUNLoSncBsEE27jmuQ"
+private	"5KgoXfPU6DVJiPkWgNvvj8W3sYo9vfQqRMrTUsXBscrsbQUGPhG"
+owner_key	
+public	"EOS7Bn5bv6jqvvCcqCscAwh5NpVW4EhjkeJhUXt7HQZDhwBeZ5o1Q"
+private	"5K3dX6qTHDAw8Q7VSWnR9WxtcduozkJV75XcfYGDeNBwb7q17pb"
+account	"vtxtstaccnt2"
+
+
+{"msg": "succeeded", "keys": 
+{"active_key": 
+{"public": "EOS5NqgFuBdVSWfQGtTorrj4PQgtugaQrCzQbxJQ98EtMXpPUFPsx", "private": "5JwoxySPtyYdXyyus1B7o1UF7WULgnDoFHiJGGV1bbQqvyK2P7c"}, 
+"owner_key": {"public": "EOS6xCuris3ohKCQN4xchsnZKFnQERshfQeGSL7wpn5bC78AaEwWW", "private": "5HpTvSgCv1xWRgoaBvKmhdSv5x9VLW8xcxNVJp2skZQmKnYC9Cd"}}, 
+"account": "volentixtrez"}
+
+keys": {"active_key": {"public": "EOS6kXRJEWhah5bHPsdjetv9cmMDfxtirU16Zy9zRDdhxzAMws47X", "private": "5KPtLgmkpDuV76dmphCQL4cTSjFHdFQJcvBCYYugaJfQh82fCkJ"},
+"owner_key": {"public": "EOS6ZcvyMC4MyrNHpP2vGH9rJn12MTzxFKa2CDBA7jHhqirSFREVq", "private": "5HuBEx3QoeKVNRMCq3fAb5BEcG3NTYeAXYt8cjTjZdN6FW9iedh"}}, 
+"account": "volentixgsys"}
+
+msg	"succeeded"
+keys	
+active_key	
+public	"EOS7wud45JbLsBaxnXEwPu5781zs46dvSuiK6fdPURHjSDqpHYuA5"
+private	"5JhswLxm5C8qakyeh6s4doidhjUXFnUcvCChG2izZHkBKC9Fw5s"
+owner_key	
+public	"EOS6C5xk6qXRFaGxzGgpFDo772eriiWFaNM2oeaxkGBjmFzpCzc3r"
+private	"5J8MZvAqCqjM2WPH58Gx97rEzN4xEEBRzvMrwNPmidADakqsMKi"
+account	"vtxtstaccnt4"
+
+msg	"succeeded"
+keys	
+active_key	
+public	"EOS6j3FrJ9shGyXCm7drBxMLJeL5CQLjvUt5eKB7KwRdfMAjy393B"
+private	"5KhAmYu54wpX5hpwPmF2cKEWhTXwSQh1HznjwsYuKYtfwj7wk32"
+owner_key	
+public	"EOS7cNPhkepmaoGSpXXtnvTjXXyYXfpytWfY8LQijTiHXszef7Lzm"
+private	"5Jwp1vii6X6w9wTZKtGJxK1RrkXuJom8BgFKcQUh8unDtcbAqJU"
+account	"vtxtstaccnt5"
+
