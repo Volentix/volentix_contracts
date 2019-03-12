@@ -1,6 +1,8 @@
 #include <eosio/eosio.hpp>
 #include <eosio/asset.hpp>
 #include <eosio/symbol.hpp>
+#include "/home/sylvain/eosio.contracts/contracts/eosio.token/include/eosio.token/eosio.token.hpp"
+
 
 using namespace eosio;
 
@@ -10,6 +12,15 @@ public:
   using contract::contract;
   
   volentixsale(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
+
+   double getbalance(name account) {
+    
+    const symbol sym(symbol_code("VTX"), 4);
+    const auto balance = eosio::token::get_balance("volentixgsys"_n, account, sym.code());
+    return balance.amount;
+  }
+
+
 
 //Issue these at the same time as the others and make their own contract
 //Maybe have this contract call those contracts
@@ -42,10 +53,7 @@ public:
     }
   }
 
-  uint64_t getbalance(name account) {
-    // auto balance = eosio::token::get_balance(token_contract, token_holder_name, symbol_code);
-    return 1111;
-  }
+  
   
 };
 

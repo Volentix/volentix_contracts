@@ -17,7 +17,7 @@ public:
     
     require_auth(treasury);
     require_auth(account);
-    //calculate prorat ressources
+    //calculate prorata ressources
     std::string sym = "VTX";
     symbol symbolvalue = symbol(symbol_code("VTX"),4);
     eosio::asset tosend;

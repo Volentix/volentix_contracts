@@ -14,8 +14,6 @@ public:
   using contract::contract; 
   volentixfutr(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
   
-  //List of accounts
-  name accounts[6] = {"useraaaaaaaa"_n, "userbbbbbbbb"_n, "usercccccccc"_n, "userdddddddd"_n, "usereeeeeeee"_n, "userffffffff"_n };
 
   //126227704 s = 4 YEARS
   //94670778 s = 3 YEARS
@@ -38,14 +36,25 @@ public:
   time_point_sec tps = time_point_sec();
   uint64_t sse;
   
-
    double getbalance(name account) {
     
-    const symbol sym(symbol_code("EOS"), 4);
+    const symbol sym(symbol_code("VTX"), 4);
     const auto balance = eosio::token::get_balance("volentixgsys"_n, account, sym.code());
     return balance.amount;
   }
 
+  uint64_t calc_allocation(uint64_t sse, uint64_t total_allocation){
+    uint64_t allocation;
+    if (sse > oneyear && sse < twoyears)
+      allocation = .25 * total_allocation;
+    else if (sse > twoyears && sse < threeyears)
+      allocation = .50 * total_allocation;
+    else if (sse > threeyears && sse < fouryears)
+      allocation = .75 * total_allocation;
+    else if (sse > fouryears)
+      allocation = total_allocation;
+    return allocation;
+  }
 
   //transfer a % of tokens to each account if date is passed 
 [[eosio::action]] void txfds(name treasury, name account, double amount) { 
@@ -60,15 +69,7 @@ public:
       balance = getbalance(account);
     }
     uint64_t total_allocation = iterator->allocation;
-    uint64_t allocation;
-    if (sse > oneyear && sse < twoyears)
-      allocation = .25 * total_allocation;
-    else if (sse > twoyears && sse < threeyears)
-      allocation = .50 * total_allocation;
-    else if (sse > threeyears && sse < fouryears)
-      allocation = .75 * total_allocation;
-    else if (sse > fouryears)
-      allocation = total_allocation;
+    uint64_t allocation = calc_allocation(sse, total_allocation);
     if (balance < allocation){
       amount = allocation - balance;  
       std::string sym = "VTX";

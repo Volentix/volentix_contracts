@@ -50,7 +50,7 @@ def proposal(proposal_name):
             #proposal
            
             try:
-                out = subprocess.check_output(['cleos', '--url', 'http://api.kylin.alohaeos.com', 'multisig', 'propose',  proposal_name , '[{"actor": "vtxtstaccnt3", "permission": "active"}, {"actor": "vtxtstaccnt2", "permission": "active"}]' , '[{"actor": "vtxmltisig11", "permission": "active"}]', 'volentixfutr', 'afacilitator', '{"treasury":"vtxtstaccnt1", "account":"vtxtstaccnt2", "allocation":"1000.0000" }', '-p',  'vtxtstaccnt1@active' ])
+                out = subprocess.check_output(['cleos', '--url', 'http://api.kylin.alohaeos.com', 'multisig', 'propose',  proposal_name , '[{"actor": "vtxtstaccnt3", "permission": "active"}, {"actor": "vtxtstaccnt2", "permission": "active"}]' , '[{"actor": "vtxmltisig11", "permission": "active"}]', 'volentixfutr', 'afacilitator', '{"treasury":"vtxtstaccnt1", "account":"vtxtstaccnt5", "allocation":"1234.0000" }', '-p',  'vtxtstaccnt1@active' ])
                 print(out)
             except Exception as e:
                 print('Could not transfer:' + str(e))
