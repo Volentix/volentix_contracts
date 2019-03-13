@@ -57,7 +57,7 @@ public:
   }
 
   //transfer a % of tokens to each account if date is passed 
-[[eosio::action]] void txfds(name treasury, name account, double amount) { 
+[[eosio::action]] void txfds(name treasury, name account) { 
     require_auth(treasury);
     require_auth(account);
     sse = tps.sec_since_epoch();
@@ -71,7 +71,7 @@ public:
     uint64_t total_allocation = iterator->allocation;
     uint64_t allocation = calc_allocation(sse, total_allocation);
     if (balance < allocation){
-      amount = allocation - balance;  
+      uint64_t amount = allocation - balance;  
       std::string sym = "VTX";
       symbol symbolvalue = symbol(symbol_code("VTX"),4);
       eosio::asset tosend;
@@ -86,13 +86,18 @@ public:
 
 //add a facilitator
 [[eosio::action]] void afacilitator(name treasury, name account, double allocation) { 
-   // require_auth(treasury);  
+     require_auth(treasury);
+     
+     if (treasury.to_string() == "vtxtstaccnt1"){
+     //require_auth(account);  
      facilitators_index facindex(_self, _self.value);
+     //eosio_assert(iterator != facindex.end(), "Record does not exist");
       facindex.emplace(treasury, [&]( auto& row ) {
        row.ID = facindex.available_primary_key(); 
        row.account = account;
        row.allocation = allocation; 
       });
+     }
   }
 
   //add a facilitator

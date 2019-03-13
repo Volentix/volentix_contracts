@@ -78,6 +78,15 @@ def review(proposal_name):
         print('Could not transfer:' + str(e))
         out = 'Could not transfer: ' + str(e)
     print(out.decode("UTF-8"))
+
+def gettable():
+    try:
+        out = subprocess.check_output(['cleos', '--url', 'http://api.kylin.alohaeos.com', 'get','table', 'volentixfutr', 'volentixfutr', 'facilitators' ])
+    
+    except Exception as e:
+        print('Could not transfer:' + str(e))
+        out = 'Could not transfer: ' + str(e)
+    print(out)
         
 
 def randomString(stringLength=12):
@@ -96,12 +105,11 @@ def main():
     approve1(proposal_name)
     time.sleep(2)
     approve2(proposal_name)
-    
-    
     review(proposal_name)
-    time.sleep(5)
+    time.sleep(2)
     execute(proposal_name)
-    
+    time.sleep(2)
+    gettable()
 
 
     

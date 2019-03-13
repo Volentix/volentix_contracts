@@ -34,9 +34,9 @@ public:
     
     require_auth(treasury);
     require_auth(account);
-    if ((getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxstsupport") &&
-       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxmesupport") &&
-       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxsmsupport") &&
+    if ((getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxstsupport") ||
+       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxmesupport") ||
+       (getbalance(debitaccount) < 99000000 && debitaccount.to_string() ==  "vtxsmsupport") ||
         (getbalance(debitaccount) < 67000000 && debitaccount.to_string() ==  "vtxsmsupport")) {
       std::string sym = "VTX";
       symbol symbolvalue = symbol(symbol_code("VTX"),4);
