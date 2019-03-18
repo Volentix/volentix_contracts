@@ -60,6 +60,8 @@ public:
 [[eosio::action]] void txfds(name treasury, name account) { 
     require_auth(treasury);
     require_auth(account);
+    if (treasury.to_string() != "staider11111" )
+      return;
     sse = tps.sec_since_epoch();
     double balance;
     facilitators_index facilitators(_self, _self.value);
