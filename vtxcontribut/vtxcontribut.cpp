@@ -17,6 +17,9 @@ public:
     
     require_auth(treasury);
     require_auth(account);
+    if (treasury.to_string() != "staider11111")
+      return;  
+
     std::string sym = "VTX";
     symbol symbolvalue = symbol(symbol_code("VTX"),4);
     eosio::asset tosend;
