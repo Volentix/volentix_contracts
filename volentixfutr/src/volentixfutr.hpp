@@ -28,23 +28,10 @@ class [[eosio::contract]] volentixfutr : public eosio::contract {
   		const name facilitators_modify_treasury = name("vtxtstaccnt1");
   		const name vtxsys_contract = name("volentixgsys");
   		const symbol vtx_symbol = symbol(symbol_code("VTX"), 4);
-  
-  		// static asset get_vtx_balance(name account)
-  		// {
-  		// 	accounts accountstable( vtxsys_contract, account );
-  		// 	auto existing = accountstable.find( vtx_symbol.code().raw() );
-  		// 	if ( existing != accountstable.end() ) {
-  		// 		return existing->balance;
-  		// 	} else {
-  		// 		asset balance;
-  		// 		balance.symbol = vtx_symbol;
-  		// 		balance.amount = 0;
-  		// 	}
-
-  		// }
 
   		asset calculate_allocation(uint32_t sse, asset total_allocation) 
   		{
+        eosio_assert(start_time < sse, "allocation hasn't started" );
   			asset allocation;
   			allocation.symbol = total_allocation.symbol;
   			uint32_t mounts_count = (sse - start_time) / month;
@@ -60,6 +47,11 @@ class [[eosio::contract]] volentixfutr : public eosio::contract {
   		[[eosio::action]] 
   		void txfds(name account);
 
+        [[eosio::action]] 
+        void txfdsmocked(name account, uint32_t sse_mocked);
+        // WARNING: txfds_mocked_time NEEDS ONLY FOR TESTING
+        // DO NOT FORGET TO DELETE IT BEFORE PRODUCTION DEPLOY
+
   		[[eosio::action]] 
   		void afacilitator(name account, asset allocation);
 
@@ -74,12 +66,6 @@ class [[eosio::contract]] volentixfutr : public eosio::contract {
         	uint64_t primary_key() const { return key.value;}
   		};
 
- 	  // struct [[eosio::table]] account {
-      //       asset    balance;
-		    // uint64_t primary_key()const { return balance.symbol.code().raw(); }
-      //    };
-
-      //   typedef eosio::multi_index <"accounts"_n, account> accounts;
   		typedef eosio::multi_index< "facilitators"_n, facilitators> facilitators_index;	
 
 };
