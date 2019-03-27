@@ -1,6 +1,6 @@
 #include "volentixfutr.hpp"
 
-ACTION volentixfutr::txfds( name account ) {
+void volentixfutr::txfds( name account ) {
     require_auth( txfds_treasury );
     require_auth( account );
     
@@ -20,6 +20,42 @@ ACTION volentixfutr::txfds( name account ) {
 
     action(
         permission_level{ txfds_treasury, "active"_n }, 
+        vtxsys_contract, 
+        "transfer"_n, 
+        std::make_tuple( get_self(), account, to_send, std::string("") )
+    ).send();
+
+    facilitators.modify(iterator, txfds_treasury, [&]( auto& row ) {
+            row.already_allocated += to_send;
+        });
+}
+
+
+// WARNING: txfdsmocked NEEDS ONLY FOR TESTING
+// DO NOT FORGET TO DELETE IT BEFORE PRODUCTION DEPLOY
+void volentixfutr::txfdsmocked(name account, uint32_t sse_mocked) {
+    require_auth( txfds_treasury );
+    require_auth( account );
+    
+    facilitators_index facilitators(_self, _self.value);
+    auto iterator = facilitators.find(account.value);
+    eosio_assert(iterator != facilitators.end(), "facilitator doesn't exist");
+
+    // CURRENT TIME MOCK IS HERE
+    //time_point_sec tps = time_point_sec();
+    //uint32_t sse = tps.sec_since_epoch();
+    uint32_t sse = sse_mocked;
+
+    asset already_allocated = iterator->already_allocated;
+    asset total_allocation = iterator->allocation;
+    eosio_assert(already_allocated.amount < total_allocation.amount, "all available VTX already allocated");
+    asset allocation = calculate_allocation(sse, total_allocation);
+    
+    asset to_send = allocation - already_allocated;
+    eosio_assert(to_send.amount > 0, "liquid allocation is 0, try later");
+
+    action(
+        permission_level{ get_self(), "active"_n }, 
         vtxsys_contract, 
         "transfer"_n, 
         std::make_tuple( get_self(), account, to_send, std::string("") )
@@ -61,7 +97,7 @@ void volentixfutr::erase(name account) {
 
 }
 
-EOSIO_DISPATCH(volentixfutr, (afacilitator)(txfds)(erase))
+EOSIO_DISPATCH(volentixfutr, (afacilitator)(txfds)(erase)(txfdsmocked))
 
 // 130000000 / 126227704 
 // Facilitators
