@@ -250,7 +250,7 @@ class Test(unittest.TestCase):
 
         def get_vtx_balance(account):
             table = volentixgsys.table("accounts", account)
-            return table.json["rows"][0]["balance"]            
+            return table.json["rows"][0]["balance"]
 
         # Check missing txfds_treasury autotity
         with self.assertRaises(errors.MissingRequiredAuthorityError):

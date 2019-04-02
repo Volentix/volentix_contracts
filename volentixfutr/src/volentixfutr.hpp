@@ -6,8 +6,10 @@
 #include <eosiolib/time.hpp>
 #include <eosiolib/contract.hpp>
 #include <eosiolib/name.hpp>
+#include <vector>
 
 using namespace eosio;
+using std::vector;
 
 
 class [[eosio::contract]] volentixfutr : public eosio::contract {
