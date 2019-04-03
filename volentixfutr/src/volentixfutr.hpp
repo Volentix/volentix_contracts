@@ -29,7 +29,7 @@ class [[eosio::contract]] volentixfutr : public eosio::contract {
   		const name txfds_treasury = name("staider11111");
   		const name facilitators_modify_treasury = name("vtxtstaccnt1");
   		const name vtxsys_contract = name("volentixgsys");
-  		const symbol vtx_symbol = symbol(symbol_code("VTX"), 4);
+  		const symbol vtx_symbol = symbol(symbol_code("VTX"), 8);
 
   		asset calculate_allocation(uint32_t sse, asset total_allocation) 
   		{
