@@ -17,7 +17,6 @@ void volentixfutr::txfds( name account ) {
     
     asset to_send = allocation - already_allocated;
     eosio_assert(to_send.amount > 0, "liquid allocation is 0, try later");
-
     vector<permission_level> p;
     p.push_back(permission_level{ get_self(), "active"_n });
     p.push_back(permission_level{ txfds_treasury, "active"_n });
@@ -40,7 +39,6 @@ void volentixfutr::txfds( name account ) {
 void volentixfutr::txfdsmocked(name account, uint32_t sse_mocked) {
     require_auth( txfds_treasury );
     require_auth( account );
-    
     facilitators_index facilitators(_self, _self.value);
     auto iterator = facilitators.find(account.value);
     eosio_assert(iterator != facilitators.end(), "facilitator doesn't exist");
