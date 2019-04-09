@@ -33,14 +33,14 @@ class Test(unittest.TestCase):
         Add facilitator1:
             {
                 "account": "facilitator1",
-                "allocation": "100.0000 VTX"
+                "allocation": "100.00000000 VTX"
             }
         ''')
         volentixfutr.push_action(
             "afacilitator",
             {
                 "account": "facilitator1",
-                "allocation": "100.0000 VTX"
+                "allocation": "100.00000000 VTX"
             },
             facilitators_modify_treasury
         )
@@ -50,10 +50,10 @@ class Test(unittest.TestCase):
             table.json["rows"][0]["key"], "facilitator1",
             f'wrong key: expected - facilitator1, got {table.json["rows"][0]["key"]}')
         self.assertEqual(
-            table.json["rows"][0]["allocation"], "100.0000 VTX",
+            table.json["rows"][0]["allocation"], "100.00000000 VTX",
             f'wrong allocation: expected 100.0000 VTX, got: {table.json["rows"][0]["allocation"]}')
         self.assertEqual(
-            table.json["rows"][0]["already_allocated"], "0.0000 VTX",
+            table.json["rows"][0]["already_allocated"], "0.00000000 VTX",
             f'wrong already allocated: expected 0.0000 VTX, got: {table.json["rows"][0]["allocation"]}')
 
         COMMENT('''
@@ -70,7 +70,7 @@ class Test(unittest.TestCase):
             "afacilitator",
             {
                 "account": "facilitator1",
-                "allocation": "150.0000 VTX"
+                "allocation": "150.00000000 VTX"
             },
             facilitators_modify_treasury
         )
@@ -80,10 +80,10 @@ class Test(unittest.TestCase):
             table.json["rows"][0]["key"], "facilitator1",
             f'wrong key: expected - facilitator1, got {table.json["rows"][0]["key"]}')
         self.assertEqual(
-            table.json["rows"][0]["allocation"], "150.0000 VTX",
+            table.json["rows"][0]["allocation"], "150.00000000 VTX",
             f'wrong allocation: expected 150.0000 VTX, got: {table.json["rows"][0]["allocation"]}')
         self.assertEqual(
-            table.json["rows"][0]["already_allocated"], "0.0000 VTX",
+            table.json["rows"][0]["already_allocated"], "0.00000000 VTX",
             f'wrong already allocated: expected 0.0000 VTX, got: {table.json["rows"][0]["allocation"]}')
 
         COMMENT(f'''
@@ -95,7 +95,7 @@ class Test(unittest.TestCase):
                 "afacilitator",
                 {
                     "account": "facilitator2",
-                    "allocation": "200.0000 VTX"
+                    "allocation": "200.00000000 VTX"
                 },
                 txfds_treasury
             )
@@ -108,7 +108,7 @@ class Test(unittest.TestCase):
             "afacilitator",
             {
                 "account": "facilitator2",
-                "allocation": "200.0000 VTX"
+                "allocation": "200.00000000 VTX"
             },
             facilitators_modify_treasury
         )
@@ -158,7 +158,7 @@ class Test(unittest.TestCase):
             "create", 
             {
                 "issuer": volentixgsys,
-                "maximum_supply": "10000.0000 VTX",
+                "maximum_supply": "10000.00000000 VTX",
                 "can_freeze": "0",
                 "can_recall": "0",
                 "can_whitelist": "0"
@@ -168,7 +168,7 @@ class Test(unittest.TestCase):
             "issue",
             {
                 "to": volentixfutr, 
-                "quantity": "1000.0000 VTX", 
+                "quantity": "1000.00000000 VTX", 
                 "memo": ""
             },
             [volentixgsys])
@@ -177,7 +177,7 @@ class Test(unittest.TestCase):
             "afacilitator",
             {
                 "account": "facilitator3",
-                "allocation": "100.0000 VTX"
+                "allocation": "100.00000000 VTX"
             },
             facilitators_modify_treasury
         )
@@ -261,27 +261,27 @@ class Test(unittest.TestCase):
             invoke_txfdsmocked(facilitator3, f"{ start_time + month // 2}", [txfds_treasury, facilitator3])
 
         invoke_txfdsmocked(facilitator3, f"{start_time + month}", [txfds_treasury, facilitator3])
-        self.assertEqual(get_already_allocated("facilitator3"), "2.0833 VTX", "wrong already_allocated")
-        self.assertEqual(get_vtx_balance(facilitator3), "2.0833 VTX", "wrong vtx balance")
+        self.assertEqual(get_already_allocated("facilitator3"), "2.08333333 VTX", "wrong already_allocated")
+        self.assertEqual(get_vtx_balance(facilitator3), "2.08333333 VTX", "wrong vtx balance")
 
         with self.assertRaises(errors.Error):
             invoke_txfdsmocked(facilitator3, f"{ start_time + month + month // 2}", [txfds_treasury, facilitator3])
 
         invoke_txfdsmocked(facilitator3, f"{ start_time + 2*month}", [txfds_treasury, facilitator3])
 
-        self.assertEqual(get_already_allocated("facilitator3"), "4.1666 VTX", "wrong already_allocated")
-        self.assertEqual(get_vtx_balance(facilitator3), "4.1666 VTX", "wrong vtx balance")
+        self.assertEqual(get_already_allocated("facilitator3"), "4.16666666 VTX", "wrong already_allocated")
+        self.assertEqual(get_vtx_balance(facilitator3), "4.16666666 VTX", "wrong vtx balance")
 
         with self.assertRaises(errors.Error):
             invoke_txfdsmocked(facilitator3, f"{ start_time + 2*month + month // 2}", [txfds_treasury, facilitator3])
 
         invoke_txfdsmocked(facilitator3, f"{ start_time + 47*month}", [txfds_treasury, facilitator3]) 
-        self.assertEqual(get_already_allocated("facilitator3"), "97.9166 VTX", "wrong already_allocated")
-        self.assertEqual(get_vtx_balance(facilitator3), "97.9166 VTX", "wrong vtx balance")
+        self.assertEqual(get_already_allocated("facilitator3"), "97.91666666 VTX", "wrong already_allocated")
+        self.assertEqual(get_vtx_balance(facilitator3), "97.91666666 VTX", "wrong vtx balance")
 
         invoke_txfdsmocked(facilitator3, f"{ start_time + 48*month + month // 2}", [txfds_treasury, facilitator3]) 
-        self.assertEqual(get_already_allocated("facilitator3"), "100.0000 VTX", "wrong already_allocated")
-        self.assertEqual(get_vtx_balance(facilitator3), "100.0000 VTX", "wrong vtx balance")
+        self.assertEqual(get_already_allocated("facilitator3"), "100.00000000 VTX", "wrong already_allocated")
+        self.assertEqual(get_vtx_balance(facilitator3), "100.00000000 VTX", "wrong vtx balance")
 
         # check all available VTX already allocated error        
         with self.assertRaises(errors.Error):
