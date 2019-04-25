@@ -1,5 +1,7 @@
 # Contributing
 
+Thanks for joining the Volentix community!
+
 ## Table of Contents
 
 - [Code Of Conduct](https://github.com/Volentix/documentation/blob/master/CODE_OF_CONDUCT.md)
@@ -25,8 +27,6 @@
 
 ## About
 
-Thanks for joining the Volentix community!
-
 The following provides guidance on the processes for both:
 1. Contributing to Volentix
 2. Renumberation of effort
@@ -44,6 +44,10 @@ Each project is expected to manage their own communication and platform. Please 
 ## What We Are Looking For
 
 In addition to the communication channels, the projects root CONTRIBUTING.md file will also provide a section outlining the kind of work they are looking for at the moment.
+
+## Styling
+
+Each project is responsible for providing its own code style guides. Please see the projects CONTRIBUTING.md file for details.
 
 ## Contributing
 
