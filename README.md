@@ -6,8 +6,10 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
 
 > Contracts for the Volentix ecosystem
-
-TODO: Fill out this long description.
+These contracts are the basis on Volentix is built.
+Each contract is pushed onto its account to which VTX has been issued.
+Each contract has custom functionality particular to the restrictions
+on the flow of VTX.  
 
 ## Table of Contents
 
@@ -17,19 +19,10 @@ TODO: Fill out this long description.
 - [Contribute](#contribute)
 - [License](#license)
 
-## Install
-TODO:
+## Install and usage
+Instruction for each contract is specified in the README.md
+of its specific directory.
 
-```
-Fill in
-```
-
-## Usage
-TODO:
-
-```
-Fill in
-```
 
 ## Maintainers
 

@@ -2,9 +2,9 @@
 
 ## Prerequisites
 
-- You am running the latest version
-- You checked the documentation and found no answer
-- You checked to make sure that this issue has not already been filed
+- Am I running the latest version?
+- Have I checked the documentation and found no answer?
+- Have I checked to make sure that this issue has not already been filed?
 
 ## Do Not
 

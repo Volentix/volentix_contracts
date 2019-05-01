@@ -4,17 +4,12 @@ Please refer to the [Volentix Standard Contribution File](https://github.com/Vol
 
 ## In Addition
 
-In addition to the `Volentix Standard Contribution File`, the following contains information specific to this project.
-
+Contribution to this repository is initially contolled by volentix admins but should eventually be
+voted on by qualified members of the community.
 ### Communication
-
-TODO: Need to add the communication channels to this file.
-
+sylvain@volentixlabs.com
 ## What We Are Looking For
-
-TODO: Add section for what the team is looking for.
-
+Suggestions for methodology, flow and code efficiency
 ## Styling
 
-TODO: Coding styles and conventions.
 
