@@ -1,0 +1,2 @@
+- Incentive paid to VDex transaction providers
+- Incentive paid for VTX holders

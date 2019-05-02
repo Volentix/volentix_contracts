@@ -1,3 +1,5 @@
+Team, advisors and contributors(facilitators)
+This entire pool is phase 1
 ## Prerequisites
 docker 18.*
 
