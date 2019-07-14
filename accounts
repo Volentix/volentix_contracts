@@ -1,13 +1,18 @@
 
-{"msg": "succeeded", "keys": {"active_key": {"public": "EOS8icmJNm1VeCnJpyEr8qxqVLaw96gu7ECwZMCirnCYRxJcXGata", "private": "5JPsYmsvj2hmZFQG1iuqG9M6wCZV6gaXpkY7hnWKD5zm16W8ihf"}, "owner_key": {"public": "EOS6eqAhHcRsuiRgGdiD6bvmTu7wLQZrsoZDmMfXxFC57FkNAqaft", "private": "5KdAapAhBJcjkvDW7LhSiqW7DRzbBXPPnbLZ29sd8FhR42hazzU"}}, "account": "volentixzero"}
+active_key": {"public": "EOS8icmJNm1VeCnJpyEr8qxqVLaw96gu7ECwZMCirnCYRxJcXGata", "private": "5JPsYmsvj2hmZFQG1iuqG9M6wCZV6gaXpkY7hnWKD5zm16W8ihf"}, 
+"owner_key": {"public": "EOS6eqAhHcRsuiRgGdiD6bvmTu7wLQZrsoZDmMfXxFC57FkNAqaft", "private": "5KdAapAhBJcjkvDW7LhSiqW7DRzbBXPPnbLZ29sd8FhR42hazzU"}}, "account": "volentixzero"}
 
-{"msg": "succeeded", "keys": {"active_key": {"public": "EOS65ksnQSKjTC9z9ZYdX5Yu4BxrbQojtonFJCRYMg2oe4hkXf5zb", "private": "5J3DZBabe8PAgb9KsHSiWKk3jXvvEkhEFY1FGCeaDpi52MKgBbp"}, "owner_key": {"public": "EOS8TLTUagBFwgC2H2J9AusnuaVhUDtTAu1vKsnuvx6UXXxGyhWF8", "private": "5KgYenWVC1eaqArN5tt7bxMFPfmp2xRNWLphif7AFuTG6BCczb7"}}, "account": "volentixprvt"}
+active_key": {"public": "EOS65ksnQSKjTC9z9ZYdX5Yu4BxrbQojtonFJCRYMg2oe4hkXf5zb", "private": "5J3DZBabe8PAgb9KsHSiWKk3jXvvEkhEFY1FGCeaDpi52MKgBbp"}, 
+"owner_key": {"public": "EOS8TLTUagBFwgC2H2J9AusnuaVhUDtTAu1vKsnuvx6UXXxGyhWF8", "private": "5KgYenWVC1eaqArN5tt7bxMFPfmp2xRNWLphif7AFuTG6BCczb7"}}, "account": "volentixprvt"}
 
-{"msg": "succeeded", "keys": {"active_key": {"public": "EOS7wzi3stYefvavuMYzmJ9uU7zVzFp2SQ6WxoiMHPLNiQqnUv8R5", "private": "5HxzXF5YvAmNyWm3DZteNky97Pv6CURaue3eZxAZ6qczoFfgWug"}, "owner_key": {"public": "EOS8MYzBWkF3QaYHGcbKerwB39P9ZZjpuEuTzLSS7JUupGPEVCfxw", "private": "5JH9vcHPXtyjGB54TEGNw1VzmQuQA7k1p4qrPQxxczq9PytwRtx"}}, "account": "vtxcontribut"}
+active_key": {"public": "EOS7wzi3stYefvavuMYzmJ9uU7zVzFp2SQ6WxoiMHPLNiQqnUv8R5", "private": "5HxzXF5YvAmNyWm3DZteNky97Pv6CURaue3eZxAZ6qczoFfgWug"}, 
+"owner_key": {"public": "EOS8MYzBWkF3QaYHGcbKerwB39P9ZZjpuEuTzLSS7JUupGPEVCfxw", "private": "5JH9vcHPXtyjGB54TEGNw1VzmQuQA7k1p4qrPQxxczq9PytwRtx"}}, "account": "vtxcontribut"}
 
-{"msg": "succeeded", "keys": {"active_key": {"public": "EOS5erSKDyonn7kNWLLndHWxYEeSdxQSK6pV1V4FrV6awx8dw39mE", "private": "5KAsLMwKs81zs7uM1LUQLgZ6mRjSEUgmDT4GPusiho26cTwLNtk"}, "owner_key": {"public": "EOS5Gzu5WYaeZy1jQaFL7pvZcBKWj4vPBYkN28a2YWqfGZEsJLze4", "private": "5JH2ameXfXog9gqthpwCUatrWdmqVwZEQQ6CXBCGQP6RNqWBJVQ"}}, "account": "volentixprir"}
+active_key": {"public": "EOS5erSKDyonn7kNWLLndHWxYEeSdxQSK6pV1V4FrV6awx8dw39mE", "private": "5KAsLMwKs81zs7uM1LUQLgZ6mRjSEUgmDT4GPusiho26cTwLNtk"}, 
+"owner_key": {"public": "EOS5Gzu5WYaeZy1jQaFL7pvZcBKWj4vPBYkN28a2YWqfGZEsJLze4", "private": "5JH2ameXfXog9gqthpwCUatrWdmqVwZEQQ6CXBCGQP6RNqWBJVQ"}}, "account": "volentixprir"}
 
-{"msg": "succeeded", "keys": {"active_key": {"public": "EOS7QDrpmkJZcwKocfiEdsmA26RQJYYfwGtTn5YgSkbbc5y58go7D", "private": "5JKWsxU8xzH7kHw4zMyKxwqF6CqzdoQc13bCNkk6LoaVXzXnmZj"}, "owner_key": {"public": "EOS7QbqKe6FQ5kUB6AmwbnbmvJioDegfmY7KZQx2K5tvwN9a8B2Bb", "private": "5KDhggpxupRTNNeFYCvWpEbH3dwLtKYPPZNjZbMG1uYQq17DftL"}}, "account": "volentixfutr"}
+active_key": {"public": "EOS7QDrpmkJZcwKocfiEdsmA26RQJYYfwGtTn5YgSkbbc5y58go7D", "private": "5JKWsxU8xzH7kHw4zMyKxwqF6CqzdoQc13bCNkk6LoaVXzXnmZj"}, 
+"owner_key": {"public": "EOS7QbqKe6FQ5kUB6AmwbnbmvJioDegfmY7KZQx2K5tvwN9a8B2Bb", "private": "5KDhggpxupRTNNeFYCvWpEbH3dwLtKYPPZNjZbMG1uYQq17DftL"}}, "account": "volentixfutr"}
 
 "EOS5NqgFuBdVSWfQGtTorrj4PQgtugaQrCzQbxJQ98EtMXpPUFPsx", "5JwoxySPtyYdXyyus1B7o1UF7WULgnDoFHiJGGV1bbQqvyK2P7c"
 "EOS6xCuris3ohKCQN4xchsnZKFnQERshfQeGSL7wpn5bC78AaEwWW" "5HpTvSgCv1xWRgoaBvKmhdSv5x9VLW8xcxNVJp2skZQmKnYC9Cd" volentixtrez
