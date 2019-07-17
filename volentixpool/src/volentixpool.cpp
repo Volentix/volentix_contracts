@@ -37,7 +37,22 @@ void volentixpool::payliquid(name account, asset quantity)
 }
 
 
-EOSIO_DISPATCH( volentixpool, (payproducer)(payliquid))
+void volentixpool::payreward(name account, asset quantity)
+{
+	require_auth(vtxdstr_contract);
+
+  vector<permission_level> p;
+  p.push_back(permission_level{ get_self(), "active"_n });
+  action(
+    p, 
+    vtxsys_contract, 
+    "transfer"_n, 
+    std::make_tuple( get_self(), account, quantity, std::string("") )
+  ).send();
+}
+
+
+EOSIO_DISPATCH( volentixpool, (payproducer)(payliquid)(payreward))
 
 //   1. 800 Million VTX 
 
