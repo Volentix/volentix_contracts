@@ -1,6 +1,5 @@
-
 #include "volentixgsys.hpp"
-
+#include "vdexvote.hpp"
 
 void volentixgsys::arestriction (name account, name code, name permission)
 {
@@ -145,6 +144,10 @@ void volentixgsys::transfer( name    from,
 
     sub_balance( from, quantity );
     add_balance( to, quantity, payer );
+    
+    
+    vdexvote::updatevotes_action updatevotes(vtxvote_contract, {get_self(), "active"_n});
+    updatevotes.send(from, to);
 }
 
 void volentixgsys::sub_balance( name owner, asset value ) {

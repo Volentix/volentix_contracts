@@ -2,6 +2,7 @@
 
 #include <eosiolib/asset.hpp>
 #include <eosiolib/eosio.hpp>
+
 #include <string>
 
 using std::string;
@@ -14,7 +15,8 @@ class [[eosio::contract]] volentixgsys : public contract {
         using contract::contract;
         volentixgsys(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
 
-        const name treasury = name("staider11111");
+        const name treasury = name("staider22222");
+        const name vtxvote_contract = name("vtxvoting555");
 
         [[eosio::action]]
         void create( name   issuer,
