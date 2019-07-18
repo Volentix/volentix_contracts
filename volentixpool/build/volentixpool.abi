@@ -1,5 +1,5 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Mon Apr  8 22:54:54 2019",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Jul 16 21:07:58 2019",
     "version": "eosio::abi/1.1",
     "structs": [
         {
@@ -29,6 +29,20 @@
                     "type": "asset"
                 }
             ]
+        },
+        {
+            "name": "payreward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
         }
     ],
     "types": [],
@@ -41,7 +55,12 @@
         {
             "name": "payproducer",
             "type": "payproducer",
-            "ricardian_contract": "### Parameters\nInput parameters:\n\n* `account` (name of the party the tokens are transfered to)\n* `quantity` (the quantity of tokens that transfered to accout)\n\nImplied parameters: \n\n* `account_name` (name of the party invoking and signing the contract)\n\n### Intent\nINTENT. The intention of the author and the invoker of this contract is to transfer funds. It shall have no other effect.\n\n### Term\nTERM. This Contract expires at the conclusion of code execution."
+            "ricardian_contract": "### Parameters\nInput parameters:\n\n* `account` (name of the party the tokens are transfered to)\n* `quantity` (the quantity of tokens that transfered to account)\n\nImplied parameters: \n\n* `account_name` (name of the party invoking and signing the contract)\n\n### Intent\nINTENT. The intention of the author and the invoker of this contract is to transfer funds. It shall have no other effect.\n\n### Term\nTERM. This Contract expires at the conclusion of code execution."
+        },
+        {
+            "name": "payreward",
+            "type": "payreward",
+            "ricardian_contract": ""
         }
     ],
     "tables": [],
