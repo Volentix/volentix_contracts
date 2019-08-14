@@ -101,20 +101,6 @@
             ]
         },
         {
-            "name": "uptimemocked",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                },
-                {
-                    "name": "time_",
-                    "type": "uint32"
-                }
-            ]
-        },
-        {
             "name": "vdexnodes",
             "base": "",
             "fields": [
@@ -176,11 +162,6 @@
         {
             "name": "uptime",
             "type": "uptime",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "uptimemocked",
-            "type": "uptimemocked",
             "ricardian_contract": ""
         }
     ],

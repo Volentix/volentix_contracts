@@ -11,7 +11,7 @@
 using std::string;
 using namespace eosio;
 
-class[[eosio::contract]] distribution : public eosio::contract {
+class[[eosio::contract]] vtxdistribut : public eosio::contract {
     public:
         using contract::contract;
         const name pool_account = name("vdexmainpool");
@@ -21,10 +21,10 @@ class[[eosio::contract]] distribution : public eosio::contract {
         const uint32_t one_day = 24 * 60 * 60;
         const uint32_t daily_reward_id = 0;
 
-        distribution(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
+        vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
             vdexnodes(receiver, receiver.value), uptimes(receiver, receiver.value), rewards(receiver, receiver.value) {}
-
-
+         	
+        
         [[eosio::action]]
         void paycore();
 
@@ -33,20 +33,20 @@ class[[eosio::contract]] distribution : public eosio::contract {
 
          [[eosio::action]]
         void addnode(name account);
-
+    
         [[eosio::action]]
         void removenode(name account);
 
         [[eosio::action]]
         void uptime(name account);
 
-        [[eosio::action]]
-        void uptimemocked(name account, uint32_t time_);
-
+        // [[eosio::action]]
+        // void uptimemocked(name account, uint32_t time_);
+        
         [[eosio::action]]
         void setrewardrule(uint32_t reward_id, asset reward_amount, double votes_threshold, uint32_t uptime_threshold, uint32_t uptime_timeout);
 
-
+    
 
     private:
         struct [[eosio::table]] vdexnodes {
@@ -56,7 +56,7 @@ class[[eosio::contract]] distribution : public eosio::contract {
 
         typedef eosio::multi_index<"vdexnodes"_n, vdexnodes> vdexnodes_index;
         vdexnodes_index vdexnodes;
-
+        
         struct [[eosio::table]] vdexnodes_uptime {
             name account;
             uint32_t day;
