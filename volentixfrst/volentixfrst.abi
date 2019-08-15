@@ -1,0 +1,113 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Tue Dec 18 20:03:56 2018",
+    "version": "eosio::abi/1.0",
+    "structs": [
+        {
+            "name": "entry",
+            "base": "",
+            "fields": [
+                {
+                    "name": "s",
+                    "type": "name"
+                },
+                {
+                    "name": "key",
+                    "type": "uint64"
+                },
+                {
+                    "name": "Id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "sToKey",
+                    "type": "string"
+                },
+                {
+                    "name": "fromAccount",
+                    "type": "string"
+                },
+                {
+                    "name": "toAccount",
+                    "type": "string"
+                },
+                {
+                    "name": "amount",
+                    "type": "float64"
+                },
+                {
+                    "name": "comment",
+                    "type": "string"
+                },
+                {
+                    "name": "nonce",
+                    "type": "string"
+                },
+                {
+                    "name": "tbn",
+                    "type": "int64"
+                },
+                {
+                    "name": "tbp",
+                    "type": "int64"
+                },
+                {
+                    "name": "timestamp",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "rcrdtfr",
+            "base": "",
+            "fields": [
+                {
+                    "name": "s",
+                    "type": "name"
+                },
+                {
+                    "name": "fromaccount",
+                    "type": "string"
+                },
+                {
+                    "name": "toaccount",
+                    "type": "string"
+                },
+                {
+                    "name": "amount",
+                    "type": "float64"
+                },
+                {
+                    "name": "tokey",
+                    "type": "string"
+                },
+                {
+                    "name": "comment",
+                    "type": "string"
+                },
+                {
+                    "name": "nonce",
+                    "type": "string"
+                }
+            ]
+        }
+    ],
+    "types": [],
+    "actions": [
+        {
+            "name": "rcrdtfr",
+            "type": "rcrdtfr",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "entry",
+            "type": "entry",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "abi_extensions": []
+}
