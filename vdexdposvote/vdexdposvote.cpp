@@ -140,6 +140,8 @@ void vdexdposvote::updatevote(const name voter_name) {
     if (voter != _voters.end()) {
         const double balance_tokens = get_token_balance(voter_name);
 
-        vote(voter_name, voter->producers, balance_tokens, 0);
+        if (balance_tokens > 1) {
+            vote(voter_name, voter->producers, balance_tokens, 0);
+        }
     }
 }
