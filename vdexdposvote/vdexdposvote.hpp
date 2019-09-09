@@ -3,7 +3,6 @@
 #include <eosio/symbol.hpp>
 #include <eosio/transaction.hpp>
 #include <cmath>
-#include "../vtxtoken/eosio.token.hpp"
 
 using namespace eosio;
 
@@ -11,7 +10,7 @@ class [[eosio::contract("vdexdposvote")]] vdexdposvote : public contract {
 public:
     using contract::contract;
 
-    name vtx_account = "vtxtoken2222"_n;
+    name vtx_account = "volentixgsys"_n;
     std::string vtx_symbol_code = "VTX";
     int64_t vtx_precision = 100000000;
 
@@ -101,6 +100,13 @@ private:
     typedef eosio::multi_index<"voters"_n, voter_info> voters_table;
 
     voters_table _voters;
+    
+    struct account {
+        asset    balance;
+        uint64_t primary_key()const { return balance.symbol.code().raw(); }
+    };
+
+    typedef eosio::multi_index<"accounts"_n, account> accounts;
 
     void update_voters(const name voter_name, const std::vector <name> &producers,
                        const double votes_per_prod, const double tokens, const uint64_t vouting_time);

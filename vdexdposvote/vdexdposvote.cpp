@@ -1,4 +1,4 @@
-#include "./vdexdposvote.hpp"
+#include "vdexdposvote.hpp"
 
 void vdexdposvote::regproducer(const name producer, const std::string &producer_name, const std::string &url,
                            const std::string &key, const std::string &node_id) {
@@ -116,8 +116,13 @@ void vdexdposvote::update_voters(const name voter_name, const std::vector <name>
 }
 
 double vdexdposvote::get_token_balance(const name account) {
-    const auto balance = eosio::token::get_balance(vtx_account, account, symbol_code(vtx_symbol_code));
-    return balance.amount / vtx_precision;
+    accounts vtx_table(vtx_account, account.value);
+    const auto it = vtx_table.find(symbol_code(vtx_symbol_code).raw());
+    if (it != vtx_table.end()) {
+        return it->balance.amount / vtx_precision;
+    } else {
+        return 0;
+    }
 }
 
 void vdexdposvote::updatevotes(const name name_from, const name name_to) {
