@@ -1,8 +1,8 @@
-#include <eosiolib/symbol.hpp>
-#include <eosiolib/transaction.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/symbol.hpp>
+#include <eosio/transaction.hpp>
 #include <cmath>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/eosio.hpp>
 
 using namespace eosio;
 
@@ -10,7 +10,7 @@ class [[eosio::contract("vdexvote")]] vdexvote : public contract {
 public:
     using contract::contract;
 
-    name vtx_account = "volentixgsys"_n;
+    name vtx_account = "vtxtoken2222"_n;
     std::string vtx_symbol_code = "VTX";
     int64_t vtx_precision = 100000000;
 

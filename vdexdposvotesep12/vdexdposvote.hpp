@@ -1,12 +1,12 @@
-#include <eosiolib/symbol.hpp>
-#include <eosiolib/transaction.hpp>
+#include <eosio/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/symbol.hpp>
+#include <eosio/transaction.hpp>
 #include <cmath>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/eosio.hpp>
 
 using namespace eosio;
 
-class [[eosio::contract("vdexvote")]] vdexvote : public contract {
+class [[eosio::contract("vdexdposvote")]] vdexdposvote : public contract {
 public:
     using contract::contract;
 
@@ -14,7 +14,7 @@ public:
     std::string vtx_symbol_code = "VTX";
     int64_t vtx_precision = 100000000;
 
-    vdexvote(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
+    vdexdposvote(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
                                                                       _producers(receiver, receiver.value),
                                                                       _voters(receiver, receiver.value) {}
 
@@ -34,7 +34,7 @@ public:
     [[eosio::action]]
     void updatevotes(const name name_from, const name name_to);
 
-    using updatevotes_action = action_wrapper<"updatevotes"_n, &vdexvote::updatevotes>;
+    using updatevotes_action = action_wrapper<"updatevotes"_n, &vdexdposvote::updatevotes>;
     
     static std::vector <name> get_voters_by_time(const name vouting_account, const uint64_t from, const uint64_t to, const name user) {
         voters_table voters(vouting_account, vouting_account.value);
@@ -100,6 +100,13 @@ private:
     typedef eosio::multi_index<"voters"_n, voter_info> voters_table;
 
     voters_table _voters;
+    
+    struct account {
+        asset    balance;
+        uint64_t primary_key()const { return balance.symbol.code().raw(); }
+    };
+
+    typedef eosio::multi_index<"accounts"_n, account> accounts;
 
     void update_voters(const name voter_name, const std::vector <name> &producers,
                        const double votes_per_prod, const double tokens, const uint64_t vouting_time);

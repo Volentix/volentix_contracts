@@ -1,0 +1,1 @@
+The main VTX token contract
