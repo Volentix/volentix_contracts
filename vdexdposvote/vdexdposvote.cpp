@@ -1,4 +1,4 @@
-#include "vdexdposvote.hpp"
+ #include "vdexdposvote.hpp"
 
 void vdexdposvote::regproducer(const name producer, const std::string &producer_name, const std::string &url,
                            const std::string &key, const std::string &node_id) {
@@ -145,3 +145,4 @@ void vdexdposvote::updatevote(const name voter_name) {
         }
     }
 }
+

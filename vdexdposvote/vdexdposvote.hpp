@@ -61,6 +61,19 @@ public:
             return 0;
         }
     }
+    static int get_rank(name voting_contract, name account) {
+        
+        producers_table producers(voting_contract, voting_contract.value);
+        auto m = producers.get_index<"prototalvote"_n>();
+        int i = 0;
+        for (auto &o : m) {
+            if (o.owner.value == account.value)
+                return i;
+            i++;    
+        }
+        return 0;       
+    }
+
 
 private:
 
@@ -120,4 +133,6 @@ private:
     double get_token_balance(const name account);
 
     void updatevote(const name voter_name);
+
+ 
 };
