@@ -50,7 +50,7 @@ void vdexdposvote::activateprod(const name producer) {
 void vdexdposvote::voteproducer(const name voter_name, const std::vector <name> &producers) {
     require_auth(voter_name);
 
-    check(producers.size() <= 30, "attempt to vote for too many producers");
+    check(producers.size() <= 21, "attempt to vote for too many producers");
 
     const double balance_tokens = get_token_balance(voter_name);
     check(balance_tokens > 1, "need at least 1 VTX token for vote");
