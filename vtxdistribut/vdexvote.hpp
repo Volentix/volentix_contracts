@@ -10,7 +10,7 @@ class [[eosio::contract("vdexvote")]] vdexvote : public contract {
 public:
     using contract::contract;
 
-    name vtx_account = "vtxtoken2222"_n;
+    name vtx_account = "volentixgsys"_n;
     std::string vtx_symbol_code = "VTX";
     int64_t vtx_precision = 100000000;
 

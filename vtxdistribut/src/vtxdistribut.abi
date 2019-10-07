@@ -4,6 +4,20 @@
     "types": [],
     "structs": [
         {
+            "name": "addblacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "ip",
+                    "type": "string"
+                }
+            ]
+        },
+        {
             "name": "addnode",
             "base": "",
             "fields": [
@@ -14,7 +28,35 @@
             ]
         },
         {
-            "name": "delcreated",
+            "name": "blacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "IP",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "init_uptime",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "init_uptime",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "initup",
             "base": "",
             "fields": [
                 {
@@ -75,7 +117,17 @@
             ]
         },
         {
-            "name": "setcreated",
+            "name": "rmblacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "rmup",
             "base": "",
             "fields": [
                 {
@@ -106,20 +158,6 @@
                 },
                 {
                     "name": "uptime_timeout",
-                    "type": "uint32"
-                }
-            ]
-        },
-        {
-            "name": "time_created",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                },
-                {
-                    "name": "timestamp",
                     "type": "uint32"
                 }
             ]
@@ -169,13 +207,18 @@
     ],
     "actions": [
         {
+            "name": "addblacklist",
+            "type": "addblacklist",
+            "ricardian_contract": ""
+        },
+        {
             "name": "addnode",
             "type": "addnode",
             "ricardian_contract": ""
         },
         {
-            "name": "delcreated",
-            "type": "delcreated",
+            "name": "initup",
+            "type": "initup",
             "ricardian_contract": ""
         },
         {
@@ -194,8 +237,13 @@
             "ricardian_contract": ""
         },
         {
-            "name": "setcreated",
-            "type": "setcreated",
+            "name": "rmblacklist",
+            "type": "rmblacklist",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmup",
+            "type": "rmup",
             "ricardian_contract": ""
         },
         {
@@ -211,6 +259,13 @@
     ],
     "tables": [
         {
+            "name": "inituptime",
+            "type": "init_uptime",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
             "name": "rewards",
             "type": "reward_info",
             "index_type": "i64",
@@ -218,15 +273,15 @@
             "key_types": []
         },
         {
-            "name": "timecreated",
-            "type": "time_created",
+            "name": "uptimes",
+            "type": "vdexnodes_uptime",
             "index_type": "i64",
             "key_names": [],
             "key_types": []
         },
         {
-            "name": "uptimes",
-            "type": "vdexnodes_uptime",
+            "name": "usblacklist",
+            "type": "blacklist",
             "index_type": "i64",
             "key_names": [],
             "key_types": []

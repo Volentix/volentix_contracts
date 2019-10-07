@@ -33,7 +33,7 @@ void vtxdistribut::addnode(name account) {
     require_auth( account );
     auto iterator = vdexnodes.find(account.value);
     
-    check(iterator == vdexnodes.end(), "node already registired");
+    check(iterator == vdexnodes.end(), "node already registered");
     
     vdexnodes.emplace(account, [&] ( auto& row ) {
     	row.account = account;
@@ -54,16 +54,17 @@ void vtxdistribut::removenode(name account) {
 void vtxdistribut::uptime(name account) {
 	require_auth( account );
   
-  time_point_sec tps = current_time_point();
-  uint32_t now = tps.sec_since_epoch();
-	
+  	time_point_sec tps = current_time_point();
+  	uint32_t now = tps.sec_since_epoch();
 	auto iterator = vdexnodes.find(account.value);
 	check(iterator != vdexnodes.end(), "node not found");
-
 	auto uptime_iterator = uptimes.find(account.value);
 	uint32_t day = now / one_day;
-	
-	if (uptime_iterator != uptimes.end()) {
+			
+	auto prod = producer_info.find(account.value);
+
+	if(prod.total_votes <= 21){
+		if (uptime_iterator != uptimes.end()) {
 		auto reward_iterator = rewards.find(daily_reward_id);
 
 		if (day > uptime_iterator->day ) {
@@ -102,30 +103,56 @@ void vtxdistribut::uptime(name account) {
     	row.last_timestamp = now;
     });		
 	}
-}
 
 
-
-void vtxdistribut::setcreated(name account) {
-	require_auth( account );
-  
-  	time_point_sec tps = current_time_point();
-  	uint32_t now = tps.sec_since_epoch();
-	auto iterator = timecreated.find(account.value);
-	if(iterator == timecreated.end()){
-		auto time_created_iterator = timecreated.find(account.value);
-    	timecreated.emplace(account, [&] ( auto& row ) {
-      	row.account = account;
-    	row.timestamp = now;
-    	});		
 	}
+	else if (prod.total_votes > 21){
+		if (uptime_iterator != uptimes.end()) {
+		auto reward_iterator = rewards.find(standby_reward_id);
+
+		if (day > uptime_iterator->day ) {
+			
+			double votes = vdexvote::get_votes(voting_contract, account);
+			if (votes >= reward_iterator->votes_threshold && uptime_iterator->count >= reward_iterator->uptime_threshold) {
+			  
+			  action(
+          { get_self(), "active"_n }, 
+        		pool_account, 
+        		"payreward"_n, 
+        		std::make_tuple(account, reward_iterator->reward_amount, std::string("daily reward") )
+    		).send();
+			}
+			
+			uptimes.modify(uptime_iterator, account, [&] ( auto& row ) {
+				row.day = day;
+				row.count = 1;
+				row.last_timestamp = now;
+			}); 
+
+		} else {
+			check(now > uptime_iterator->last_timestamp + reward_iterator->uptime_timeout, "too often uptime");
+			
+			uptimes.modify(uptime_iterator, account, [&] ( auto& row ) {
+				row.count += 1;
+				row.last_timestamp = now;
+			}); 
+		}
+
+	} else {
+    uptimes.emplace(account, [&] ( auto& row ) {
+      row.account = account;
+    	row.day = day;
+    	row.count = 1;
+    	row.last_timestamp = now;
+    });		
+	}
+
+
+	}
+
+	
+	
 }
 
-void vtxdistribut::delcreated(name account) {
-	require_auth( account );
-	auto iterator = timecreated.find(account.value);
-    check(iterator != timecreated.end(), "node not found");    
-    time_created..erase(iterator);
-}
 
-EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(addnode)(removenode)(uptime)(setcreated)(delcreated))
+EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(addnode)(removenode)(uptime))

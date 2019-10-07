@@ -1,5 +1,5 @@
 #include "vtxdistribut.hpp"
-#include "vdexvote.hpp"
+#include "../../vdexdposvote/vdexdposvote.hpp"
 
 
 void vtxdistribut::paycore() {}
@@ -33,7 +33,7 @@ void vtxdistribut::addnode(name account) {
     require_auth( account );
     auto iterator = vdexnodes.find(account.value);
     
-    check(iterator == vdexnodes.end(), "node already registired");
+    check(iterator == vdexnodes.end(), "node already registered");
     
     vdexnodes.emplace(account, [&] ( auto& row ) {
     	row.account = account;
@@ -54,29 +54,43 @@ void vtxdistribut::removenode(name account) {
 void vtxdistribut::uptime(name account) {
 	require_auth( account );
   
-  time_point_sec tps = current_time_point();
-  uint32_t now = tps.sec_since_epoch();
+  	time_point_sec tps = current_time_point();
+  	uint32_t now = tps.sec_since_epoch();
 	
 	auto iterator = vdexnodes.find(account.value);
 	check(iterator != vdexnodes.end(), "node not found");
+
+	auto refuse = usblacklist.find(account.value);
+    check(refuse == usblacklist.end(), "Your IP is from the United States, cannot proceed with reward");
 
 	auto uptime_iterator = uptimes.find(account.value);
 	uint32_t day = now / one_day;
 	
 	if (uptime_iterator != uptimes.end()) {
 		auto reward_iterator = rewards.find(daily_reward_id);
+		auto reward_iterator2 = rewards.find(standby_reward_id);
 
 		if (day > uptime_iterator->day ) {
 			
-			double votes = vdexvote::get_votes(voting_contract, account);
+			double votes = vdexdposvote::get_votes(voting_contract, account);
+			int rank = vdexdposvote::get_rank(voting_contract, account);
 			if (votes >= reward_iterator->votes_threshold && uptime_iterator->count >= reward_iterator->uptime_threshold) {
-			  
-			  action(
-          { get_self(), "active"_n }, 
-        		pool_account, 
-        		"payreward"_n, 
-        		std::make_tuple(account, reward_iterator->reward_amount, std::string("daily reward") )
-    		).send();
+				if(rank<= 21){
+							action(
+								{ get_self(), "active"_n }, 
+								pool_account, 
+								"payreward"_n, 
+								std::make_tuple(account, reward_iterator->reward_amount, std::string("node reward") )
+							).send();
+				}
+				else if (rank > 21 && rank <= 42){
+							action(
+								{ get_self(), "active"_n }, 
+								pool_account, 
+								"payreward"_n, 
+								std::make_tuple(account, reward_iterator2->reward_amount, std::string("standby reward") )
+							).send();
+				}
 			}
 			
 			uptimes.modify(uptime_iterator, account, [&] ( auto& row ) {
@@ -104,28 +118,41 @@ void vtxdistribut::uptime(name account) {
 	}
 }
 
-
-
-void vtxdistribut::setcreated(name account) {
+void vtxdistribut::addblacklist(name account, string ip){
 	require_auth( account );
-  
-  	time_point_sec tps = current_time_point();
-  	uint32_t now = tps.sec_since_epoch();
-	auto iterator = timecreated.find(account.value);
-	if(iterator == timecreated.end()){
-		auto time_created_iterator = timecreated.find(account.value);
-    	timecreated.emplace(account, [&] ( auto& row ) {
-      	row.account = account;
-    	row.timestamp = now;
-    	});		
-	}
+    auto iterator = usblacklist.find(account.value);
+    
+    check(iterator == usblacklist.end(), "node already registered");
+    
+    usblacklist.emplace(account, [&] ( auto& row ) {
+    	row.account = account;
+    });
+}
+void vtxdistribut::rmblacklist(name account){
+	require_auth( account );
+    
+    auto iterator = usblacklist.find(account.value);
+    check(iterator != usblacklist.end(), "node not found");
+    
+    usblacklist.erase(iterator);
+}
+void vtxdistribut::initup(name account){
+	require_auth( account );
+    auto iterator = inituptime.find(account.value);
+    
+    check(iterator == inituptime.end(), "node already registered");
+    
+    inituptime.emplace(account, [&] ( auto& row ) {
+    	row.account = account;
+    });
+}
+void vtxdistribut::rmup(name account){
+	require_auth( account );
+    
+    auto iterator =  inituptime.find(account.value);
+    check(iterator !=  inituptime.end(), "node not found");
+    
+    inituptime.erase(iterator);
 }
 
-void vtxdistribut::delcreated(name account) {
-	require_auth( account );
-	auto iterator = timecreated.find(account.value);
-    check(iterator != timecreated.end(), "node not found");    
-    time_created..erase(iterator);
-}
-
-EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(addnode)(removenode)(uptime)(setcreated)(delcreated))
+EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(addnode)(removenode)(uptime)(addblacklist)(rmblacklist)(initup)(rmup))
