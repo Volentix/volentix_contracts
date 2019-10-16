@@ -4,7 +4,17 @@
     "types": [],
     "structs": [
         {
-            "name": "txfds",
+            "name": "freeze",
+            "base": "",
+            "fields": [
+                {
+                    "name": "quantity",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "unfreeze",
             "base": "",
             "fields": [
                 {
@@ -12,16 +22,21 @@
                     "type": "name"
                 },
                 {
-                    "name": "amount",
-                    "type": "float64"
+                    "name": "quantity",
+                    "type": "asset"
                 }
             ]
         }
     ],
     "actions": [
         {
-            "name": "txfds",
-            "type": "txfds",
+            "name": "freeze",
+            "type": "freeze",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unfreeze",
+            "type": "unfreeze",
             "ricardian_contract": ""
         }
     ],

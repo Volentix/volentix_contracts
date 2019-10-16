@@ -14,21 +14,16 @@ using std::vector;
 
 class [[eosio::contract("vtxbinance11")]] vtxbinance11 : public contract {
 
-
 	public:
 
+		using contract::contract; 
+		vtxbinance11(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}  
+		
+		[[eosio::action]] 
+		void freeze(asset quantity);
 
-
- 	using contract::contract; 
-
-
-
- 	vtxbinance11(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
-  
- 	
-	[[eosio::action]] 
-	void txfds(name account, double amount);
-
-
+		[[eosio::action]] 
+		void unfreeze(name account, asset quantity);
+	
 
 };
