@@ -105,9 +105,3 @@ void volentixprir::erase(name account) {
 
 EOSIO_DISPATCH(volentixprir, (afacilitator)(txfds)(erase)(txfdsmocked))
 
-// 130000000 / 126227704 
-// Facilitators
-// Permissions: Facilitators, treasury
-// Time lock 4 years.
-// 	At the discretion of the development partners management committee.
-// 	testnet:volentixfutr
