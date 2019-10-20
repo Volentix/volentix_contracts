@@ -27,23 +27,58 @@ class [[eosio::contract]] volentixprir : public eosio::contract {
 		//Date and time (your time zone): Thursday, May 28, 2020 8:00:00 PM GMT-04:00
   		const uint32_t start_time = 1590710400;
   		const name txfds_treasury = name("staider11111");
-  		const name facilitators_modify_treasury = name("vtxtstaccnt1");
+  		const name facilitators_modify_treasury = name("volentixdev2");
   		const name vtxsys_contract = name("volentixgsys");
   		const symbol vtx_symbol = symbol(symbol_code("VTX"), 8);
+		const float year_one_percentage = .05;
+		const float year_two_percentage = .10;
+		const float year_three_percentage = .15;
+		const float year_four_percentage = .70;
+		const float first_8_months_distribution_percentage = .05;
+		const float last_4_months_distribution_percentage = .15;
 
   		asset calculate_allocation(uint32_t sse, asset total_allocation) 
   		{
         eosio_assert(start_time < sse, "allocation hasn't started" );
-  			asset allocation;
-  			allocation.symbol = total_allocation.symbol;
-  			uint32_t mounts_count = (sse - start_time) / month;
-  			double total_part = mounts_count * monthly_percent;
-  			if ( total_part < 1 ) {
-  				allocation.amount = total_allocation.amount * total_part;
-  			} else {
-  				allocation.amount = total_allocation.amount;
-  			}
-  			return allocation;
+		asset allocation;
+		allocation.symbol = total_allocation.symbol;
+		uint32_t months_count = (sse - start_time) / month;
+		if(months_count <= 8){
+			allocation.amount = total_allocation.amount * total_part * year_one_percentage * first_8_months_distribution_percentage;
+		}
+		else if(months_count > 8 && months_count <= 12){
+
+			allocation.amount = total_allocation.amount * total_part * year_one_percentage * last_4_months_distribution_percentage;
+
+		}
+		else if(months_count > 12 && months_count <= 20){
+
+			allocation.amount = total_allocation.amount * total_part * year_two_percentage * first_8_months_distribution_percentage;
+
+		}
+		else if(months_count > 20 && months_count <= 24)
+		{
+			allocation.amount = total_allocation.amount * total_part * year_two_percentage * last_4_months_distribution_percentage;
+
+		}
+		else if(months_count > 24 && months_count <= 32)
+		{
+			allocation.amount = total_allocation.amount * total_part * year_three_percentage * first_8_months_distribution_percentage;
+		}
+		else if(months_count > 32 && months_count <= 36)
+		{
+			allocation.amount = total_allocation.amount * total_part * year_three_percentage * last_4_months_distribution_percentage;
+		}
+		else if(months_count > 36 && months_count <= 44)
+		{
+			allocation.amount = total_allocation.amount * total_part * year_four_percentage * first_8_months_distribution_percentage;	
+		}
+		else if(months_count > 44 && months_count <= 48)
+		{
+			allocation.amount = total_allocation.amount * total_part * year_four_percentage * last_4_months_distribution_percentage;	
+		}
+					
+		return allocation;
   		}
 
   		[[eosio::action]] 
