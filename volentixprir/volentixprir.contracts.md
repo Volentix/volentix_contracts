@@ -22,7 +22,7 @@ TERM. This Contract expires at the conclusion of code execution.
 ### Parameters
 Input parameters:
 
-* `accout` (name of the party that added to facilitators table)
+* `account` (name of the party that added to facilitators table)
 * `allocation` (the quantity of tokens that allocated to accout)
 
 Implied parameters: 
@@ -41,7 +41,7 @@ TERM. This Contract expires at the conclusion of code execution.
 ### Parameters
 Input parameters:
 
-* `accout` (name of the party that erased from facilitators table)
+* `account` (name of the party that erased from facilitators table)
 
 Implied parameters: 
 

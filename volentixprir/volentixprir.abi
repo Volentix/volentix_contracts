@@ -1,6 +1,7 @@
 {
-    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT Mon Apr  8 23:04:16 2019",
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
     "version": "eosio::abi/1.1",
+    "types": [],
     "structs": [
         {
             "name": "afacilitator",
@@ -53,23 +54,8 @@
                     "type": "name"
                 }
             ]
-        },
-        {
-            "name": "txfdsmocked",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                },
-                {
-                    "name": "sse_mocked",
-                    "type": "uint32"
-                }
-            ]
         }
     ],
-    "types": [],
     "actions": [
         {
             "name": "afacilitator",
@@ -85,11 +71,6 @@
             "name": "txfds",
             "type": "txfds",
             "ricardian_contract": "### Parameters\nInput parameters:\n\n* `account` (name of the party the tokens are transfered to)\n\nImplied parameters: \n\n* `account_name` (name of the party invoking and signing the contract)\n\n### Intent\nINTENT. The intention of the author and the invoker of this contract is to transfer funds. It shall have no other effect.\n\n### Term\nTERM. This Contract expires at the conclusion of code execution."
-        },
-        {
-            "name": "txfdsmocked",
-            "type": "txfdsmocked",
-            "ricardian_contract": ""
         }
     ],
     "tables": [
@@ -159,6 +140,5 @@
             "body": "In witness whereof, the parties hereto have caused this Agreement to be executed by themselves or their duly authorized representatives as of the date of execution, and authorized as proven by the cryptographic signature on the transaction that invokes this contract."
         }
     ],
-    "variants": [],
-    "abi_extensions": []
+    "variants": []
 }
