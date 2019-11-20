@@ -38,7 +38,8 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
     
         [[eosio::action]]
         void removenode(name account);
-
+       
+        
         [[eosio::action]]
         void uptime(name account);
         

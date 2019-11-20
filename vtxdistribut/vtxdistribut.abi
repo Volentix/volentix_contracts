@@ -4,7 +4,59 @@
     "types": [],
     "structs": [
         {
+            "name": "addblacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "ip",
+                    "type": "string"
+                }
+            ]
+        },
+        {
             "name": "addnode",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "blacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "IP",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "init_uptime",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "init_uptime",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "initup",
             "base": "",
             "fields": [
                 {
@@ -61,6 +113,26 @@
                 {
                     "name": "uptime_timeout",
                     "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "rmblacklist",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "rmup",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
                 }
             ]
         },
@@ -135,8 +207,18 @@
     ],
     "actions": [
         {
+            "name": "addblacklist",
+            "type": "addblacklist",
+            "ricardian_contract": ""
+        },
+        {
             "name": "addnode",
             "type": "addnode",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "initup",
+            "type": "initup",
             "ricardian_contract": ""
         },
         {
@@ -155,6 +237,16 @@
             "ricardian_contract": ""
         },
         {
+            "name": "rmblacklist",
+            "type": "rmblacklist",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmup",
+            "type": "rmup",
+            "ricardian_contract": ""
+        },
+        {
             "name": "setrewardrule",
             "type": "setrewardrule",
             "ricardian_contract": ""
@@ -167,6 +259,13 @@
     ],
     "tables": [
         {
+            "name": "inituptime",
+            "type": "init_uptime",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
             "name": "rewards",
             "type": "reward_info",
             "index_type": "i64",
@@ -176,6 +275,13 @@
         {
             "name": "uptimes",
             "type": "vdexnodes_uptime",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "usblacklist",
+            "type": "blacklist",
             "index_type": "i64",
             "key_names": [],
             "key_types": []

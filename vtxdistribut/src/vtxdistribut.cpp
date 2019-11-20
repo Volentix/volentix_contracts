@@ -53,7 +53,7 @@ void vtxdistribut::removenode(name account) {
 
 void vtxdistribut::uptime(name account) {
 	require_auth( account );
-  
+	//DIFFER CONTRACT
   	time_point_sec tps = current_time_point();
   	uint32_t now = tps.sec_since_epoch();
 	
