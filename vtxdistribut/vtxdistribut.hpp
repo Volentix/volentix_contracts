@@ -22,19 +22,17 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         const uint32_t daily_reward_id = 0;
         const uint32_t standby_reward_id = 1;
 
-        vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
-            vdexnodes(receiver, receiver.value), uptimes(receiver, receiver.value), rewards(receiver, receiver.value) {}
-         	
-        
+        vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds), vdexnodes(receiver, receiver.value), uptimes(receiver, receiver.value), rewards(receiver, receiver.value) {}
+
         [[eosio::action]]
         void paycore();
 
         [[eosio::action]]
         void paycampaign(string campaign);
 
-         [[eosio::action]]
+        [[eosio::action]]
         void addnode(name account);
-    
+
         [[eosio::action]]
         void removenode(name account);
 
@@ -43,11 +41,9 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
 
         // [[eosio::action]]
         // void uptimemocked(name account, uint32_t time_);
-        
+
         [[eosio::action]]
         void setrewardrule(uint32_t reward_id, asset reward_amount, double votes_threshold, uint32_t uptime_threshold, uint32_t uptime_timeout);
-
-    
 
     private:
         struct [[eosio::table]] vdexnodes {
@@ -57,7 +53,7 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
 
         typedef eosio::multi_index<"vdexnodes"_n, vdexnodes> vdexnodes_index;
         vdexnodes_index vdexnodes;
-        
+
         struct [[eosio::table]] vdexnodes_uptime {
             name account;
             uint32_t day;
@@ -65,7 +61,6 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
             uint32_t last_timestamp;
             uint64_t primary_key() const { return account.value;}
         };
-
 
         typedef eosio::multi_index<"uptimes"_n, vdexnodes_uptime> uptime_index;
         uptime_index uptimes;
