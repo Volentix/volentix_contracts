@@ -1,8 +1,9 @@
  #include "vdexdposvote.hpp"
 
 void vdexdposvote::regproducer(const name producer, const std::string &producer_name, const std::string &url,
-                           const std::string &key, const std::string &node_id) {
+                               const std::string &key, const std::string &node_id, const std::vector<uint32_t> &job_ids) {
     require_auth(producer);
+    check(jobs_valid(job_ids), "job ids vector is invalid");
 
     auto prod = _producers.find(producer.value);
 
@@ -13,6 +14,7 @@ void vdexdposvote::regproducer(const name producer, const std::string &producer_
             info.url = url;
             info.key = key;
             info.node_id = node_id;
+            info.job_ids = job_ids;
         });
     } else {
         _producers.emplace(producer, [&](producer_info &info) {
@@ -23,6 +25,7 @@ void vdexdposvote::regproducer(const name producer, const std::string &producer_
             info.url = url;
             info.key = key;
             info.node_id = node_id;
+            info.job_ids = job_ids;
         });
     }
 }
@@ -146,3 +149,14 @@ void vdexdposvote::updatevote(const name voter_name) {
     }
 }
 
+bool vdexdposvote::jobs_valid(const std::vector<uint32_t> &job_ids) {
+    bool result = true;
+    for (auto const &job_id : job_ids) {
+        if ( job_id < job_id_bounds[0] || job_id > job_id_bounds[1] ) {
+            result = false;
+            break;
+        }
+    }
+
+    return result;
+}
