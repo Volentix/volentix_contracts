@@ -18,64 +18,105 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         const name treasury = name("vtxdistribut");
         const name vtxsys_contract = name("volentixgsys");
         const name voting_contract = name("vdexdposvote");
+        const symbol vtx_symbol = symbol(symbol_code("VTX"), 8);
         const uint32_t one_day = 24 * 60 * 60;
         const uint32_t daily_reward_id = 0;
         const uint32_t standby_reward_id = 1;
 
-        vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds), vdexnodes(receiver, receiver.value), uptimes(receiver, receiver.value), rewards(receiver, receiver.value) {}
-
+        vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
+            rewards(receiver, receiver.value), usblacklist(receiver, receiver.value),
+            inituptime(receiver, receiver.value) {}
+         	
+        
         [[eosio::action]]
         void paycore();
 
         [[eosio::action]]
-        void paycampaign(string campaign);
+        void paycampaign(string campaign);       
+        
+        [[eosio::action]]
+        void uptime(name account, const std::vector<uint32_t> &job_ids);
+        
+        [[eosio::action]]
+        void setrewardrule( uint32_t reward_id,
+                            uint32_t reward_period, 
+                            asset reward_amount,
+                            asset standby_amount,
+                            uint32_t rank_threshold,
+                            uint32_t standby_rank_threshold, 
+                            double votes_threshold, 
+                            uint32_t uptime_threshold, 
+                            uint32_t uptime_timeout,
+                            string memo,
+                            string standby_memo );
 
         [[eosio::action]]
-        void addnode(name account);
+        void addblacklist(name account, string ip);
 
         [[eosio::action]]
-        void removenode(name account);
+        void rmblacklist(name account);
 
         [[eosio::action]]
-        void uptime(name account);
-
-        // [[eosio::action]]
-        // void uptimemocked(name account, uint32_t time_);
+        void initup(name account);
 
         [[eosio::action]]
-        void setrewardrule(uint32_t reward_id, asset reward_amount, double votes_threshold, uint32_t uptime_threshold, uint32_t uptime_timeout);
+        void rmup(name account);
+
+       
+    
 
     private:
-        struct [[eosio::table]] vdexnodes {
-            name account;
-            uint64_t primary_key() const { return account.value; }
-        };
-
-        typedef eosio::multi_index<"vdexnodes"_n, vdexnodes> vdexnodes_index;
-        vdexnodes_index vdexnodes;
-
         struct [[eosio::table]] vdexnodes_uptime {
-            name account;
-            uint32_t day;
+            uint32_t job_id;
+            uint32_t period_num;
             uint32_t count;
             uint32_t last_timestamp;
-            uint64_t primary_key() const { return account.value;}
+            uint32_t primary_key() const { return job_id;}
         };
 
+
         typedef eosio::multi_index<"uptimes"_n, vdexnodes_uptime> uptime_index;
-        uptime_index uptimes;
 
         struct [[eosio::table]] reward_info {
             uint32_t reward_id;
+            uint32_t reward_period;
             asset reward_amount;
+            asset standby_amount;
+            uint32_t rank_threshold;
+            // set standby_rank_threshold to 0 to disable it
+            uint32_t standby_rank_threshold;
             double votes_threshold;
             uint32_t uptime_threshold;
             uint32_t uptime_timeout;
+            string memo;
+            string standby_memo;
             uint64_t primary_key() const { return reward_id;}
         };
 
         typedef eosio::multi_index<"rewards"_n, reward_info> reward_index;
         reward_index rewards;
+
+        struct [[eosio::table]] blacklist {
+            name account;
+            string IP;
+            uint64_t primary_key() const { return account.value;}
+        };
+
+        typedef eosio::multi_index<"usblacklist"_n, blacklist> blacklist_index;
+        blacklist_index usblacklist;
+
+        
+        struct [[eosio::table]] init_uptime {
+            name account;
+            uint32_t init_uptime;
+            uint64_t primary_key() const { return account.value;}
+        };
+
+        typedef eosio::multi_index<"inituptime"_n, init_uptime> inituptime_index;
+        inituptime_index inituptime;
+
+        void reward(name account, uint32_t job_id, uint32_t timestamp);
+        void checkblaclist ( name account );
 
 };
 

@@ -14,13 +14,26 @@ public:
     std::string vtx_symbol_code = "VTX";
     int64_t vtx_precision = 100000000;
 
+    // job ids:
+    //   1 - daily reward
+    //   2 - btc mpt
+    //   3 - eth mpt
+    //   4 - eos mpt
+    //   5 - gateaway
+    //   6 - db
+    //   7 - ccxt
+    //   8 - loopring
+    const uint32_t job_id_bounds[2] = {1,8};
+
+
     vdexdposvote(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
                                                                       _producers(receiver, receiver.value),
                                                                       _voters(receiver, receiver.value) {}
 
     [[eosio::action]]
     void regproducer(const name producer, const std::string &producer_name,
-                     const std::string &url, const std::string &key, const std::string &node_id);
+                     const std::string &url, const std::string &key, const std::string &node_id,
+                     const std::vector<uint32_t> &job_ids);
 
     [[eosio::action]]
     void unregprod(const name producer);
@@ -61,6 +74,14 @@ public:
             return 0;
         }
     }
+
+    static std::vector<uint32_t> get_jobs(name voting_contract, name account) {
+        producers_table producers(voting_contract, voting_contract.value);
+        auto iterator = producers.find(account.value);
+        check( iterator != producers.end(), "producer with this name doesn't exist" );
+        return iterator->job_ids;
+    }
+
     static int get_rank(name voting_contract, name account) {
         
         producers_table producers(voting_contract, voting_contract.value);
@@ -75,6 +96,8 @@ public:
     }
 
 
+
+
 private:
 
     struct [[eosio::table]] producer_info {
@@ -85,6 +108,7 @@ private:
         std::string url;
         std::string key;
         std::string node_id;
+        std::vector<uint32_t> job_ids;
 
         uint64_t primary_key() const { return owner.value; }
 
@@ -134,5 +158,5 @@ private:
 
     void updatevote(const name voter_name);
 
- 
+    bool jobs_valid(const std::vector<uint32_t> &job_ids);
 };

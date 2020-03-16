@@ -18,16 +18,6 @@
             ]
         },
         {
-            "name": "addnode",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                }
-            ]
-        },
-        {
             "name": "blacklist",
             "base": "",
             "fields": [
@@ -81,16 +71,6 @@
             "fields": []
         },
         {
-            "name": "removenode",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                }
-            ]
-        },
-        {
             "name": "reward_info",
             "base": "",
             "fields": [
@@ -99,8 +79,24 @@
                     "type": "uint32"
                 },
                 {
+                    "name": "reward_period",
+                    "type": "uint32"
+                },
+                {
                     "name": "reward_amount",
                     "type": "asset"
+                },
+                {
+                    "name": "standby_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "rank_threshold",
+                    "type": "uint32"
+                },
+                {
+                    "name": "standby_rank_threshold",
+                    "type": "uint32"
                 },
                 {
                     "name": "votes_threshold",
@@ -113,6 +109,14 @@
                 {
                     "name": "uptime_timeout",
                     "type": "uint32"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                },
+                {
+                    "name": "standby_memo",
+                    "type": "string"
                 }
             ]
         },
@@ -145,8 +149,24 @@
                     "type": "uint32"
                 },
                 {
+                    "name": "reward_period",
+                    "type": "uint32"
+                },
+                {
                     "name": "reward_amount",
                     "type": "asset"
+                },
+                {
+                    "name": "standby_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "rank_threshold",
+                    "type": "uint32"
+                },
+                {
+                    "name": "standby_rank_threshold",
+                    "type": "uint32"
                 },
                 {
                     "name": "votes_threshold",
@@ -159,6 +179,14 @@
                 {
                     "name": "uptime_timeout",
                     "type": "uint32"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                },
+                {
+                    "name": "standby_memo",
+                    "type": "string"
                 }
             ]
         },
@@ -169,16 +197,10 @@
                 {
                     "name": "account",
                     "type": "name"
-                }
-            ]
-        },
-        {
-            "name": "vdexnodes",
-            "base": "",
-            "fields": [
+                },
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "job_ids",
+                    "type": "uint32[]"
                 }
             ]
         },
@@ -187,11 +209,11 @@
             "base": "",
             "fields": [
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "job_id",
+                    "type": "uint32"
                 },
                 {
-                    "name": "day",
+                    "name": "period_num",
                     "type": "uint32"
                 },
                 {
@@ -212,11 +234,6 @@
             "ricardian_contract": ""
         },
         {
-            "name": "addnode",
-            "type": "addnode",
-            "ricardian_contract": ""
-        },
-        {
             "name": "initup",
             "type": "initup",
             "ricardian_contract": ""
@@ -229,11 +246,6 @@
         {
             "name": "paycore",
             "type": "paycore",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "removenode",
-            "type": "removenode",
             "ricardian_contract": ""
         },
         {
@@ -282,13 +294,6 @@
         {
             "name": "usblacklist",
             "type": "blacklist",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "vdexnodes",
-            "type": "vdexnodes",
             "index_type": "i64",
             "key_names": [],
             "key_types": []
