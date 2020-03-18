@@ -1,0 +1,3 @@
+/home/farhan/Documents/work/VXT/eos-stake-token/build/CMakeFiles/rebuild_cache.dir
+/home/farhan/Documents/work/VXT/eos-stake-token/build/CMakeFiles/vtx_project.dir
+/home/farhan/Documents/work/VXT/eos-stake-token/build/CMakeFiles/edit_cache.dir

@@ -1,0 +1,11 @@
+# Hashes of file build rules.
+0862707e3fdac9e04564400f3697ab98 CMakeFiles/vtx_project
+c73a32955880d7f7b0bb9209596183e9 CMakeFiles/vtx_project-complete
+18191bb52dbc6270199b19e381a66f94 vtx_project-prefix/src/vtx_project-stamp/vtx_project-build
+09af802257c032dc4260202f28a8020d vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure
+a8caad93536a424945e0c4dd4dadbed1 vtx_project-prefix/src/vtx_project-stamp/vtx_project-download
+6911fbe47e589b5c4f6079022d311d8a vtx_project-prefix/src/vtx_project-stamp/vtx_project-install
+9d9c96ddea10055fe26aded980a96e4d vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir
+336f853ac7bf3d88fdb1dd0767700b9f vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch
+5d90e89e9937c848740250cb312cd5fd vtx_project-prefix/src/vtx_project-stamp/vtx_project-test
+15ca4f88e5e770b6db22ee52704b9317 vtx_project-prefix/src/vtx_project-stamp/vtx_project-update
