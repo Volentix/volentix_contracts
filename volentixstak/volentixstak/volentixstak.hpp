@@ -14,7 +14,7 @@ using std::string;
 class [[eosio::contract]] volentixstak : public contract {
    public:
       using contract::contract;
-
+      
       [[eosio::action]]
       void create( name   issuer,
                      asset  maximum_supply);
@@ -100,6 +100,13 @@ class [[eosio::contract]] volentixstak : public contract {
          uint64_t primary_key()const { return locked_balance.symbol.code().raw(); }
       };
 
+      struct [[eosio::table]] stake {
+      uint32_t interval;
+      name account;
+      uint64_t amount;
+      }
+      
+      
       struct [[eosio::table]] currency_stats {
          asset    supply;
          asset    max_supply;
@@ -130,7 +137,8 @@ class [[eosio::contract]] volentixstak : public contract {
 
          uint64_t  primary_key()const { return account.value; }
       };
-
+      
+      typedef eosio::multi_index< name("stake"), stake > stakes;
       typedef eosio::multi_index< name("accounts"), account > accounts;
       typedef eosio::multi_index< name("lockaccounts"), lock_account > lock_accounts;
       typedef eosio::multi_index< name("stat"), currency_stats > stats;
