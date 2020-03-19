@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/CMakeFiles/vtx_project"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/CMakeFiles/vtx_project.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/CMakeFiles/vtx_project-complete.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-build.rule"
+		},
+		{
+			"file" : "/Users/sylvaincormier/volentix_contracts/volentixstak/script/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtx_project"
+		],
+		"name" : "vtx_project"
+	}
+}
