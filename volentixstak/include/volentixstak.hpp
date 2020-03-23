@@ -20,25 +20,20 @@ public:
    [[eosio::action]] void transfer(name from, name to, asset quantity, string memo);
    [[eosio::action]] void stake(name owner, const asset quantity, uint16_t stake_period);
    void check_symbol(asset quantity);
-   //### UNSTAKE TOKEN FROM UNIVERSAL STAKE STATE
-   // [[eosio::action]] void unstake(name owner, const asset quantity);
 
-   //##### UNSTAKE TOKEN FROM PARTICULATE STATE
-    [[eosio::action]] void unstake(name owner, uint64_t stake_id);
+   [[eosio::action]] void unstake(name owner, uint64_t stake_id);
 
    [[eosio::action]] void addblacklist(const symbol &symbol, name account);
 
    [[eosio::action]] void rmblacklist(const symbol &symbol, name account);
 
    
-
    static asset get_balance(name token_contract_account, name owner, symbol_code sym_code)
    {
       accounts accountstable(token_contract_account, owner.value);
       const auto &ac = accountstable.get(sym_code.raw());
       return ac.balance;
    }
-   
 
 private:
    struct [[eosio::table]] currency_stats
@@ -63,7 +58,6 @@ private:
       uint32_t stake_time;
       uint16_t stake_period;
 
-      //  uint64_t primary_key() const { return stake_amount.symbol.code().raw(); }
       uint64_t primary_key() const { return stake_id; }
    };
 

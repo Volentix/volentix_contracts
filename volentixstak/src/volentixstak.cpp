@@ -8,9 +8,6 @@
 #define MAX_STAKE_PERIOD 300
 #define STAKE_MULTIPLE_PERIOD 30
 
-
- 
-
 void volentixstak::transfer(name from,
                             name to,
                             asset quantity,
@@ -19,7 +16,7 @@ void volentixstak::transfer(name from,
    check(from != to, "cannot transfer to self");
    require_auth(from);
    check(is_account(to), "to account does not exist");
-   //check_symbol(quantity);
+   check_symbol(quantity);
 
    require_recipient(from);
    require_recipient(to);
@@ -33,67 +30,13 @@ void volentixstak::transfer(name from,
    add_balance(to, quantity, payer);
 }
 
-//##### STAKE ON GLOBAL STATE
-// void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_period)
-// {
-//    require_auth(owner);
-//    check_symbol(quantity);
-
-//    uint64_t amount = quantity.amount / 10000;
-
-//    //##### stake amount checks
-//    check(amount >= MIN_STAKE_AMOUNT, "stake amount is too low");
-//    check(amount <= MAX_STAKE_AMOUNT, "stake amount is too high");
-
-//    //#### stake period checks
-//    check(stake_period >= MIN_STAKE_PERIOD, "stake period is too low");
-//    check(stake_period <= MAX_STAKE_PERIOD, "stake period is too high");
-//    check(stake_period % STAKE_MULTIPLE_PERIOD == 0, "stake period is not incorrect");
-
-//    sub_balance(owner, quantity);
-
-//    lock_accounts lock_to_acnts(_self, owner.value);
-
-//    auto lock_to = lock_to_acnts.find(quantity.symbol.code().raw());
-
-//    check((quantity.amount + lock_to.stake_amount.amount) <= MAX_STAKE_AMOUNT, "Total staking amount is too high");
-
-//    if (lock_to == lock_to_acnts.end())
-//    {
-//       lock_to_acnts.emplace(owner, [&](auto &a) {
-//          a.stake_amount = quantity;
-//          a.stake_time = current_time_point().sec_since_epoch();
-//          a.stake_period = stake_period;
-//       });
-//    }
-//    else
-//    {
-//       lock_to_acnts.modify(lock_to, owner, [&](auto &a) {
-//          a.stake_amount += quantity;
-//          a.stake_time = current_time_point().sec_since_epoch();
-//          a.stake_period = stake_period;
-//       });
-//    }
-
-//    //###### Deferred transaction to unstake action
-//    eosio::transaction t{};
-
-//    t.actions.emplace_back(
-//        permission_level(_self, "active"_n),
-//        _self,
-//        "unstake"_n,
-//        std::make_tuple(owner, quantity));
-
-//    // t.delay_sec = 0;
-//    t.send(owner.value, owner);
-// }
-
-///##### STAKE ON PARTICULAR STATE
 void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_period)
 {
    require_auth(owner);
    check_symbol(quantity);
 
+
+   
    //##### stake amount checks
    check(quantity >= MIN_STAKE_AMOUNT, "stake amount is too low");
    check(quantity <= MAX_STAKE_AMOUNT, "stake amount is too high");
@@ -107,15 +50,8 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    lock_accounts lock_to_acnts(_self, owner.value);
 
-   asset total_staked_balance = asset(0, symbol(symbol_code("TEST"), 4));
+   asset total_staked_balance = asset(0, symbol(symbol_code("VTX"), 8));
 
-   //TESTS
-   asset asset1 = asset(1000, symbol(symbol_code("TEST"), 4));
-   asset asset2 = asset(1000, symbol(symbol_code("TEST"), 4));
-   asset asset3 = asset(10000000, symbol(symbol_code("TEST"), 4));
-
-   check((asset1 + asset2) <= asset3, "Addition of asset1 & asset2 should be less than asset3");
-   
 
    auto lock_to = lock_to_acnts.begin();
 
