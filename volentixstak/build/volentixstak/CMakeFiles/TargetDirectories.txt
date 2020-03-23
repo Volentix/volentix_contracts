@@ -1,3 +1,0 @@
-/home/farhan/Documents/work/VXT/eos-stake-token/build/volentixstak/CMakeFiles/rebuild_cache.dir
-/home/farhan/Documents/work/VXT/eos-stake-token/build/volentixstak/CMakeFiles/volentixstak.dir
-/home/farhan/Documents/work/VXT/eos-stake-token/build/volentixstak/CMakeFiles/edit_cache.dir

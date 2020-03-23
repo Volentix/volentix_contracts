@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/sylvaincormier/volentix_contracts/volentixstak/include/volentixstak.hpp
+eosio/asset.hpp
+-
+eosio/system.hpp
+-
+eosio/time.hpp
+-
+eosio/eosio.hpp
+-
+eosio/transaction.hpp
+-
+string
+-
+
+/Users/sylvaincormier/volentix_contracts/volentixstak/src/volentixstak.cpp
+volentixstak.hpp
+-
+

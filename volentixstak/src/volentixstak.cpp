@@ -8,81 +8,8 @@
 #define MAX_STAKE_PERIOD 300
 #define STAKE_MULTIPLE_PERIOD 30
 
-void volentixstak::create(name issuer,
-                          asset maximum_supply)
-{
-   require_auth(_self);
 
-   auto sym = maximum_supply.symbol;
-   check(sym.is_valid(), "invalid symbol name");
-   check(maximum_supply.is_valid(), "invalid supply");
-   check(maximum_supply.amount > 0, "max-supply must be positive");
-
-   stats statstable(_self, sym.code().raw());
-   auto existing = statstable.find(sym.code().raw());
-   check(existing == statstable.end(), "token with symbol already exists");
-
-   statstable.emplace(_self, [&](auto &s) {
-      s.supply.symbol = maximum_supply.symbol;
-      s.max_supply = maximum_supply;
-      s.issuer = issuer;
-   });
-}
-
-void volentixstak::issue(name to, asset quantity, string memo)
-{
-   auto sym = quantity.symbol;
-   check(sym.is_valid(), "invalid symbol name");
-   check(memo.size() <= 256, "memo has more than 256 bytes");
-
-   stats statstable(_self, sym.code().raw());
-   auto existing = statstable.find(sym.code().raw());
-   check(existing != statstable.end(), "token with symbol does not exist, create token before issue");
-   const auto &st = *existing;
-
-   require_auth(st.issuer);
-   check(quantity.is_valid(), "invalid quantity");
-   check(quantity.amount > 0, "must issue positive quantity");
-
-   check(quantity.symbol == st.supply.symbol, "symbol precision mismatch");
-   check(quantity.amount <= st.max_supply.amount - st.supply.amount, "quantity exceeds available supply");
-
-   statstable.modify(st, same_payer, [&](auto &s) {
-      s.supply += quantity;
-   });
-
-   add_balance(st.issuer, quantity, st.issuer);
-
-   if (to != st.issuer)
-   {
-      SEND_INLINE_ACTION(*this, transfer, {{st.issuer, "active"_n}},
-                         {st.issuer, to, quantity, memo});
-   }
-}
-
-void volentixstak::retire(asset quantity, string memo)
-{
-   auto sym = quantity.symbol;
-   check(sym.is_valid(), "invalid symbol name");
-   check(memo.size() <= 256, "memo has more than 256 bytes");
-
-   stats statstable(_self, sym.code().raw());
-   auto existing = statstable.find(sym.code().raw());
-   check(existing != statstable.end(), "token with symbol does not exist");
-   const auto &st = *existing;
-
-   require_auth(st.issuer);
-   check(quantity.is_valid(), "invalid quantity");
-   check(quantity.amount > 0, "must retire positive quantity");
-
-   check(quantity.symbol == st.supply.symbol, "symbol precision mismatch");
-
-   statstable.modify(st, same_payer, [&](auto &s) {
-      s.supply -= quantity;
-   });
-
-   sub_balance(st.issuer, quantity);
-}
+ 
 
 void volentixstak::transfer(name from,
                             name to,
@@ -92,7 +19,7 @@ void volentixstak::transfer(name from,
    check(from != to, "cannot transfer to self");
    require_auth(from);
    check(is_account(to), "to account does not exist");
-   check_symbol(quantity);
+   //check_symbol(quantity);
 
    require_recipient(from);
    require_recipient(to);
@@ -321,36 +248,7 @@ void volentixstak::add_balance(const name &owner, const asset &value, const name
    }
 }
 
-void volentixstak::open(const name &owner, const symbol &symbol, const name &ram_payer)
-{
-   require_auth(ram_payer);
 
-   check(is_account(owner), "owner account does not exist");
-
-   auto sym_code_raw = symbol.code().raw();
-   stats statstable(get_self(), sym_code_raw);
-   const auto &st = statstable.get(sym_code_raw, "symbol does not exist");
-   check(st.supply.symbol == symbol, "symbol precision mismatch");
-
-   accounts acnts(get_self(), owner.value);
-   auto it = acnts.find(sym_code_raw);
-   if (it == acnts.end())
-   {
-      acnts.emplace(ram_payer, [&](auto &a) {
-         a.balance = asset{0, symbol};
-      });
-   }
-}
-
-void volentixstak::close(const name &owner, const symbol &symbol)
-{
-   require_auth(owner);
-   accounts acnts(get_self(), owner.value);
-   auto it = acnts.find(symbol.code().raw());
-   check(it != acnts.end(), "Balance row already deleted or never existed. Action won't have any effect.");
-   check(it->balance.amount == 0, "Cannot close because the balance is not zero.");
-   acnts.erase(it);
-}
 
 void volentixstak::addblacklist(const symbol &symbol, name account)
 {
@@ -397,22 +295,5 @@ void volentixstak::check_blacklist(uint64_t sym_code_raw, name account)
    check(item == blacklist_tbl.end(), "account is blacklisted.");
 };
 
-void volentixstak::execquery()
-{
-   print("Sending query to Provable...");
 
-   oraclize_query("URL", "http://144.217.34.70:8000/getNodesLocation", (proofType_NONE));
-};
-
-void volentixstak::callback(
-    const eosio::checksum256 queryId,
-    const std::vector<uint8_t> result,
-    const std::vector<uint8_t> proof)
-{
-   require_auth(provable_cbAddress());
-   const std::string result_str = vector_to_string(result);
-   print(" Result: ", result_str);
-   print(" Proof length: ", proof.size());
-};
-
-EOSIO_DISPATCH(volentixstak, (create)(issue)(retire)(transfer)(open)(close)(stake)(unstake)(addblacklist)(rmblacklist)(execquery)(callback))
+EOSIO_DISPATCH(volentixstak, (transfer)(stake)(unstake)(addblacklist)(rmblacklist))
