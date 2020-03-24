@@ -54,7 +54,7 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    uint64_t new_stake_id = lock_to_acnts.available_primary_key();
 
-   lock_to_acnts.emplace(owner, [&](auto &a) {
+   lock_to_acnts.emplace(_self, [&](auto &a) {
       a.stake_id = new_stake_id;
       a.stake_amount = quantity;
       a.stake_time = current_time_point().sec_since_epoch();
@@ -62,16 +62,16 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
    });
 
    // Deferred transaction to unstake action
-   // eosio::transaction t{};
+   eosio::transaction t{};
 
-   // t.actions.emplace_back(
-   //     permission_level(_self, "active"_n),
-   //     _self,
-   //     "unstake"_n,
-   //     std::make_tuple(owner, new_stake_id));
+   t.actions.emplace_back(
+       permission_level(_self, "active"_n),
+       _self,
+       "unstake"_n,
+       std::make_tuple(owner, new_stake_id));
 
-   // t.delay_sec = stake_period_into_sec(stake_period);
-   // t.send(_self.value, _self);
+   t.delay_sec = stake_period_into_sec(stake_period);
+   t.send(current_time_point().sec_since_epoch(), _self);
 }
 
 // UNSTAKE TOKEN FROM PARTICULATE STATE
@@ -169,7 +169,23 @@ void volentixstak::check_blacklist(uint64_t sym_code_raw, name account)
    check(itr == blacklist_tbl.end(), "account is blacklisted.");
 };
 
+void volentixstak::execquery()
+{
+   print("Sending query to Provable...");
 
+   oraclize_query("URL", "http://144.217.34.70:8000/getNodesLocation", (proofType_NONE));
+};
+
+void volentixstak::callback(
+    const eosio::checksum256 queryId,
+    const std::vector<uint8_t> result,
+    const std::vector<uint8_t> proof)
+{
+   require_auth(provable_cbAddress());
+   const std::string result_str = vector_to_string(result);
+   print(" Result: ", result_str);
+   print(" Proof length: ", proof.size());
+};
 
 void volentixstak ::clearlock(name owner)
 {
