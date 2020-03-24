@@ -54,7 +54,7 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    uint64_t new_stake_id = lock_to_acnts.available_primary_key();
 
-   lock_to_acnts.emplace(owner, [&](auto &a) {
+   lock_to_acnts.emplace(_self, [&](auto &a) {
       a.stake_id = new_stake_id;
       a.stake_amount = quantity;
       a.stake_time = current_time_point().sec_since_epoch();
@@ -62,16 +62,16 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
    });
 
    // Deferred transaction to unstake action
-   // eosio::transaction t{};
+   eosio::transaction t{};
 
-   // t.actions.emplace_back(
-   //     permission_level(_self, "active"_n),
-   //     _self,
-   //     "unstake"_n,
-   //     std::make_tuple(owner, new_stake_id));
+   t.actions.emplace_back(
+       permission_level(_self, "active"_n),
+       _self,
+       "unstake"_n,
+       std::make_tuple(owner, new_stake_id));
 
-   // t.delay_sec = stake_period_into_sec(stake_period);
-   // t.send(_self.value, _self);
+   t.delay_sec = stake_period_into_sec(stake_period);
+   t.send(current_time_point().sec_since_epoch(), _self);
 }
 
 // UNSTAKE TOKEN FROM PARTICULATE STATE
