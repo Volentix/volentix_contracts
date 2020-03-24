@@ -28,6 +28,24 @@
             ]
         },
         {
+            "name": "callback",
+            "base": "",
+            "fields": [
+                {
+                    "name": "queryId",
+                    "type": "checksum256"
+                },
+                {
+                    "name": "result",
+                    "type": "uint8[]"
+                },
+                {
+                    "name": "proof",
+                    "type": "uint8[]"
+                }
+            ]
+        },
+        {
             "name": "clearlock",
             "base": "",
             "fields": [
@@ -36,6 +54,11 @@
                     "type": "name"
                 }
             ]
+        },
+        {
+            "name": "execquery",
+            "base": "",
+            "fields": []
         },
         {
             "name": "lock_account",
@@ -105,8 +128,18 @@
             "ricardian_contract": ""
         },
         {
+            "name": "callback",
+            "type": "callback",
+            "ricardian_contract": ""
+        },
+        {
             "name": "clearlock",
             "type": "clearlock",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "execquery",
+            "type": "execquery",
             "ricardian_contract": ""
         },
         {

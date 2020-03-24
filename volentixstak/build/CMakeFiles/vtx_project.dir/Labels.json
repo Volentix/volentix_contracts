@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project-complete.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-build.rule"
+		},
+		{
+			"file" : "/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"vtx_project"
+		],
+		"name" : "vtx_project"
+	}
+}

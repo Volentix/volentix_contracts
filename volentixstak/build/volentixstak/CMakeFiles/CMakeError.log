@@ -1,0 +1,152 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/eosio-cc 
+Build flags: ;-O3;
+Id flags:  
+
+The output was:
+255
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: cannot open /tmp/CMakeCCompilerId.c.o: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/eosio-cpp 
+Build flags: ;-O3;
+Id flags:  
+
+The output was:
+255
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: duplicate symbol: main(int, char**)
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: duplicate symbol: info_platform
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: duplicate symbol: info_compiler
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: duplicate symbol: info_language_dialect_default
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: duplicate symbol: info_arch
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+>>> defined in /tmp/CMakeCXXCompilerId.cpp.o
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5fe14/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_5fe14.dir/build.make CMakeFiles/cmTC_5fe14.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj
+/usr/bin/eosio-cc   -O3     -v -o CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj   -c /usr/local/share/cmake-3.14/Modules/CMakeCCompilerABI.c
+clang version 7.0.0 (https://github.com/eosio/clang.git 6b886302a11a8419b76e469794ff9d0c531a4b4b) (https://github.com/eosio/llvm a41b8e7653258a4f1a5911ef28c95672efce051e)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/opt/eosio.cdt/1.6.1/bin
+Found candidate GCC installation: /usr/lib/gcc/i686-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/i686-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.4.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Linking C executable cmTC_5fe14.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fe14.dir/link.txt --verbose=1
+/usr/bin/eosio-ld  -v CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj -o cmTC_5fe14.wasm 
+eosio-ld: Unknown command line argument '-v'.  Try: '/usr/bin/eosio-ld -help'
+eosio-ld: Did you mean '-L'?
+CMakeFiles/cmTC_5fe14.dir/build.make:86: recipe for target 'cmTC_5fe14.wasm' failed
+make[4]: *** [cmTC_5fe14.wasm] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_5fe14/fast' failed
+make[3]: *** [cmTC_5fe14/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+
+
+
+Detecting C [-std=c11] compiler features failed to compile with the following output:
+Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2d056/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_2d056.dir/build.make CMakeFiles/cmTC_2d056.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj
+/usr/bin/eosio-cc   -O3     -std=c11 -o CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj   -c /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/feature_tests.c
+eosio-cc: Unknown command line argument '-std=c11'.  Try: '/usr/bin/eosio-cc -help'
+eosio-cc: Did you mean '-w=c11'?
+CMakeFiles/cmTC_2d056.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj' failed
+make[4]: *** [CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_2d056/fast' failed
+make[3]: *** [cmTC_2d056/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_117b1/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_117b1.dir/build.make CMakeFiles/cmTC_117b1.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/bin/eosio-cpp    -O3     -v -o CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/local/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp
+clang version 7.0.0 (https://github.com/eosio/clang.git 6b886302a11a8419b76e469794ff9d0c531a4b4b) (https://github.com/eosio/llvm a41b8e7653258a4f1a5911ef28c95672efce051e)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/opt/eosio.cdt/1.6.1/bin
+Found candidate GCC installation: /usr/lib/gcc/i686-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/i686-linux-gnu/9
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/7.4.0
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/8
+Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
+Candidate multilib: .;@m64
+Selected multilib: .;@m64
+Linking CXX executable cmTC_117b1.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_117b1.dir/link.txt --verbose=1
+/usr/bin/eosio-ld  -v CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_117b1.wasm 
+eosio-ld: Unknown command line argument '-v'.  Try: '/usr/bin/eosio-ld -help'
+eosio-ld: Did you mean '-L'?
+CMakeFiles/cmTC_117b1.dir/build.make:86: recipe for target 'cmTC_117b1.wasm' failed
+make[4]: *** [cmTC_117b1.wasm] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_117b1/fast' failed
+make[3]: *** [cmTC_117b1/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+
+
+
+Detecting CXX [-std=c++2a] compiler features failed to compile with the following output:
+Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ca77a/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ca77a.dir/build.make CMakeFiles/cmTC_ca77a.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj
+/usr/bin/eosio-cpp    -O3     -std=c++2a -o CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj -c /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_ca77a.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca77a.dir/link.txt --verbose=1
+/usr/bin/eosio-ld   CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj -o cmTC_ca77a.wasm 
+/usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: fatal failure: contract with no actions and trying to create dispatcher
+CMakeFiles/cmTC_ca77a.dir/build.make:86: recipe for target 'cmTC_ca77a.wasm' failed
+make[4]: *** [cmTC_ca77a.wasm] Error 255
+make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_ca77a/fast' failed
+make[3]: *** [cmTC_ca77a/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+
+
+
