@@ -169,23 +169,6 @@ void volentixstak::check_blacklist(uint64_t sym_code_raw, name account)
    check(itr == blacklist_tbl.end(), "account is blacklisted.");
 };
 
-void volentixstak::execquery()
-{
-   print("Sending query to Provable...");
-
-   oraclize_query("URL", "http://144.217.34.70:8000/getNodesLocation", (proofType_NONE));
-};
-
-void volentixstak::callback(
-    const eosio::checksum256 queryId,
-    const std::vector<uint8_t> result,
-    const std::vector<uint8_t> proof)
-{
-   require_auth(provable_cbAddress());
-   const std::string result_str = vector_to_string(result);
-   print(" Result: ", result_str);
-   print(" Proof length: ", proof.size());
-};
 
 void volentixstak ::clearlock(name owner)
 {

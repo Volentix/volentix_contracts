@@ -1,6 +1,5 @@
 #pragma once
 
-#include <provable/eos_api.hpp>
 #include <eosio/asset.hpp>
 #include <eosio/system.hpp>
 #include <eosio/time.hpp>
@@ -9,8 +8,8 @@
 #include <string>
 
 #define SYMBOL_PRE_DIGIT 8
-#define TOKEN_SYMBOL "TEST"
-#define BALANCE_ACC name("vtxcontract1")
+#define TOKEN_SYMBOL "VTX"
+#define BALANCE_ACC name("volentixtrez")
 #define MIN_STAKE_AMOUNT asset(100000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MAX_STAKE_AMOUNT asset(1000000000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MIN_STAKE_PERIOD 30
@@ -27,7 +26,7 @@ class[[eosio::contract]] volentixstak : public contract
 public:
    using contract::contract;
 
-   [[eosio::on_notify("vtxcontract1::transfer")]] void deposit(name from,
+   [[eosio::on_notify("volentixtrez::transfer")]] void deposit(name from,
                                                                name to,
                                                                asset quantity,
                                                                string memo);
@@ -40,8 +39,6 @@ public:
    [[eosio::action]] void addblacklist(const symbol &symbol, name account);
    [[eosio::action]] void rmblacklist(const symbol &symbol, name account);
 
-   [[eosio::action]] void execquery();
-   [[eosio::action]] void callback(const eosio::checksum256 queryId, const std::vector<uint8_t> result, const std::vector<uint8_t> proof);
 
 private:
    struct [[eosio::table]] account

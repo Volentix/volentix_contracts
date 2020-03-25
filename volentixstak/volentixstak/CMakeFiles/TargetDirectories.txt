@@ -1,0 +1,3 @@
+/Users/sylvaincormier/volentix_contracts/volentixstak/volentixstak/CMakeFiles/rebuild_cache.dir
+/Users/sylvaincormier/volentix_contracts/volentixstak/volentixstak/CMakeFiles/edit_cache.dir
+/Users/sylvaincormier/volentix_contracts/volentixstak/volentixstak/CMakeFiles/volentixstak.dir
