@@ -2,7 +2,7 @@
 ## Usage
 cleos -u $apiEndpoint push action volentixgsys transfer '{"from":"volentixtst2", "to":"vtxstake1111", "quantity":"1000.00000000 VTX", "memo":"30"}' -p volentixtst2
 
-cleos -u $apiEndpoint push action volentixstak unstake '{"owner":"volentixtst2", "quantity":"10.0000 TEST" }' -p volentixtst2
+cleos -u $apiEndpoint push action volentixstak unstake '{"owner":"volentixtst2", "quantity":"10.0000 VTX" }' -p volentixtst2
 
 
 1. Stake / Unstake
