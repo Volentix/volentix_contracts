@@ -9,7 +9,7 @@
 
 #define SYMBOL_PRE_DIGIT 8
 #define TOKEN_SYMBOL "VTX"
-#define BALANCE_ACC name("volentixtrez")
+#define BALANCE_ACC name("volentixgsys")
 #define MIN_STAKE_AMOUNT asset(100000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MAX_STAKE_AMOUNT asset(1000000000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MIN_STAKE_PERIOD 30
@@ -26,7 +26,7 @@ class[[eosio::contract]] volentixstak : public contract
 public:
    using contract::contract;
 
-   [[eosio::on_notify("volentixtrez::transfer")]] void deposit(name from,
+   [[eosio::on_notify("volentixgsys::transfer")]] void deposit(name from,
                                                                name to,
                                                                asset quantity,
                                                                string memo);

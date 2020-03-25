@@ -1,56 +1,26 @@
-# eos-stake-token
+VTX Staking Contract
 
-
-## Specification
-
-Stake token contract is based on the official 'eosio.token' contract, with some additional functions to realize basic token economy mechanism.
-
-### 1. stake / unstake
-
-   Staking tokens takes effect immediately. Unstaking tokens takes effect with delay. Unstaking triggers a deferred transaction, the deferred time is configurable.
-   
-   In case the deferred transaction does not execute when time is due, anyone can manually execute it by calling 'refund' method.
-   
-### 2. Deferred unstaking requests are stored in table temporarily. 
-A user can have several unstaking requests at the same time, each request is independent with a unique self-incrementing index as primary key. Unstaking requests can be cancelled during deferred period.
-
-### REMOVED NOW INSTEAD WE HAVE NEW ACTION, STAKE AND UNSTAKE
-### 3. There are 3 types of token transfer, distinguished by memo.
-
-   - **Common transfer**: Only for liquid tokens;
-   - **Liquid -> Staked**: Transfer `FROM`'s liquid token to `TO`, automatically become staked. If `TO` is in stake blacklist, this transfer will fail, token issuer can call 'addblacklist'/'rmblacklist' to manage blacklist. Transfer memo format: `"Transfer:FromLiquidToStaked"`;
-   - **Staked -> Liquid**: Transfer `FROM`'s staked token to `TO`, automatically become liquid. In this case transfer fee is required, fee ratio and fee recipient is configurable. Transfer memo format: `"Transfer:FromStakedToLiquid"`.
-
-
-## Extra features in MYKEY
-
-If Smart Contract of dapps use the tranfer protocol in this sample, they will get build-in features and better experiences in MYKEY App. 
-
-Their dapps can use upcoming MYKEY SDK to build safe and solid dapps with basic token economy mechanism rapidly.
-
-## Who are using?
-
-**KEY token**
-
-more...
-
-   
-## Thanks!
- 
-Special thanks to the community contributors help to audit and verify it.
- 
-[**EOS Authority**](https://github.com/eosauthority)
- 
-[**HKEOS**](https://github.com/HKEOS)
-
-[**EOS Cannon**](https://github.com/eoscannon)
- 
-[**EOS 42**](https://github.com/eos42)
- 
-[**Whaleex**](https://whaleex.com)
+cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"1000.00000000 TEST", "memo":"30"}' -p vtxtestacc11
 
 
 
- 
- 
+1. Stake / Unstake
+Staking tokens takes effect immediately. Unstaking tokens automatically takes effect with delay chosen at staking time in a multiple of 30 days. 
+In case the deferred transaction does not execute when time is due, anyone can manually execute it by calling 'unstake' method.
+2. Rewards for staking
+The Staking formula would be 1.1% per 30 day interval.
 
+
+For example: 
+
+1.1% 30 days
+1.21% 60 days
+1.331% 90 days
+
+3. Claim
+Claiming of the rewards happens when anyone manually executes 'claim' method if the period has elapsed. This triggers all payments for all whitelisted users.
+
+4. Minimums and Maximums
+1000 VTX minimum to stake
+10000000 VTX to stake per account
+30 days minimum and 300 days maximum
