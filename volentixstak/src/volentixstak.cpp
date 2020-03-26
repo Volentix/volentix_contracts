@@ -40,17 +40,36 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    lock_accounts lock_to_acnts(_self, owner.value);
 
-   asset total_staked_balance = asset(0, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT));
+   uint32_t total_stake_period;
 
    auto lock_to = lock_to_acnts.begin();
 
    while (lock_to != lock_to_acnts.end())
    {
-      total_staked_balance += lock_to->stake_amount;
+      total_stake_period += lock_to->stake_period;
       lock_to++;
    }
 
-   check((quantity + total_staked_balance) <= MAX_STAKE_AMOUNT, "Total staking amount is too high");
+   check((stake_period + total_stake_period) <= MAX_STAKE_PERIOD, "Total staking period is too high");
+
+   total_stake_amounts total_stake_amnt(_self, _self.value);
+
+   auto stk_amt = total_stake_amnt.find(quantity.symbol.code().raw());
+
+   if (stk_amt == total_stake_amnt.end())
+   {
+      total_stake_amnt.emplace(_self, [&](auto &a) {
+         a.amount = quantity;
+      });
+   }
+   else
+   {
+      check((stk_amt->amount + quantity) <= MAX_STAKE_AMOUNT, "Total stake amount exceed limit");
+
+      total_stake_amnt.modify(stk_amt, same_payer, [&](auto &a) {
+         a.amount += quantity;
+      });
+   }
 
    uint64_t new_stake_id = lock_to_acnts.available_primary_key();
 
@@ -126,6 +145,7 @@ void volentixstak ::unstake(name owner, uint64_t stake_id)
    // Casting uint64_t to asset
    asset amount = asset(decimal_amount, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT));
 
+   // Transfer unstaking amount to user
    action(
        permission_level{_self, "active"_n},
        BALANCE_ACC,
@@ -133,7 +153,19 @@ void volentixstak ::unstake(name owner, uint64_t stake_id)
        std::make_tuple(_self, owner, amount, std::string("unstaking fund")))
        .send();
 
+   //Decrement in Total stake amount
+
+   total_stake_amounts total_stake_amnt(_self, _self.value);
+
+   const auto &stk_amt = total_stake_amnt.get(lock_from.stake_amount.symbol.code().raw());
+
+   total_stake_amnt.modify(stk_amt, same_payer, [&](auto &a) {
+      a.amount -= lock_from.stake_amount;
+   });
+
+   // Delete Lock state
    lock_from_acnts.erase(lock_from);
+
 }
 
 void volentixstak::addblacklist(const symbol &symbol, name account)

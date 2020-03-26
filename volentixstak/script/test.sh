@@ -8,7 +8,7 @@ apiEndpoint="http://jungle2.cryptolions.io"
 # cleos -u $apiEndpoint push action vtxcontract1 issue '{"to": "vtxcontract1", "quantity": "10000000000.00000000 ADD", "memo": ""}' -p vtxcontract1
 
 # Transfer from TEST contract to User account
-# cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from": "vtxcontract1", "to": "vtxtestacc11", "quantity": "1000000.00000000 ADD", "memo": ""}' -p vtxcontract1
+# cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from": "vtxcontract1", "to": "vtxtestacc21", "quantity": "9997000.00000000 TEST", "memo": ""}' -p vtxcontract1
 
 # Buy RAM
 # cleos -u $apiEndpoint system buyram volentixstak volentixstak "80.0000 EOS"
@@ -31,7 +31,7 @@ apiEndpoint="http://jungle2.cryptolions.io"
 ########################### STAKING ##################################
 
 # stake token using stake action
-cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"1000.00000000 TEST", "memo":"30"}' -p vtxtestacc11
+cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"4000.00000000 TEST", "memo":"30"}' -p vtxtestacc11
 
 ######################### STAKING TESTS #########################
 
@@ -79,7 +79,7 @@ cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11",
 
 
 # unstake token using unstaketest action
-# cleos -u $apiEndpoint push action volentixstak unstake '{"owner":"vtxtestacc11", "quantity":"1000.00000000 TEST", "stake_id": 0 }' -p vtxtestacc11
+# cleos -u $apiEndpoint push action volentixstak unstake '{"owner":"vtxtestacc11", "quantity":"1000.00000000 TEST", "stake_id": 2 }' -p vtxtestacc11
 
 ############# UNSTAKING TEST ##############
 
