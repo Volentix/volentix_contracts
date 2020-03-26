@@ -41,12 +41,6 @@ public:
 
 
 private:
-   struct [[eosio::table]] account
-   {
-      asset balance;
-
-      uint64_t primary_key() const { return balance.symbol.code().raw(); }
-   };
 
    struct [[eosio::table]] lock_account
    {
@@ -58,6 +52,14 @@ private:
       uint64_t primary_key() const { return stake_id; }
    };
 
+
+   struct [[eosio::table]] total_stake_amount
+   {
+      asset amount = asset(0, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT));
+
+      uint64_t primary_key() const { return amount.symbol.code().raw(); }
+   };
+
    struct [[eosio::table]] stake_blacklist
    {
       name account;
@@ -65,11 +67,9 @@ private:
       uint64_t primary_key() const { return account.value; }
    };
 
-   typedef eosio::multi_index<name("accounts"), account> accounts;
    typedef eosio::multi_index<name("lockaccounts"), lock_account> lock_accounts;
+   typedef eosio::multi_index<name("stakeamounts"), total_stake_amount> total_stake_amounts;
    typedef eosio::multi_index<name("blacklist"), stake_blacklist> blacklist_table;
-
-   using transfer_action = action_wrapper<name("transfer"), &volentixstak::deposit>;
 
    void check_symbol(asset quantity)
    {
