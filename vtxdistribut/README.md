@@ -10,4 +10,15 @@
         
         Details of the rewards are set with this action:
 
-            setrewardrule(uint32_t reward_id, asset reward_amount, double votes_threshold, uint32_t uptime_threshold, uint32_t uptime_timeout);
+        setrewardrule(uint32_t reward_id, 
+                            uint32_t reward_id,
+                            uint32_t reward_period, 
+                            asset reward_amount,
+                            asset standby_amount,
+                            uint32_t rank_threshold,
+                            uint32_t standby_rank_threshold, 
+                            double votes_threshold, 
+                            uint32_t uptime_threshold, 
+                            uint32_t uptime_timeout,
+                            string memo,
+                            string standby_memo );
