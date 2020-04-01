@@ -36,6 +36,11 @@ public:
                      const std::vector<uint32_t> &job_ids);
 
     [[eosio::action]]
+    void unregprodall();
+     [[eosio::action] ]
+    void deluserinfo();
+
+    [[eosio::action]]
     void unregprod(const name producer);
 
     [[eosio::action]]

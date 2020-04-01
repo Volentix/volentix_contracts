@@ -40,6 +40,25 @@ void vdexdposvote::unregprod(const name producer) {
     });
 }
 
+void vdexdposvote::unregprodall() {
+    require_auth(_self);
+    auto itr = _producers.begin();
+    while(itr != _producers.end()){
+        itr = _producers.erase(itr);
+    }
+    _producers.erase(itr);
+}
+
+void vdexdposvote::deluserinfo() {
+    require_auth(_self);
+    auto itr = _voters.begin();
+    while(itr != _voters.end()){
+        itr = _voters.erase(itr);
+    }
+    itr = _voters.erase(itr);
+}
+
+
 void vdexdposvote::activateprod(const name producer) {
     require_auth(producer);
 

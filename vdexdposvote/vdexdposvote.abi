@@ -14,6 +14,11 @@
             ]
         },
         {
+            "name": "deluserinfo",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "producer_info",
             "base": "",
             "fields": [
@@ -92,6 +97,11 @@
             ]
         },
         {
+            "name": "unregprodall",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "updatevotes",
             "base": "",
             "fields": [
@@ -153,6 +163,11 @@
             "ricardian_contract": ""
         },
         {
+            "name": "deluserinfo",
+            "type": "deluserinfo",
+            "ricardian_contract": ""
+        },
+        {
             "name": "regproducer",
             "type": "regproducer",
             "ricardian_contract": ""
@@ -160,6 +175,11 @@
         {
             "name": "unregprod",
             "type": "unregprod",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "unregprodall",
+            "type": "unregprodall",
             "ricardian_contract": ""
         },
         {
