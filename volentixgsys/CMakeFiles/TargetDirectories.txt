@@ -1,3 +1,0 @@
-/tmp/eosfactory/contracts/CMakeFiles/rebuild_cache.dir
-/tmp/eosfactory/contracts/CMakeFiles/edit_cache.dir
-/tmp/eosfactory/contracts/CMakeFiles/wast.dir
