@@ -1,0 +1,492 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "account_address",
+            "base": "",
+            "fields": [
+                {
+                    "name": "currency_name",
+                    "type": "name"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "account_deposit",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                },
+                {
+                    "name": "is_confirmed",
+                    "type": "bool"
+                },
+                {
+                    "name": "is_claimed",
+                    "type": "bool"
+                },
+                {
+                    "name": "nodes_confirmed",
+                    "type": "uint16"
+                }
+            ]
+        },
+        {
+            "name": "account_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "deposit_address",
+                    "type": "string"
+                },
+                {
+                    "name": "balance",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "account_withdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                },
+                {
+                    "name": "is_confirmed",
+                    "type": "bool"
+                },
+                {
+                    "name": "is_rewarded",
+                    "type": "bool"
+                },
+                {
+                    "name": "nodes_confirmed",
+                    "type": "uint16"
+                },
+                {
+                    "name": "proccesed_by",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "addaddresses",
+            "base": "",
+            "fields": [
+                {
+                    "name": "currency_name",
+                    "type": "string"
+                },
+                {
+                    "name": "currency_precision",
+                    "type": "uint8"
+                },
+                {
+                    "name": "addresses",
+                    "type": "string[]"
+                }
+            ]
+        },
+        {
+            "name": "addcurrency",
+            "base": "",
+            "fields": [
+                {
+                    "name": "currency_name",
+                    "type": "string"
+                },
+                {
+                    "name": "currency_precision",
+                    "type": "uint8"
+                },
+                {
+                    "name": "deposit_confirmations",
+                    "type": "uint16"
+                },
+                {
+                    "name": "withdraw_confirmations",
+                    "type": "uint16"
+                },
+                {
+                    "name": "colateral_token",
+                    "type": "name"
+                },
+                {
+                    "name": "withdraw_reward",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "claimdep",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "confirmation",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "confirmdep",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "confirmwithd",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "currency",
+            "base": "",
+            "fields": [
+                {
+                    "name": "currency_symbol",
+                    "type": "symbol"
+                },
+                {
+                    "name": "colateral_token",
+                    "type": "name"
+                },
+                {
+                    "name": "is_active",
+                    "type": "bool"
+                },
+                {
+                    "name": "deposit_confirmations",
+                    "type": "uint16"
+                },
+                {
+                    "name": "withdraw_confirmations",
+                    "type": "uint16"
+                },
+                {
+                    "name": "withdraw_reward",
+                    "type": "asset"
+                }
+            ]
+        },
+        {
+            "name": "deposit_address",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "getreward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "lockwithdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "withd_id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "newwithdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "id",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "regaccount",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "submitdep",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "submitwithd",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "withd_id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "tx_hash",
+                    "type": "checksum256"
+                }
+            ]
+        },
+        {
+            "name": "withdraw",
+            "base": "",
+            "fields": [
+                {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "addaddresses",
+            "type": "addaddresses",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "addcurrency",
+            "type": "addcurrency",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "claimdep",
+            "type": "claimdep",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "confirmdep",
+            "type": "confirmdep",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "confirmwithd",
+            "type": "confirmwithd",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "getreward",
+            "type": "getreward",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "lockwithdraw",
+            "type": "lockwithdraw",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "newwithdraw",
+            "type": "newwithdraw",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "regaccount",
+            "type": "regaccount",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "submitdep",
+            "type": "submitdep",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "submitwithd",
+            "type": "submitwithd",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "withdraw",
+            "type": "withdraw",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "accntdeposit",
+            "type": "account_deposit",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "accntinfo",
+            "type": "account_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "accntwithdra",
+            "type": "account_withdraw",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "actaddresses",
+            "type": "account_address",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "confirmation",
+            "type": "confirmation",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "currency",
+            "type": "currency",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "depaddresses",
+            "type": "deposit_address",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}
