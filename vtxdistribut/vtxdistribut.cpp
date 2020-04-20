@@ -5,128 +5,100 @@
 void vtxdistribut::paycore() {}
 void vtxdistribut::paycampaign(string campaign) {}
 
-void vtxdistribut::setrewardrule( uint32_t reward_id,
-                                  uint32_t reward_period, 
-                                  asset reward_amount,
-                                  asset standby_amount,
-                                  uint32_t rank_threshold,
-                                  uint32_t standby_rank_threshold, 
-                                  double votes_threshold, 
-                                  uint32_t uptime_threshold, 
-                                  uint32_t uptime_timeout,
-                                  string memo,
-                                  string standby_memo )
+void vtxdistribut::setrewardrule(const reward_info& rule)
 {
   require_auth( treasury );
-  auto reward_iterator = rewards.find(reward_id);
+  auto reward_iterator = rewards.find(rule.reward_id);
   
   if (reward_iterator == rewards.end()) {
     rewards.emplace(treasury, [&] ( auto& row ) { 
-      row.reward_id = reward_id;
-      row.reward_period = reward_period;
-      row.reward_amount = reward_amount;
-      row.standby_amount = standby_amount;
-      row.rank_threshold = rank_threshold;
-      row.standby_rank_threshold = standby_rank_threshold;
-      row.votes_threshold = votes_threshold;
-      row.uptime_threshold = uptime_threshold;
-      row.uptime_timeout = uptime_timeout;
-      row.memo = memo;
-      row.standby_memo = standby_memo;
+      row = rule;
     });
   } else {
     rewards.modify(reward_iterator, treasury, [&] ( auto& row ) {
-      row.reward_id = reward_id;
-      row.reward_period = reward_period;
-      row.reward_amount = reward_amount;
-      row.standby_amount = standby_amount;
-      row.rank_threshold = rank_threshold;
-      row.standby_rank_threshold = standby_rank_threshold;
-      row.votes_threshold = votes_threshold;
-      row.uptime_threshold = uptime_threshold;
-      row.uptime_timeout = uptime_timeout;
-      row.memo = memo;
-      row.standby_memo = standby_memo;
-    });   
+      row = rule;
+    });
   } 
 }
 
 
-
-void vtxdistribut::uptime( name account, const std::vector<uint32_t> &job_ids ) {
-  require_auth( account );
-  checkblaclist( account );
-
-  auto producer_job_ids = vdexdposvote::get_jobs( voting_contract, account );
-  //DIFFER CONTRACT
+void vtxdistribut::calcrewards(uint32_t job_id) {
   time_point_sec tps = current_time_point();
   uint32_t now = tps.sec_since_epoch();
 
-    for (auto const &job_id : producer_job_ids) {
-        // check whether job_id on registered job_ids
-        if ( std::find(producer_job_ids.begin(), producer_job_ids.end(), job_id) != producer_job_ids.end() ) {
-            reward(account, job_id, now);
-        }
-    }
-}
-
-void vtxdistribut::reward(name account, uint32_t job_id, uint32_t timestamp) {
   auto reward_iter = rewards.find(job_id);
-  check( reward_iter != rewards.end(), "unknown job_id" );
-  uint32_t current_period = reward_iter->reward_period / one_day;
+  check(reward_iter != rewards.end(), "unknown job_id");
 
-  uptime_index uptimes( get_self(), account.value );
-  auto uptime_iter = uptimes.find(job_id);
-  
-  if ( uptime_iter == uptimes.end() ) {
-    // init uptime for account and job_id
-    uptimes.emplace(account, [&] ( auto& row ) {
-      row.job_id = job_id;
-      row.period_num = current_period;
-      row.count = 1;
-      row.last_timestamp = timestamp;
+  auto history_iter = rewardhistory.find(job_id);
+
+  //first reward
+  if (history_iter == rewardhistory.end()) {
+      rewardhistory.emplace(get_self(), [&] ( auto& row ) {
+      row.reward_id = job_id;
+      row.last_timestamp = now;
     });
-
-    return;
+  // last reward history record exists
+  } else {
+      check(
+        now >= history_iter->last_timestamp + reward_iter->reward_period,
+        "rewards for previous period have been already calculated"
+      );
+      rewardhistory.modify(history_iter, get_self(), [&] ( auto& row ) {
+      row.last_timestamp = now;
+    });
 
   }
 
-  // send reward for prev period at start of current period
-  if (current_period > uptime_iter->period_num ) {
-    double votes = vdexdposvote::get_votes(voting_contract, account);
-    int rank = vdexdposvote::get_rank(voting_contract, account);
-    asset reward(0, vtx_symbol);
-    string memo;
-    //calcilate reward amount
-    if ( rank <= reward_iter->rank_threshold ) {
-        reward = reward_iter->reward_amount;
-        memo = reward_iter->memo;
-    } else if (rank <= reward_iter->standby_rank_threshold ) {
-        reward = reward_iter->standby_amount;
-        memo = reward_iter->standby_memo;
+  std::vector<name> top_nodes = vdexdposvote::get_top_nodes(VOTING_CONTRACT, 
+                                                            reward_iter->standby_rank_threshold,
+                                                            job_id);
+  uint32_t rank = 0;
+  string memo;
+  asset amount;
+  for (auto &node: top_nodes) {
+    if (rank < reward_iter->rank_threshold) {
+      amount = reward_iter->reward_amount;
+      memo = reward_iter->memo;
+    } else {
+      amount = reward_iter->standby_amount;
+      memo = reward_iter->standby_memo;
     }
 
-    if ( reward.amount > 0 ) {
-      action(
-        { get_self(), "active"_n }, 
-        pool_account, 
-        "payreward"_n, 
-        std::make_tuple(account, reward, memo )
-      ).send();      
-    }
-
-    return;
-
-  } 
-  
-  // update uptime count and timestamp
-  check(timestamp > uptime_iter->last_timestamp + reward_iter->uptime_timeout, "too often uptime");
-  uptimes.modify(uptime_iter, account, [&] ( auto& row ) {
-    row.count += 1;
-    row.last_timestamp = timestamp;
-  });      
+    memo += " job_id: " + std::to_string(job_id) + " rank: " + std::to_string(rank+1); // rank starts from 1
+    add_reward(node, amount, memo);
+    rank++;
+  }
 }
 
+void vtxdistribut::add_reward(name node, asset amount, string memo) {
+  node_rewards node_reward_table(get_self(), node.value);
+  node_reward_table.emplace(get_self(), [&] ( auto& row ) {
+    row.id = node_reward_table.available_primary_key(),
+    row.amount = amount;
+    row.memo = memo;
+  }); 
+}
+
+void vtxdistribut::getreward(name node) {
+  require_auth(node);
+  node_rewards node_reward_table(get_self(), node.value);
+  auto itr = node_reward_table.begin();
+  while (itr != node_reward_table.end()) {
+    action(
+      { get_self(), "active"_n }, 
+      pool_account, 
+      "payreward"_n, 
+      make_tuple(node, itr->amount, itr->memo)
+    ).send();
+
+    itr = node_reward_table.erase(itr);
+  }
+}
+
+// TODO: remove
+void vtxdistribut::uptime(name account, const std::vector<uint32_t> &job_ids) {
+  vtxdistribut::getreward(account);
+}
 
 
 void vtxdistribut::addblacklist(name account, string ip){
@@ -171,4 +143,4 @@ void vtxdistribut::checkblaclist ( name account ){
   check( refuse == usblacklist.end(), "Your IP is from a restricted country, cannot proceed with reward" );
 }
 
-EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(uptime)(addblacklist)(rmblacklist)(initup)(rmup))
+EOSIO_DISPATCH(vtxdistribut, (setrewardrule)(getreward)(calcrewards)(uptime)(addblacklist)(rmblacklist)(initup)(rmup))

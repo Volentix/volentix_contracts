@@ -32,6 +32,26 @@
             ]
         },
         {
+            "name": "calcrewards",
+            "base": "",
+            "fields": [
+                {
+                    "name": "job_id",
+                    "type": "uint32"
+                }
+            ]
+        },
+        {
+            "name": "getreward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "node",
+                    "type": "name"
+                }
+            ]
+        },
+        {
             "name": "init_uptime",
             "base": "",
             "fields": [
@@ -56,6 +76,24 @@
             ]
         },
         {
+            "name": "node_reward",
+            "base": "",
+            "fields": [
+                {
+                    "name": "id",
+                    "type": "uint64"
+                },
+                {
+                    "name": "amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "memo",
+                    "type": "string"
+                }
+            ]
+        },
+        {
             "name": "paycampaign",
             "base": "",
             "fields": [
@@ -69,6 +107,20 @@
             "name": "paycore",
             "base": "",
             "fields": []
+        },
+        {
+            "name": "reward_history",
+            "base": "",
+            "fields": [
+                {
+                    "name": "reward_id",
+                    "type": "uint32"
+                },
+                {
+                    "name": "last_timestamp",
+                    "type": "uint32"
+                }
+            ]
         },
         {
             "name": "reward_info",
@@ -96,18 +148,6 @@
                 },
                 {
                     "name": "standby_rank_threshold",
-                    "type": "uint32"
-                },
-                {
-                    "name": "votes_threshold",
-                    "type": "float64"
-                },
-                {
-                    "name": "uptime_threshold",
-                    "type": "uint32"
-                },
-                {
-                    "name": "uptime_timeout",
                     "type": "uint32"
                 },
                 {
@@ -145,48 +185,8 @@
             "base": "",
             "fields": [
                 {
-                    "name": "reward_id",
-                    "type": "uint32"
-                },
-                {
-                    "name": "reward_period",
-                    "type": "uint32"
-                },
-                {
-                    "name": "reward_amount",
-                    "type": "asset"
-                },
-                {
-                    "name": "standby_amount",
-                    "type": "asset"
-                },
-                {
-                    "name": "rank_threshold",
-                    "type": "uint32"
-                },
-                {
-                    "name": "standby_rank_threshold",
-                    "type": "uint32"
-                },
-                {
-                    "name": "votes_threshold",
-                    "type": "float64"
-                },
-                {
-                    "name": "uptime_threshold",
-                    "type": "uint32"
-                },
-                {
-                    "name": "uptime_timeout",
-                    "type": "uint32"
-                },
-                {
-                    "name": "memo",
-                    "type": "string"
-                },
-                {
-                    "name": "standby_memo",
-                    "type": "string"
+                    "name": "rule",
+                    "type": "reward_info"
                 }
             ]
         },
@@ -234,6 +234,16 @@
             "ricardian_contract": ""
         },
         {
+            "name": "calcrewards",
+            "type": "calcrewards",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "getreward",
+            "type": "getreward",
+            "ricardian_contract": ""
+        },
+        {
             "name": "initup",
             "type": "initup",
             "ricardian_contract": ""
@@ -273,6 +283,20 @@
         {
             "name": "inituptime",
             "type": "init_uptime",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "nodereward",
+            "type": "node_reward",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "rewardhistor",
+            "type": "reward_history",
             "index_type": "i64",
             "key_names": [],
             "key_types": []

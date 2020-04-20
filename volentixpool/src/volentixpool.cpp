@@ -37,7 +37,7 @@ void volentixpool::payliquid(name account, asset quantity)
 }
 
 
-void volentixpool::payreward(name account, asset quantity)
+void volentixpool::payreward(name account, asset quantity, std::string memo)
 {
 	require_auth(vtxdstr_contract);
 
@@ -47,7 +47,7 @@ void volentixpool::payreward(name account, asset quantity)
     p, 
     vtxsys_contract, 
     "transfer"_n, 
-    std::make_tuple( get_self(), account, quantity, std::string("") )
+    std::make_tuple( get_self(), account, quantity, memo )
   ).send();
 }
 
