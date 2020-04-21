@@ -57,7 +57,7 @@ public:
    void claimdep(name account, checksum256 tx_hash);
    
    [[eosio::action]] 
-   void withdraw(name account, asset amount);
+   void withdraw(name account, asset amount, string address);
 
    // vdex nodes will listen to new withdrawals using this action
    [[eosio::action]] 
@@ -75,6 +75,9 @@ public:
    [[eosio::action]] 
    void getreward(name node, name account, checksum256 tx_hash);
 
+   [[eosio::on_notify("volentixgsys::transfer")]]
+   void ontransfer(name from, name to, asset quantity, string memo);
+
 private:
    // scope: currency_symbol
    struct [[eosio::table]] deposit_address 
@@ -84,15 +87,6 @@ private:
    	uint64_t primary_key() const { return id; }
    };
    typedef eosio::multi_index<name("depaddresses"), deposit_address> deposit_addresses;
-
-   // scope : account_name.value
-   struct [[eosio::table]] account_address 
-   {
-   	name currency_name;
-   	string address;
-   	uint64_t primary_key() const { return currency_name.value; }
-   };
-   typedef eosio::multi_index<name("actaddresses"), account_address> account_addresses;
 
    // scope : account_name.value
    struct [[eosio::table]] account_deposit 
@@ -159,6 +153,7 @@ private:
    	bool is_rewarded;
    	uint16_t nodes_confirmed;
    	name proccesed_by;
+      string address;
    	uint64_t primary_key() const { return id; }
    	checksum256 by_tx_hash() const { return tx_hash; }
    };
