@@ -11,9 +11,10 @@ void vdexgateway::assign_addresses(name account)
 {
 	auto iter = currencies.begin();
 	while (iter != currencies.end()) {
-		if (iter->is_active == true) {
+		if (iter->is_active) {
 			assign_address(account, iter->currency_symbol);
 		}
+		iter++;
 	}
 }
 
@@ -21,10 +22,10 @@ void vdexgateway::assign_address(name account, symbol currency_symbol)
 {
 	deposit_addresses dep_addrs(get_self(), currency_symbol.code().raw());
 	accounts_info acnt_info(get_self(), currency_symbol.code().raw());
-	auto dep_itr = dep_addrs.find(account.value);
-	auto acnt_itr = acnt_info.begin();
-	check(acnt_itr == acnt_info.end(), "Address has already assigned for that account.");
+	auto dep_itr = dep_addrs.begin();
+	auto acnt_itr = acnt_info.find(account.value);
 	check(dep_itr != dep_addrs.end(), "No free deposit address.");
+  check(acnt_itr == acnt_info.end(), "Address has already assigned for that account.");
 	// asign deposit address
 	acnt_info.emplace(account, [&](auto& row){
         row.account = account;
@@ -152,13 +153,13 @@ void vdexgateway::claimdep(name account, checksum256 tx_hash)
   	{ get_self(), name("active") }, 
   	itr_curr->colateral_token,
   	name("transfer"), 
-  	std::make_tuple(account, itr->amount, "memo") // TODO: add deposit tx_hash to memo
+  	std::make_tuple(get_self(), account, itr->amount, string("memo")) // TODO: add deposit tx_hash to memo
   ).send();
   // TODO: erase deposit record when tx_hash will be added to memo
   // TODO: erase confirmations
 }
 
-void vdexgateway::withdraw(name account, asset amount)
+void vdexgateway::withdraw(name account, asset amount, string address)
 {
 	require_auth(account);
 	accounts_info acnt_info(get_self(), amount.symbol.code().raw());
@@ -182,6 +183,7 @@ void vdexgateway::withdraw(name account, asset amount)
    	row.is_rewarded = false;
    	row.proccesed_by = NULL_NAME;
    	row.nodes_confirmed = 0;
+   	row.address = address;
 	});
 
 	// notify network about new withdraw id
@@ -204,7 +206,7 @@ void vdexgateway::lockwithdraw(name node, name account, uint64_t withd_id)
 	account_withdrawals acnt_withd(get_self(), account.value);
 	auto itr = acnt_withd.find(withd_id);
 	check(itr != acnt_withd.end(), "Withdraw doesn't exist.");
-	check(itr->proccesed_by != NULL_NAME, "WIthdraw has already locked.");
+	check(itr->proccesed_by == NULL_NAME, "WIthdraw has already locked.");
   acnt_withd.modify(itr, node, [&]( auto& row ) {
 		row.proccesed_by = node;
 	});
@@ -226,6 +228,7 @@ void vdexgateway::submitwithd(name node, name account, uint64_t withd_id, checks
 // confirm withdraw by tx hash
 void vdexgateway::confirmwithd(name node, name account, checksum256 tx_hash)
 {
+	// TODO: restrict node confirm its own withdraw
 	require_auth(node);
 	confirm_by_hash(node, tx_hash);
 		// check permissions
@@ -263,10 +266,25 @@ void vdexgateway::getreward(name node, name account, checksum256 tx_hash)
   	{ get_self(), name("active") }, 
   	itr_curr->colateral_token,
   	name("transfer"), 
-  	std::make_tuple(account, itr->amount + itr_curr->withdraw_reward, "memo") // TODO: add withdraw tx_hash to memo
+  	std::make_tuple(get_self(), itr->proccesed_by, itr->amount + itr_curr->withdraw_reward, string("memo")) // TODO: add withdraw tx_hash to memo
   ).send();
   // TODO: erase withdraw record when tx_hash will be added to memo
   // TODO: erase confirmations
 }
 
-EOSIO_DISPATCH(vdexgateway, (regaccount)(addaddresses)(addcurrency)(submitdep)(confirmdep)(claimdep)(withdraw)(newwithdraw)(lockwithdraw)(submitwithd)(confirmwithd)(getreward))
+void vdexgateway::ontransfer(name from, name to, asset quantity, string memo)
+{
+	// check from and to
+	if (from == get_self() || to != get_self()){
+        return;
+  }
+	auto itr_curr = currencies.find(quantity.symbol.code().raw());
+	check(itr_curr != currencies.end(), "Unknown currency.");
+  accounts_info acnt_info(get_self(), quantity.symbol.code().raw());
+	auto acnt_itr = acnt_info.find(from.value);
+	check(acnt_itr != acnt_info.end(), "You have to regaccount firstly.");
+	// add balance
+	acnt_info.modify(acnt_itr, get_self(), [&]( auto& row ) {
+		row.balance += quantity;
+	});
+}

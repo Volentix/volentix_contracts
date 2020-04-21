@@ -4,20 +4,6 @@
     "types": [],
     "structs": [
         {
-            "name": "account_address",
-            "base": "",
-            "fields": [
-                {
-                    "name": "currency_name",
-                    "type": "name"
-                },
-                {
-                    "name": "address",
-                    "type": "string"
-                }
-            ]
-        },
-        {
             "name": "account_deposit",
             "base": "",
             "fields": [
@@ -96,6 +82,10 @@
                 {
                     "name": "proccesed_by",
                     "type": "name"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
                 }
             ]
         },
@@ -370,6 +360,10 @@
                 {
                     "name": "amount",
                     "type": "asset"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
                 }
             ]
         }
@@ -454,13 +448,6 @@
         {
             "name": "accntwithdra",
             "type": "account_withdraw",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
-            "name": "actaddresses",
-            "type": "account_address",
             "index_type": "i64",
             "key_names": [],
             "key_types": []
