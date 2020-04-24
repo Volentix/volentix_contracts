@@ -76,10 +76,55 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
    lock_to_acnts.emplace(_self, [&](auto &a) {
       a.stake_id = new_stake_id;
       a.stake_amount = quantity;
+      a.account = owner;   
       a.stake_time = current_time_point().sec_since_epoch();
       a.stake_period = stake_period;
-   });
+      // Stake period days into second
+   uint32_t stake_period_sec = stake_period_into_sec(a.stake_period);
 
+   // Current uinx epoch second time
+   uint32_t current_time = current_time_point().sec_since_epoch();
+
+   // Cannot unstake before stake period time
+   //check(current_time >= (lock_from.stake_time + stake_period_sec), "You cannot unstake now");
+
+   // stake reward
+
+   // Converting stake days to period
+   uint8_t stake_pow = a.stake_period / MIN_STAKE_PERIOD;
+
+   // Calculating the Stake percentage based on Period i.e stake_period ^ MIN_STAKE_PERIOD
+   double stake_per = 1;
+   for (int i = 0; i < stake_pow; i++)
+      stake_per *= REWARD_PER;
+
+   // Converting stake percentage to double
+   double stake_decimal = stake_per / 100;
+
+   // Converting stake_amount uint64_t to double
+   double stake_amount = a.stake_amount.amount / SYMBOL_PRE_F;
+
+   // Calculating Stake reward from amount
+   double stake_reward = stake_decimal * stake_amount;
+
+   // Calculating total unstake amount
+   double total_unstake_amount = stake_amount + stake_reward;
+
+   // Converting again to the asset form again
+   double unstake_amount = total_unstake_amount * SYMBOL_PRE_F;
+
+   // Casting float to uint64_t
+   uint64_t decimal_amount = (uint64_t)unstake_amount;
+
+   // Casting uint64_t to asset
+   asset amount = asset(decimal_amount, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT));
+
+
+   a.subsidy  = amount - quantity;
+   
+   });
+    
+   
    // Deferred transaction to unstake action
    eosio::transaction t{};
 
@@ -112,7 +157,7 @@ void volentixstak ::unstake(name owner, uint64_t stake_id)
    uint32_t current_time = current_time_point().sec_since_epoch();
 
    // Cannot unstake before stake period time
-   check(current_time >= (lock_from.stake_time + stake_period_sec), "You cannot unstake now");
+   //check(current_time >= (lock_from.stake_time + stake_period_sec), "You cannot unstake now");
 
    // stake reward
 

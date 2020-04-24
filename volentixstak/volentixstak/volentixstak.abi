@@ -4,16 +4,6 @@
     "types": [],
     "structs": [
         {
-            "name": "account",
-            "base": "",
-            "fields": [
-                {
-                    "name": "balance",
-                    "type": "asset"
-                }
-            ]
-        },
-        {
             "name": "addblacklist",
             "base": "",
             "fields": [
@@ -46,7 +36,15 @@
                     "type": "uint64"
                 },
                 {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
                     "name": "stake_amount",
+                    "type": "asset"
+                },
+                {
+                    "name": "subsidy",
                     "type": "asset"
                 },
                 {
@@ -80,6 +78,16 @@
                 {
                     "name": "account",
                     "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "total_stake_amount",
+            "base": "",
+            "fields": [
+                {
+                    "name": "amount",
+                    "type": "asset"
                 }
             ]
         },
@@ -122,13 +130,6 @@
     ],
     "tables": [
         {
-            "name": "accounts",
-            "type": "account",
-            "index_type": "i64",
-            "key_names": [],
-            "key_types": []
-        },
-        {
             "name": "blacklist",
             "type": "stake_blacklist",
             "index_type": "i64",
@@ -138,6 +139,13 @@
         {
             "name": "lockaccounts",
             "type": "lock_account",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
+        {
+            "name": "stakeamounts",
+            "type": "total_stake_amount",
             "index_type": "i64",
             "key_names": [],
             "key_types": []

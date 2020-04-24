@@ -45,7 +45,9 @@ private:
    struct [[eosio::table]] lock_account
    {
       uint64_t stake_id;
+      name account;
       asset stake_amount;
+      asset subsidy;
       uint32_t stake_time;
       uint16_t stake_period;
 
