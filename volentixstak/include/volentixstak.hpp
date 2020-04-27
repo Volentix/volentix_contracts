@@ -32,17 +32,18 @@ public:
                                                                string memo);
 
    void stake(name owner, const asset quantity, uint16_t stake_period);
+   void registersubs(name owner, uint64_t stake_id);
+   void registrglobl(name owner, uint64_t stake_id, asset quantity);
    [[eosio::action]] void unstake(name owner, uint64_t stake_id);
-
-   [[eosio::action]] void clearlock(name owner);
-
+   [[eosio::action]] void clearlck(name owner);
+   [[eosio::action]] void clearglobal();
    [[eosio::action]] void addblacklist(const symbol &symbol, name account);
    [[eosio::action]] void rmblacklist(const symbol &symbol, name account);
-
+   [[eosio::action]] void clearamnts(name owner);
 
 private:
-
-   struct [[eosio::table]] lock_account
+   
+   struct [[eosio::table]] lck_account
    {
       uint64_t stake_id;
       name account;
@@ -54,6 +55,14 @@ private:
       uint64_t primary_key() const { return stake_id; }
    };
 
+   struct [[eosio::table]] global_amount
+   {
+      uint64_t stake_id;
+      asset stake;
+      asset subsidy;
+      
+      uint64_t primary_key() const { return stake_id; }
+   };
 
    struct [[eosio::table]] total_stake_amount
    {
@@ -68,8 +77,8 @@ private:
 
       uint64_t primary_key() const { return account.value; }
    };
-
-   typedef eosio::multi_index<name("lockaccounts"), lock_account> lock_accounts;
+   typedef eosio::multi_index<name("globalamnts"), global_amount> global_amounts;
+   typedef eosio::multi_index<name("accounts"), lck_account> lck_accounts;
    typedef eosio::multi_index<name("stakeamounts"), total_stake_amount> total_stake_amounts;
    typedef eosio::multi_index<name("blacklist"), stake_blacklist> blacklist_table;
 
