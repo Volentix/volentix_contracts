@@ -100,7 +100,7 @@ void volentixstak::deposit(name from,
 
    check(to == _self, "Invalid notify");
 
-   check(memo.size() <= 2, "memo has more than 2 bytes");
+   check(memo.size() <= 3, "memo has more than 2 bytes");
 
    uint16_t stake_period = stoi(memo);
 
