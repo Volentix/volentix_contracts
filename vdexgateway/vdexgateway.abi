@@ -12,6 +12,10 @@
                     "type": "uint64"
                 },
                 {
+                    "name": "account",
+                    "type": "name"
+                },
+                {
                     "name": "amount",
                     "type": "asset"
                 },
@@ -58,6 +62,10 @@
                 {
                     "name": "id",
                     "type": "uint64"
+                },
+                {
+                    "name": "account",
+                    "type": "name"
                 },
                 {
                     "name": "amount",
@@ -174,8 +182,8 @@
                     "type": "name"
                 },
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "amount",
+                    "type": "asset"
                 },
                 {
                     "name": "tx_hash",
@@ -192,8 +200,8 @@
                     "type": "name"
                 },
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "amount",
+                    "type": "asset"
                 },
                 {
                     "name": "tx_hash",
@@ -254,8 +262,8 @@
                     "type": "name"
                 },
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "amount",
+                    "type": "asset"
                 },
                 {
                     "name": "tx_hash",
@@ -272,29 +280,11 @@
                     "type": "name"
                 },
                 {
-                    "name": "account",
-                    "type": "name"
-                },
-                {
-                    "name": "withd_id",
-                    "type": "uint64"
-                }
-            ]
-        },
-        {
-            "name": "newwithdraw",
-            "base": "",
-            "fields": [
-                {
-                    "name": "account",
-                    "type": "name"
-                },
-                {
                     "name": "amount",
                     "type": "asset"
                 },
                 {
-                    "name": "id",
+                    "name": "withd_id",
                     "type": "uint64"
                 }
             ]
@@ -336,8 +326,8 @@
                     "type": "name"
                 },
                 {
-                    "name": "account",
-                    "type": "name"
+                    "name": "amount",
+                    "type": "asset"
                 },
                 {
                     "name": "withd_id",
@@ -402,11 +392,6 @@
         {
             "name": "lockwithdraw",
             "type": "lockwithdraw",
-            "ricardian_contract": ""
-        },
-        {
-            "name": "newwithdraw",
-            "type": "newwithdraw",
             "ricardian_contract": ""
         },
         {

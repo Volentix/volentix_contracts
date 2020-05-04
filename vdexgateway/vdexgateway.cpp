@@ -80,12 +80,13 @@ void vdexgateway::submitdep(name account, asset amount, checksum256 tx_hash)
 	require_auth(account);
 	//TODO check amount precision
 	require_recipient(account);
-	account_deposits acnt_deps(get_self(), account.value);
+	account_deposits acnt_deps(get_self(), amount.symbol.code().raw());
 	auto hash_index = acnt_deps.get_index<name("bytxhash")>();
 	auto itr = hash_index.find(tx_hash);
 	check(itr == hash_index.end(), "Deposit with tha same tx_hash already exists.");
 	acnt_deps.emplace(account, [&](auto& row){
 		row.id = acnt_deps.available_primary_key();
+		row.account = account;
 		row.amount = amount;
 		row.tx_hash = tx_hash;
 		row.is_confirmed = false;
@@ -96,7 +97,7 @@ void vdexgateway::submitdep(name account, asset amount, checksum256 tx_hash)
 }
 
 
-void vdexgateway::confirmdep(name node, name account, checksum256 tx_hash)
+void vdexgateway::confirmdep(name node, asset amount, checksum256 tx_hash)
 {
 	require_auth(node);
 	// check whether deposit already confirmed by node
@@ -104,7 +105,7 @@ void vdexgateway::confirmdep(name node, name account, checksum256 tx_hash)
 	// check permissions
 	check(has_rank(node, RANK), "You don't have permission to confirm deposits.");
 	// confirm deposit
-	account_deposits acnt_deps(get_self(), account.value);
+	account_deposits acnt_deps(get_self(), amount.symbol.code().raw());
 	auto deps_hash_index = acnt_deps.get_index<name("bytxhash")>();
 	auto itr_dep = deps_hash_index.find(tx_hash);
 	check(itr_dep != deps_hash_index.end(), "Deposit with that tx_hash doesn't exist.");
@@ -172,18 +173,18 @@ void vdexgateway::withdraw(name account, asset amount, string address)
 		row.balance -= amount;
 	});
 	// create withdraw request
-	account_withdrawals acnt_withd(get_self(), account.value);
+	account_withdrawals acnt_withd(get_self(), amount.symbol.code().raw());
 	// сгенерить айдишник и создать вывод
 	auto withd_id = acnt_withd.available_primary_key();
 	acnt_withd.emplace(account, [&](auto& row){
 		row.id = withd_id;
+		row.account = account;
 		row.amount = amount;
-   	row.tx_hash = checksum256(); // zero hash
-   	row.is_confirmed = false;
-   	row.is_rewarded = false;
-   	row.proccesed_by = NULL_NAME;
-   	row.nodes_confirmed = 0;
-   	row.address = address;
+   		row.tx_hash = checksum256(); // zero hash
+   		row.is_confirmed = false;
+   		row.is_rewarded = false;
+   		row.proccesed_by = NULL_NAME;
+   		row.nodes_confirmed = 0;
 	});
 
 	// notify network about new withdraw id
@@ -195,15 +196,11 @@ void vdexgateway::withdraw(name account, asset amount, string address)
   ).send();
 }
 
-void vdexgateway::newwithdraw(name account, asset amount, uint64_t id)
-{
-	require_auth(get_self());
-}
 
-void vdexgateway::lockwithdraw(name node, name account, uint64_t withd_id)
+void vdexgateway::lockwithdraw(name node, asset amount, uint64_t withd_id)
 {
 	require_auth(node);
-	account_withdrawals acnt_withd(get_self(), account.value);
+	account_withdrawals acnt_withd(get_self(), amount.symbol.code().raw());
 	auto itr = acnt_withd.find(withd_id);
 	check(itr != acnt_withd.end(), "Withdraw doesn't exist.");
 	check(itr->proccesed_by == NULL_NAME, "WIthdraw has already locked.");
@@ -213,10 +210,10 @@ void vdexgateway::lockwithdraw(name node, name account, uint64_t withd_id)
 }
 
 // submit withdraw tx hash
-void vdexgateway::submitwithd(name node, name account, uint64_t withd_id, checksum256 tx_hash)
+void vdexgateway::submitwithd(name node, asset amount, uint64_t withd_id, checksum256 tx_hash)
 {
 	require_auth(node);
-	account_withdrawals acnt_withd(get_self(), account.value);
+	account_withdrawals acnt_withd(get_self(), amount.symbol.code().raw());
 	auto itr = acnt_withd.find(withd_id);
 	check(itr != acnt_withd.end(), "Withdraw doesn't exist.");
 	check(itr->proccesed_by == node, "Missing permission to modify withdraw record.");
@@ -226,7 +223,7 @@ void vdexgateway::submitwithd(name node, name account, uint64_t withd_id, checks
 }
 
 // confirm withdraw by tx hash
-void vdexgateway::confirmwithd(name node, name account, checksum256 tx_hash)
+void vdexgateway::confirmwithd(name node, asset amount, checksum256 tx_hash)
 {
 	// TODO: restrict node confirm its own withdraw
 	require_auth(node);
@@ -234,7 +231,7 @@ void vdexgateway::confirmwithd(name node, name account, checksum256 tx_hash)
 		// check permissions
 	check(has_rank(node, RANK), "You don't have permission to confirm withdrawals.");
 	// confirm withdraw
-	account_withdrawals acnt_withd(get_self(), account.value);
+	account_withdrawals acnt_withd(get_self(), amount.symbol.code().raw());
 	auto withd_hash_index = acnt_withd.get_index<name("bytxhash")>();
 	auto itr_withd = withd_hash_index.find(tx_hash);
 	check(itr_withd != withd_hash_index.end(), "Withdrawal with that tx_hash doesn't exist.");
@@ -248,10 +245,10 @@ void vdexgateway::confirmwithd(name node, name account, checksum256 tx_hash)
 	}
 } // TODO: unify deposit and withdraw confirmation
 
-void vdexgateway::getreward(name node, name account, checksum256 tx_hash)
+void vdexgateway::getreward(name node, asset amount, checksum256 tx_hash)
 {
 	require_auth(node);
-	account_withdrawals acnt_withd(get_self(), account.value);
+	account_withdrawals acnt_withd(get_self(), amount.symbol.code().raw());
 	auto hash_index = acnt_withd.get_index<name("bytxhash")>();
 	auto itr = hash_index.find(tx_hash);
 	check(itr != hash_index.end(), "Withdrawal with that tx_hash doesn't exist.");
@@ -266,11 +263,12 @@ void vdexgateway::getreward(name node, name account, checksum256 tx_hash)
   	{ get_self(), name("active") }, 
   	itr_curr->colateral_token,
   	name("transfer"), 
-  	std::make_tuple(get_self(), itr->proccesed_by, itr->amount + itr_curr->withdraw_reward, string("memo")) // TODO: add withdraw tx_hash to memo
+  	std::make_tuple(node, itr->proccesed_by, itr->amount + itr_curr->withdraw_reward, string("memo")) // TODO: add withdraw tx_hash to memo
   ).send();
   // TODO: erase withdraw record when tx_hash will be added to memo
   // TODO: erase confirmations
 }
+
 
 void vdexgateway::ontransfer(name from, name to, asset quantity, string memo)
 {
@@ -288,3 +286,5 @@ void vdexgateway::ontransfer(name from, name to, asset quantity, string memo)
 		row.balance += quantity;
 	});
 }
+
+EOSIO_DISPATCH(vdexgateway, (regaccount)(addaddresses)(addcurrency)(submitdep)(confirmdep)(claimdep)(withdraw)(lockwithdraw)(submitwithd)(confirmwithd)(getreward))
