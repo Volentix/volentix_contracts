@@ -71,8 +71,11 @@ public:
    [[eosio::action]]
    void getreward(name node, asset amount, checksum256 tx_hash);
 
-   [[eosio::on_notify("volentixgsys::transfer")]]
-   void ontransfer(name from, name to, asset quantity, string memo);
+   [[eosio::on_notify("btcvdextoken::transfer")]]
+   void onbtctrnsfer(name from, name to, asset quantity, string memo);
+
+   [[eosio::on_notify("ethvdextoken::transfer")]]
+   void onethtrnsfer(name from, name to, asset quantity, string memo);
 
 private:
    // scope: currency_symbol
@@ -164,4 +167,5 @@ private:
    void assign_addresses(name account);
    void assign_address(name account, symbol currency_symbol);
    void confirm_by_hash(name node, checksum256 tx_hash);
+   void ontransfer(name from, name to, asset quantity, string memo);
 };

@@ -287,4 +287,14 @@ void vdexgateway::ontransfer(name from, name to, asset quantity, string memo)
 	});
 }
 
+void vdexgateway::onbtctrnsfer(name from, name to, asset quantity, string memo)
+{
+	ontransfer(from, to, quantity, memo);
+}
+
+void vdexgateway::onethtrnsfer(name from, name to, asset quantity, string memo)
+{
+	ontransfer(from, to, quantity, memo);
+}
+
 EOSIO_DISPATCH(vdexgateway, (regaccount)(addaddresses)(addcurrency)(submitdep)(confirmdep)(claimdep)(withdraw)(lockwithdraw)(submitwithd)(confirmwithd)(getreward))
