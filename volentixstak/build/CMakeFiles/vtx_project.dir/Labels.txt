@@ -1,14 +1,14 @@
 # Target labels
  vtx_project
 # Source files and their labels
-/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project
-/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project-complete.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-build.rule
-/home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles/vtx_project
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles/vtx_project.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles/vtx_project-complete.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-build.rule
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test.rule

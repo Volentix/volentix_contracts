@@ -43,10 +43,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/farhan/Documents/work/VXT/volentixstak
+CMAKE_SOURCE_DIR = /home/farhan/Documents/work/volentix_contracts/volentixstak
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/farhan/Documents/work/VXT/volentixstak/build
+CMAKE_BINARY_DIR = /home/farhan/Documents/work/volentix_contracts/volentixstak/build
 
 # Utility rule file for vtx_project.
 
@@ -65,57 +65,57 @@ CMakeFiles/vtx_project-complete: vtx_project-prefix/src/vtx_project-stamp/vtx_pr
 CMakeFiles/vtx_project-complete: vtx_project-prefix/src/vtx_project-stamp/vtx_project-build
 CMakeFiles/vtx_project-complete: vtx_project-prefix/src/vtx_project-stamp/vtx_project-install
 CMakeFiles/vtx_project-complete: vtx_project-prefix/src/vtx_project-stamp/vtx_project-test
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'vtx_project'"
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles
-	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project-complete
-	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-done
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Completed 'vtx_project'"
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles
+	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles/vtx_project-complete
+	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-done
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-install: vtx_project-prefix/src/vtx_project-stamp/vtx_project-build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -E echo_append
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "No install step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -E echo_append
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-install
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'vtx_project'"
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/src
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/tmp
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src
-	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp
-	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Creating directories for 'vtx_project'"
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/src
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/tmp
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src
+	/usr/local/bin/cmake -E make_directory /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp
+	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-download: vtx_project-prefix/src/vtx_project-stamp/vtx_project-mkdir
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "No download step for 'vtx_project'"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "No download step for 'vtx_project'"
 	/usr/local/bin/cmake -E echo_append
-	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download
+	/usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-download
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-update: vtx_project-prefix/src/vtx_project-stamp/vtx_project-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/src && /usr/local/bin/cmake -E echo_append
-	cd /home/farhan/Documents/work/VXT/volentixstak/src && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "No update step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/src && /usr/local/bin/cmake -E echo_append
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/src && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-update
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch: vtx_project-prefix/src/vtx_project-stamp/vtx_project-download
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/src && /usr/local/bin/cmake -E echo_append
-	cd /home/farhan/Documents/work/VXT/volentixstak/src && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "No patch step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/src && /usr/local/bin/cmake -E echo_append
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/src && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure: vtx_project-prefix/tmp/vtx_project-cfgcmd.txt
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure: vtx_project-prefix/src/vtx_project-stamp/vtx_project-update
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure: vtx_project-prefix/src/vtx_project-stamp/vtx_project-patch
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -DCMAKE_TOOLCHAIN_FILE=/usr/opt/eosio.cdt/1.6.1/lib/cmake/eosio.cdt/EosioWasmToolchain.cmake "-GUnix Makefiles" /home/farhan/Documents/work/VXT/volentixstak/src
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Performing configure step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -DCMAKE_TOOLCHAIN_FILE=/usr/opt/eosio.cdt/1.6.1/lib/cmake/eosio.cdt/EosioWasmToolchain.cmake "-GUnix Makefiles" /home/farhan/Documents/work/volentix_contracts/volentixstak/src
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-build: vtx_project-prefix/src/vtx_project-stamp/vtx_project-configure
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && $(MAKE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Performing build step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && $(MAKE)
 
 vtx_project-prefix/src/vtx_project-stamp/vtx_project-test: vtx_project-prefix/src/vtx_project-stamp/vtx_project-install
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "No test step for 'vtx_project'"
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -E echo_append
-	cd /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/VXT/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "No test step for 'vtx_project'"
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -E echo_append
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak && /usr/local/bin/cmake -E touch /home/farhan/Documents/work/volentix_contracts/volentixstak/build/vtx_project-prefix/src/vtx_project-stamp/vtx_project-test
 
 vtx_project: CMakeFiles/vtx_project
 vtx_project: CMakeFiles/vtx_project-complete
@@ -141,6 +141,6 @@ CMakeFiles/vtx_project.dir/clean:
 .PHONY : CMakeFiles/vtx_project.dir/clean
 
 CMakeFiles/vtx_project.dir/depend:
-	cd /home/farhan/Documents/work/VXT/volentixstak/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/farhan/Documents/work/VXT/volentixstak /home/farhan/Documents/work/VXT/volentixstak /home/farhan/Documents/work/VXT/volentixstak/build /home/farhan/Documents/work/VXT/volentixstak/build /home/farhan/Documents/work/VXT/volentixstak/build/CMakeFiles/vtx_project.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/farhan/Documents/work/volentix_contracts/volentixstak/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/farhan/Documents/work/volentix_contracts/volentixstak /home/farhan/Documents/work/volentix_contracts/volentixstak /home/farhan/Documents/work/volentix_contracts/volentixstak/build /home/farhan/Documents/work/volentix_contracts/volentixstak/build /home/farhan/Documents/work/volentix_contracts/volentixstak/build/CMakeFiles/vtx_project.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/vtx_project.dir/depend
 

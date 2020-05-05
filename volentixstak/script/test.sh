@@ -31,7 +31,7 @@ apiEndpoint="http://jungle2.cryptolions.io"
 ########################### STAKING ##################################
 
 # stake token using stake action
-cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"4000.00000000 TEST", "memo":"30"}' -p vtxtestacc11
+# cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"4000.00000000 TEST", "memo":"300"}' -p vtxtestacc11
 
 ######################### STAKING TESTS #########################
 
@@ -73,7 +73,7 @@ cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11",
 # cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"1000000.00000000 TEST", "memo": 0 }' -p vtxtestacc11
 
 ########## staking period should be less than 300 #########
-# cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"1000000.00000000 TEST", "memo": 600 }' -p vtxtestacc11
+cleos -u $apiEndpoint push action vtxcontract1 transfer '{"from":"vtxtestacc11", "to":"volentixstak", "quantity":"1000000.00000000 TEST", "memo": 300 }' -p vtxtestacc11
 
 ########### UNSTAKING ####################
 

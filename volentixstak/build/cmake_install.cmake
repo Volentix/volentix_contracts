@@ -1,4 +1,4 @@
-# Install script for directory: /home/farhan/Documents/work/VXT/volentixstak
+# Install script for directory: /home/farhan/Documents/work/volentix_contracts/volentixstak
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/farhan/Documents/work/VXT/volentixstak/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/farhan/Documents/work/volentix_contracts/volentixstak/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

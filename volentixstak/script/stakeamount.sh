@@ -1,3 +1,3 @@
-apiEndpoint="http://jungle2.cryptolions.io"
+apiEndpoint="https://api.redpacketeos.com"
 
-cleos -u $apiEndpoint get table volentixstak volentixstak stakeamounts
+cleos -u $apiEndpoint get table vtxstake1111 vertodefi4me stakeamounts

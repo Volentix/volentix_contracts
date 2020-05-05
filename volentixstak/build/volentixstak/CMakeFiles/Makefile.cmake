@@ -12,7 +12,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.14.5/CMakeSystem.cmake"
   "CMakeFiles/feature_tests.c"
   "CMakeFiles/feature_tests.cxx"
-  "/home/farhan/Documents/work/VXT/volentixstak/src/CMakeLists.txt"
+  "/home/farhan/Documents/work/volentix_contracts/volentixstak/src/CMakeLists.txt"
   "/usr/lib/cmake/eosio.cdt/eosio.cdt-config.cmake"
   "/usr/local/share/cmake-3.14/Modules/CMakeCCompiler.cmake.in"
   "/usr/local/share/cmake-3.14/Modules/CMakeCCompilerABI.c"

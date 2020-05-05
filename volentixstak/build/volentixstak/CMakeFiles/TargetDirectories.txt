@@ -1,3 +1,3 @@
-/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/rebuild_cache.dir
-/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/volentixstak.dir
-/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/edit_cache.dir
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/rebuild_cache.dir
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/volentixstak.dir
+/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/edit_cache.dir

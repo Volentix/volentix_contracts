@@ -37,14 +37,14 @@ The output was:
 
 
 Detecting C compiler ABI info failed to compile with the following output:
-Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+Change Dir: /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_5fe14/fast 
-make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_5fe14.dir/build.make CMakeFiles/cmTC_5fe14.dir/build
-make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj
-/usr/bin/eosio-cc   -O3     -v -o CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj   -c /usr/local/share/cmake-3.14/Modules/CMakeCCompilerABI.c
+Run Build Command(s):/usr/bin/make cmTC_a3050/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a3050.dir/build.make CMakeFiles/cmTC_a3050.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a3050.dir/CMakeCCompilerABI.c.obj
+/usr/bin/eosio-cc   -O3     -v -o CMakeFiles/cmTC_a3050.dir/CMakeCCompilerABI.c.obj   -c /usr/local/share/cmake-3.14/Modules/CMakeCCompilerABI.c
 clang version 7.0.0 (https://github.com/eosio/clang.git 6b886302a11a8419b76e469794ff9d0c531a4b4b) (https://github.com/eosio/llvm a41b8e7653258a4f1a5911ef28c95672efce051e)
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
@@ -58,49 +58,49 @@ Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
-Linking C executable cmTC_5fe14.wasm
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5fe14.dir/link.txt --verbose=1
-/usr/bin/eosio-ld  -v CMakeFiles/cmTC_5fe14.dir/CMakeCCompilerABI.c.obj -o cmTC_5fe14.wasm 
+Linking C executable cmTC_a3050.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3050.dir/link.txt --verbose=1
+/usr/bin/eosio-ld  -v CMakeFiles/cmTC_a3050.dir/CMakeCCompilerABI.c.obj -o cmTC_a3050.wasm 
 eosio-ld: Unknown command line argument '-v'.  Try: '/usr/bin/eosio-ld -help'
 eosio-ld: Did you mean '-L'?
-CMakeFiles/cmTC_5fe14.dir/build.make:86: recipe for target 'cmTC_5fe14.wasm' failed
-make[4]: *** [cmTC_5fe14.wasm] Error 1
-make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_5fe14/fast' failed
-make[3]: *** [cmTC_5fe14/fast] Error 2
-make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_a3050.dir/build.make:86: recipe for target 'cmTC_a3050.wasm' failed
+make[4]: *** [cmTC_a3050.wasm] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_a3050/fast' failed
+make[3]: *** [cmTC_a3050/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
 
 
 
 Detecting C [-std=c11] compiler features failed to compile with the following output:
-Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+Change Dir: /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_2d056/fast 
-make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_2d056.dir/build.make CMakeFiles/cmTC_2d056.dir/build
-make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj
-/usr/bin/eosio-cc   -O3     -std=c11 -o CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj   -c /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/feature_tests.c
+Run Build Command(s):/usr/bin/make cmTC_88476/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_88476.dir/build.make CMakeFiles/cmTC_88476.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_88476.dir/feature_tests.c.obj
+/usr/bin/eosio-cc   -O3     -std=c11 -o CMakeFiles/cmTC_88476.dir/feature_tests.c.obj   -c /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/feature_tests.c
 eosio-cc: Unknown command line argument '-std=c11'.  Try: '/usr/bin/eosio-cc -help'
 eosio-cc: Did you mean '-w=c11'?
-CMakeFiles/cmTC_2d056.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj' failed
-make[4]: *** [CMakeFiles/cmTC_2d056.dir/feature_tests.c.obj] Error 1
-make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_2d056/fast' failed
-make[3]: *** [cmTC_2d056/fast] Error 2
-make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_88476.dir/build.make:65: recipe for target 'CMakeFiles/cmTC_88476.dir/feature_tests.c.obj' failed
+make[4]: *** [CMakeFiles/cmTC_88476.dir/feature_tests.c.obj] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_88476/fast' failed
+make[3]: *** [cmTC_88476/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
 
 
 
 Detecting CXX compiler ABI info failed to compile with the following output:
-Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+Change Dir: /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_117b1/fast 
-make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_117b1.dir/build.make CMakeFiles/cmTC_117b1.dir/build
-make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj
-/usr/bin/eosio-cpp    -O3     -v -o CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/local/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp
+Run Build Command(s):/usr/bin/make cmTC_04240/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_04240.dir/build.make CMakeFiles/cmTC_04240.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_04240.dir/CMakeCXXCompilerABI.cpp.obj
+/usr/bin/eosio-cpp    -O3     -v -o CMakeFiles/cmTC_04240.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/local/share/cmake-3.14/Modules/CMakeCXXCompilerABI.cpp
 clang version 7.0.0 (https://github.com/eosio/clang.git 6b886302a11a8419b76e469794ff9d0c531a4b4b) (https://github.com/eosio/llvm a41b8e7653258a4f1a5911ef28c95672efce051e)
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
@@ -114,39 +114,39 @@ Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Selected GCC installation: /usr/lib/gcc/x86_64-linux-gnu/9
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
-Linking CXX executable cmTC_117b1.wasm
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_117b1.dir/link.txt --verbose=1
-/usr/bin/eosio-ld  -v CMakeFiles/cmTC_117b1.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_117b1.wasm 
+Linking CXX executable cmTC_04240.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_04240.dir/link.txt --verbose=1
+/usr/bin/eosio-ld  -v CMakeFiles/cmTC_04240.dir/CMakeCXXCompilerABI.cpp.obj -o cmTC_04240.wasm 
 eosio-ld: Unknown command line argument '-v'.  Try: '/usr/bin/eosio-ld -help'
 eosio-ld: Did you mean '-L'?
-CMakeFiles/cmTC_117b1.dir/build.make:86: recipe for target 'cmTC_117b1.wasm' failed
-make[4]: *** [cmTC_117b1.wasm] Error 1
-make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_117b1/fast' failed
-make[3]: *** [cmTC_117b1/fast] Error 2
-make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_04240.dir/build.make:86: recipe for target 'cmTC_04240.wasm' failed
+make[4]: *** [cmTC_04240.wasm] Error 1
+make[4]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_04240/fast' failed
+make[3]: *** [cmTC_04240/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
 
 
 
 Detecting CXX [-std=c++2a] compiler features failed to compile with the following output:
-Change Dir: /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
+Change Dir: /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_ca77a/fast 
-make[3]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-/usr/bin/make -f CMakeFiles/cmTC_ca77a.dir/build.make CMakeFiles/cmTC_ca77a.dir/build
-make[4]: Entering directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj
-/usr/bin/eosio-cpp    -O3     -std=c++2a -o CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj -c /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_ca77a.wasm
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ca77a.dir/link.txt --verbose=1
-/usr/bin/eosio-ld   CMakeFiles/cmTC_ca77a.dir/feature_tests.cxx.obj -o cmTC_ca77a.wasm 
+Run Build Command(s):/usr/bin/make cmTC_e90cc/fast 
+make[3]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_e90cc.dir/build.make CMakeFiles/cmTC_e90cc.dir/build
+make[4]: Entering directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_e90cc.dir/feature_tests.cxx.obj
+/usr/bin/eosio-cpp    -O3     -std=c++2a -o CMakeFiles/cmTC_e90cc.dir/feature_tests.cxx.obj -c /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e90cc.wasm
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e90cc.dir/link.txt --verbose=1
+/usr/bin/eosio-ld   CMakeFiles/cmTC_e90cc.dir/feature_tests.cxx.obj -o cmTC_e90cc.wasm 
 /usr/opt/eosio.cdt/1.6.1/bin/wasm-ld: error: fatal failure: contract with no actions and trying to create dispatcher
-CMakeFiles/cmTC_ca77a.dir/build.make:86: recipe for target 'cmTC_ca77a.wasm' failed
-make[4]: *** [cmTC_ca77a.wasm] Error 255
-make[4]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
-Makefile:121: recipe for target 'cmTC_ca77a/fast' failed
-make[3]: *** [cmTC_ca77a/fast] Error 2
-make[3]: Leaving directory '/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+CMakeFiles/cmTC_e90cc.dir/build.make:86: recipe for target 'cmTC_e90cc.wasm' failed
+make[4]: *** [cmTC_e90cc.wasm] Error 255
+make[4]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_e90cc/fast' failed
+make[3]: *** [cmTC_e90cc/fast] Error 2
+make[3]: Leaving directory '/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/CMakeTmp'
 
 
 

@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/farhan/Documents/work/VXT/volentixstak/src/volentixstak.cpp" "/home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/volentixstak.dir/volentixstak.obj"
+  "/home/farhan/Documents/work/volentix_contracts/volentixstak/src/volentixstak.cpp" "/home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/volentixstak.dir/volentixstak.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/farhan/Documents/work/VXT/volentixstak/src/../include"
+  "/home/farhan/Documents/work/volentix_contracts/volentixstak/src/../include"
   )
 
 # Targets to which this target links.

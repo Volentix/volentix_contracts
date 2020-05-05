@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/farhan/Documents/work/VXT/volentixstak/src/../include/provable/eos_api.hpp
+/home/farhan/Documents/work/volentix_contracts/volentixstak/src/../include/provable/eos_api.hpp
 eosio/transaction.hpp
 -
 eosio/crypto.hpp
@@ -20,7 +20,7 @@ stdio.h
 vector
 -
 
-/home/farhan/Documents/work/VXT/volentixstak/src/../include/volentixstak.hpp
+/home/farhan/Documents/work/volentix_contracts/volentixstak/src/../include/volentixstak.hpp
 provable/eos_api.hpp
 -
 eosio/asset.hpp
@@ -36,7 +36,7 @@ eosio/transaction.hpp
 string
 -
 
-/home/farhan/Documents/work/VXT/volentixstak/src/volentixstak.cpp
+/home/farhan/Documents/work/volentix_contracts/volentixstak/src/volentixstak.cpp
 volentixstak.hpp
 -
 

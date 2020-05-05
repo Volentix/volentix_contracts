@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/farhan/Documents/work/VXT/volentixstak/src
+CMAKE_SOURCE_DIR = /home/farhan/Documents/work/volentix_contracts/volentixstak/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak
+CMAKE_BINARY_DIR = /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/farhan/Documents/work/VXT/volentixstak/build/volentixstak/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/farhan/Documents/work/volentix_contracts/volentixstak/build/volentixstak/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
