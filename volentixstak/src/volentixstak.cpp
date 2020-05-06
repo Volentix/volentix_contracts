@@ -129,13 +129,13 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    auto lock_to = lock_to_acnts.begin();
 
-   while (lock_to != lock_to_acnts.end())
-   {
-      total_stake_period += lock_to->stake_period;
-      lock_to++;
-   }
+   // while (lock_to != lock_to_acnts.end())
+   // {
+   //    total_stake_period += lock_to->stake_period;
+   //    lock_to++;
+   // }
 
-   check((stake_period + total_stake_period) <= MAX_STAKE_PERIOD, "Total staking period is too high");
+   //check((stake_period + total_stake_period) <= MAX_STAKE_PERIOD, "Total staking period is too high");
 
    total_stake_amounts total_stake_amnt(_self, _self.value);
 
