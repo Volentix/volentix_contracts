@@ -9,7 +9,8 @@
 
 #define SYMBOL_PRE_DIGIT 8
 #define TOKEN_SYMBOL "VTX"
-#define BALANCE_ACC name("volentixgsys")
+#define BALANCE_ACC name("vtxstake1111")
+#define TOKEN_ACC name("volentixgsys")
 #define MIN_STAKE_AMOUNT asset(100000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MAX_STAKE_AMOUNT asset(1000000000000000, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT))
 #define MIN_STAKE_PERIOD 30
@@ -84,7 +85,7 @@ private:
 
    void check_symbol(asset quantity)
    {
-      auto sym = quantity.symbol.code();
+      eosio::check( quantity.to_string() != TOKEN_SYMBOL, "Illegal asset symbol");
       check(quantity.is_valid(), "invalid quantity");
       check(quantity.amount > 0, "must be positive quantity");
       check(quantity.symbol == MIN_STAKE_AMOUNT.symbol, "symbol precision mismatch");

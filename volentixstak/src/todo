@@ -1,0 +1,22 @@
+volentixstak
+
+1. volentixstak::stake::117 Deferred transactions are not guaranteed to be executed and should not be depended upon.
+2.  check_symbol::85 The check does not include the contract defined in BALANCE_ACC. It’s possible that a rouge VTX 
+contract could be created and used to deposit fake VTX into the ecosystem. Creating an extended_symbol and checking 
+if the contract == BALANCE_ACC will prevent this from happening.
+3.  check_symbol::stake::162 It’s possible an attacker creates a large number of pseudonymous identities and uses 
+them to create entries within the lock_to_acnts table and cause a DOS. Use payer == _self wisely, or consider using payer == owner.
+4.  volentixstak::registersubs::46 unstake_period_sec not in use
+5.  volentixstakk::211/62:: Duplicate code when calculating stake subsidy. Consider moving to one function to prevent any accidental miscalculations 
+in the future.
+6. volentixstak::registrglobl::20 Positive quantity is being added to the global amount, but when unstaking and negative quantity is being provided, 
+it will be subtracting a negative amount. Suggest to double check logic and balances here to ensure correct behaviour, and to remove the unnecessary 
+quantity check and else statement.
+7.  volentixstak:: unstake::196:: consider keeping variable naming consistent. It is referred to both lock_from_acnts / lock_to_Acnts within the stake 
+and registerglobl functions.
+8.  volentixstak:: unstake user can stake funds and immediately unstake them. Consider adding a check to ensure the stake period is over, or if stake 
+period is not enforced, then the subsidy calculated when initially depositing can potentially be incorrect. 
+Right now, this attack vector could cause the registrglobal to
+9.  volentixstak:: unstake subsidy is not transferred back to the user. CAUTION: If subsidy is transferred back and stake period is not 
+enforced, then the amount should be pro-rata and calculated during this function call. Using the initial calculated subsidy amount when 
+depositing will cause a loss in funds.

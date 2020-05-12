@@ -86,6 +86,8 @@ void vdexdposvote::vote(const name voter_name, const std::vector <name> &produce
                     const double balance_tokens, const uint64_t vouting_time) {
 
     double votes = sqrt(balance_tokens);
+    //max producers 21
+    //less than 21 you have to vote for all
     double votes_per_prod = votes / producers.size();
 
     //every time a vote is cast we must first "undo" the last vote weight, before casting the new vote weight.

@@ -1,3 +1,5 @@
+ 
+
 #include <volentixstak.hpp>
 
 void volentixstak::registrglobl(name owner, uint64_t stake_id, asset quantity ){
@@ -90,7 +92,6 @@ void volentixstak::deposit(name from,
                            asset quantity,
                            string memo)
 {
-
    if (from == BALANCE_ACC || from == _self)
    {
       return;
@@ -113,7 +114,6 @@ void volentixstak::deposit(name from,
 void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_period)
 {
    check_symbol(quantity);
-
    // stake amount checks
    check(quantity >= MIN_STAKE_AMOUNT, "stake amount is too low");
    check(quantity <= MAX_STAKE_AMOUNT, "stake amount is too high");
@@ -129,13 +129,6 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    auto lock_to = lock_to_acnts.begin();
 
-   // while (lock_to != lock_to_acnts.end())
-   // {
-   //    total_stake_period += lock_to->stake_period;
-   //    lock_to++;
-   // }
-
-   //check((stake_period + total_stake_period) <= MAX_STAKE_PERIOD, "Total staking period is too high");
 
    total_stake_amounts total_stake_amnt(_self, _self.value);
 
@@ -227,11 +220,11 @@ void volentixstak ::unstake(name owner, uint64_t stake_id)
 
    // Casting uint64_t to asset
    asset amount = asset(decimal_amount, symbol(TOKEN_SYMBOL, SYMBOL_PRE_DIGIT));
-
+    
    // Transfer unstaking amount to user
    action(
        permission_level{_self, "active"_n},
-       BALANCE_ACC,
+       TOKEN_ACC,
        "transfer"_n,
        std::make_tuple(_self, owner, amount, std::string("unstaking fund")))
        .send();
