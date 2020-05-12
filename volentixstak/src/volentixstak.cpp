@@ -1,5 +1,3 @@
- 
-
 #include <volentixstak.hpp>
 
 void volentixstak::registrglobl(name owner, uint64_t stake_id, asset quantity ){
@@ -136,8 +134,8 @@ void volentixstak ::stake(name owner, const asset quantity, uint16_t stake_perio
 
    if (stk_amt == total_stake_amnt.end())
    {
-      total_stake_amnt.emplace(_self, [&](auto &a) {
-         a.amount = quantity;
+      total_stake_amnt.emplace(owner, [&]( auto& row) {
+         row.amount = quantity;
       });
    }
    else
