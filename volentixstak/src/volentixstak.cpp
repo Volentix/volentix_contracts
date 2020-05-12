@@ -32,6 +32,7 @@ void volentixstak::registrglobl(name owner, uint64_t stake_id, asset quantity ){
 }
 
 
+
  void volentixstak::registersubs(name owner,uint64_t stake_id ){
    
    // Must require auth of user or contract
@@ -41,9 +42,6 @@ void volentixstak::registrglobl(name owner, uint64_t stake_id, asset quantity ){
 
    // Pointer to the stake_id object if not found then assert error
    const auto &lock_from = lock_from_acnts.get(stake_id, "No such stake object found with provided stake_id");
-
-   // Stake period days into second
-   uint32_t stake_period_sec = stake_period_into_sec(lock_from.stake_period);
 
    // Current uinx epoch second time
    uint32_t current_time = current_time_point().sec_since_epoch();
