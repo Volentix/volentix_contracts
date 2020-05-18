@@ -19,6 +19,30 @@
             "fields": []
         },
         {
+            "name": "pair_asset_int32",
+            "base": "",
+            "fields": [
+                {
+                    "name": "key",
+                    "type": "asset"
+                },
+                {
+                    "name": "value",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "ppweights",
+            "base": "",
+            "fields": [
+                {
+                    "name": "by_price",
+                    "type": "pair_asset_int32[]"
+                }
+            ]
+        },
+        {
             "name": "producer_info",
             "base": "",
             "fields": [
@@ -83,6 +107,16 @@
                 {
                     "name": "job_ids",
                     "type": "uint32[]"
+                }
+            ]
+        },
+        {
+            "name": "setppweights",
+            "base": "",
+            "fields": [
+                {
+                    "name": "by_price",
+                    "type": "pair_asset_int32[]"
                 }
             ]
         },
@@ -173,6 +207,11 @@
             "ricardian_contract": ""
         },
         {
+            "name": "setppweights",
+            "type": "setppweights",
+            "ricardian_contract": ""
+        },
+        {
             "name": "unregprod",
             "type": "unregprod",
             "ricardian_contract": ""
@@ -194,6 +233,13 @@
         }
     ],
     "tables": [
+        {
+            "name": "ppweights",
+            "type": "ppweights",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        },
         {
             "name": "producers",
             "type": "producer_info",

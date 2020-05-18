@@ -2,9 +2,11 @@
 #include <eosio/asset.hpp>
 #include <eosio/symbol.hpp>
 #include <eosio/transaction.hpp>
+#include <eosio/singleton.hpp>
 #include <cmath>
 
 using namespace eosio;
+using namespace std;
 
 class [[eosio::contract("vdexdposvote")]] vdexdposvote : public contract {
 public:
@@ -28,7 +30,8 @@ public:
 
     vdexdposvote(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
                                                                       _producers(receiver, receiver.value),
-                                                                      _voters(receiver, receiver.value) {}
+                                                                      _voters(receiver, receiver.value), 
+                                                                      _ppweights(receiver, receiver.value) {}
 
     [[eosio::action]]
     void regproducer(const name producer, const std::string &producer_name,
@@ -100,11 +103,6 @@ public:
         return 0;       
     }
 
-
-
-
-private:
-
     struct [[eosio::table]] producer_info {
         name owner;
         double total_votes = 0;
@@ -129,6 +127,28 @@ private:
 
     producers_table _producers;
 
+
+    struct [[eosio::table("ppweights"), eosio::contract("vdexdposvote")]] ppweights {
+        map<asset, int> by_price = {};
+    };
+
+    typedef eosio::singleton< "ppweights"_n, ppweights> ppweights_table;
+
+    [[eosio::action]]
+    void setppweights(map<asset, int> by_price) {
+        require_auth(_self);
+
+        auto params = ppweights{
+            .by_price = by_price
+        };
+
+        _ppweights.set( params, _self );
+    };
+
+    using setppweights_action = eosio::action_wrapper<"setppweights"_n, &vdexdposvote::setppweights>;
+    ppweights_table              _ppweights;
+
+private:
     struct [[eosio::table]] voter_info {
         name owner;
         std::vector <name> producers;
