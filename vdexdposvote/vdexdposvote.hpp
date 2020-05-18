@@ -100,11 +100,6 @@ public:
         return 0;       
     }
 
-
-
-
-private:
-
     struct [[eosio::table]] producer_info {
         name owner;
         double total_votes = 0;
@@ -129,6 +124,7 @@ private:
 
     producers_table _producers;
 
+private:
     struct [[eosio::table]] voter_info {
         name owner;
         std::vector <name> producers;
