@@ -9,7 +9,6 @@
 #include <vector>
 #include <string>
 
-#define VOLENTIX_ORACLE name("vdexoracle1")
 #define RANK 21
 #define VOTING_CONTRACT name("vdexdposvote")
 #define NULL_NAME name("null") // null name means that withdraw is free to lock
@@ -87,7 +86,7 @@ private:
    };
    typedef eosio::multi_index<name("depaddresses"), deposit_address> deposit_addresses;
 
-   // scope : account_name.value
+   // scope : currency_symbol
    struct [[eosio::table]] account_deposit 
    {
    	uint64_t id;

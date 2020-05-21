@@ -38,13 +38,13 @@ void vdexgateway::assign_address(name account, symbol currency_symbol)
 
 void vdexgateway::addaddresses(string currency_name, uint8_t currency_precision,	const vector<string> &addresses)
 {
-	require_auth(VOLENTIX_ORACLE);
+	require_auth(get_self());
 	auto currency_symbol = symbol(symbol_code(currency_name), currency_precision);
 	auto itr = currencies.find(currency_symbol.code().raw());
 	deposit_addresses dep_addrs(get_self(), currency_symbol.code().raw());
 	check(itr != currencies.end(), "Unknown currency.");
 	for (auto const &address : addresses) {
-	  dep_addrs.emplace(VOLENTIX_ORACLE, [&](auto& row){ 
+	  dep_addrs.emplace(get_self(), [&](auto& row){ 
 	  	row.id = dep_addrs.available_primary_key();
 	  	row.address = address;
 		});
