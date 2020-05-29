@@ -8,6 +8,8 @@
 #include <vector>
 #include <string>
 
+#define VOTING_CONTRACT name("vdexdposvote")
+
 using std::string;
 using namespace eosio;
 
@@ -24,8 +26,8 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         const uint32_t standby_reward_id = 1;
 
         vtxdistribut(name receiver, name code, datastream<const char *> ds) : contract(receiver, code, ds),
-            rewards(receiver, receiver.value), usblacklist(receiver, receiver.value),
-            inituptime(receiver, receiver.value) {}
+            rewards(receiver, receiver.value), usblacklist(receiver, receiver.value), 
+            rewardhistory(receiver, receiver.value), inituptime(receiver, receiver.value) {}
          	
         
         [[eosio::action]]
@@ -38,19 +40,6 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         void uptime(name account, const std::vector<uint32_t> &job_ids);
         
         [[eosio::action]]
-        void setrewardrule( uint32_t reward_id,
-                            uint32_t reward_period, 
-                            asset reward_amount,
-                            asset standby_amount,
-                            uint32_t rank_threshold,
-                            uint32_t standby_rank_threshold, 
-                            double votes_threshold, 
-                            uint32_t uptime_threshold, 
-                            uint32_t uptime_timeout,
-                            string memo,
-                            string standby_memo );
-
-        [[eosio::action]]
         void addblacklist(name account, string ip);
 
         [[eosio::action]]
@@ -62,20 +51,11 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         [[eosio::action]]
         void rmup(name account);
 
-       
-    
+        [[eosio::action]]
+        void calcrewards(uint32_t job_id);
 
-    private:
-        struct [[eosio::table]] vdexnodes_uptime {
-            uint32_t job_id;
-            uint32_t period_num;
-            uint32_t count;
-            uint32_t last_timestamp;
-            uint32_t primary_key() const { return job_id;}
-        };
-
-
-        typedef eosio::multi_index<"uptimes"_n, vdexnodes_uptime> uptime_index;
+        [[eosio::action]]
+        void getreward(name node);
 
         struct [[eosio::table]] reward_info {
             uint32_t reward_id;
@@ -85,9 +65,6 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
             uint32_t rank_threshold;
             // set standby_rank_threshold to 0 to disable it
             uint32_t standby_rank_threshold;
-            double votes_threshold;
-            uint32_t uptime_threshold;
-            uint32_t uptime_timeout;
             string memo;
             string standby_memo;
             uint64_t primary_key() const { return reward_id;}
@@ -95,6 +72,21 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
 
         typedef eosio::multi_index<"rewards"_n, reward_info> reward_index;
         reward_index rewards;
+
+        [[eosio::action]]
+        void setrewardrule(const reward_info& rule);
+
+    private:
+       struct [[eosio::table]] vdexnodes_uptime {
+            uint32_t job_id;
+            uint32_t period_num;
+            uint32_t count;
+            uint32_t last_timestamp;
+            uint32_t primary_key() const { return job_id;}
+        };
+
+
+        typedef eosio::multi_index<"uptimes"_n, vdexnodes_uptime> uptime_index;
 
         struct [[eosio::table]] blacklist {
             name account;
@@ -115,9 +107,29 @@ class[[eosio::contract]] vtxdistribut : public eosio::contract {
         typedef eosio::multi_index<"inituptime"_n, init_uptime> inituptime_index;
         inituptime_index inituptime;
 
+        struct [[eosio::table]] reward_history {
+            uint32_t reward_id;
+            uint32_t last_timestamp;
+            uint64_t primary_key() const { return (uint64_t) reward_id;}
+        };
+
+        typedef eosio::multi_index<"rewardhistor"_n, reward_history> rewardhistory_index;
+        rewardhistory_index rewardhistory;
+
+
+        // scope by node name
+        struct [[eosio::table]] node_reward {
+            uint64_t id;
+            asset amount;
+            string memo;
+            uint64_t primary_key() const { return id;}
+        };
+        typedef eosio::multi_index<"nodereward"_n, node_reward> node_rewards;
+
+
         void reward(name account, uint32_t job_id, uint32_t timestamp);
         void checkblaclist ( name account );
-
+        void add_reward(name node, asset amount, string memo);
 };
 
 

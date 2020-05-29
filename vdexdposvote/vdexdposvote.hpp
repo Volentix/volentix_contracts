@@ -100,7 +100,26 @@ public:
                 return i;
             i++;    
         }
-        return 0;       
+        return 0;
+    }
+
+    static std::vector<name> get_top_nodes(name voting_contract, uint32_t top, uint32_t job_id) {
+        producers_table producers(voting_contract, voting_contract.value);
+        auto producers_iter = producers.get_index<"prototalvote"_n>();
+        std::vector<name> top_producers;
+        uint32_t i = 0;
+        for (auto &producer : producers_iter) {
+            auto job_ids = get_jobs(voting_contract, producer.owner);
+            if (i < top && std::find(job_ids.begin(), job_ids.end(), job_id) != job_ids.end()) {
+                top_producers.push_back(producer.owner);
+                i++;
+            } else if (i >= top) {
+                break;        
+            }
+        }
+
+        return top_producers;
+
     }
 
     struct [[eosio::table]] producer_info {
