@@ -111,7 +111,7 @@ void vdexdposvote::update_producers(const name voter_name, const std::vector <na
                                           ("producer " + producer.to_string() + " is not currently registered").data());
         double delta = undo_prev_vote ? -votes_per_prod : votes_per_prod;
 
-        _producers.modify(prod, producer, [&](producer_info &info) {
+        _producers.modify(prod, same_payer, [&](producer_info &info) {
             info.total_votes += delta;
         });
     }
