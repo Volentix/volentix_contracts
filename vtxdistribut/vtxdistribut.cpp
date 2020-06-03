@@ -64,7 +64,7 @@ void vtxdistribut::calcrewards(uint32_t job_id) {
       memo = reward_iter->standby_memo;
     }
 
-    memo += " job_id: " + std::to_string(job_id) + " rank: " + std::to_string(rank+1); // rank starts from 1
+    memo += " job_id: " + std::to_string(job_id) + " rank: " + std::to_string(rank+1) + " calcrewards timestamp: " + std::to_string(now); // rank starts from 1
     add_reward(node, amount, memo);
     rank++;
   }
