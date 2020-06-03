@@ -49,6 +49,33 @@ void vdexdposvote::unregprodall() {
     _producers.erase(itr);
 }
 
+void vdexdposvote::rmprod(name prod) {
+    require_auth(get_self());
+    auto _prod_itr = _producers.find(prod.value);
+    check(_prod_itr != _producers.end(), "producer not found");
+    auto voters_itr = _voters.begin();
+
+    while(voters_itr != _voters.end()) {
+        auto voter_prods = voters_itr->producers;
+        auto prod_itr = std::find(voter_prods.begin(), voter_prods.end(), prod);
+
+        if (prod_itr != voter_prods.end()) {
+            // undo votes
+            const double balance_tokens = get_token_balance(voters_itr->owner);
+            check(balance_tokens > 1, "need at least 1 VTX token for vote");
+            voter_prods.erase(prod_itr);
+            uint64_t now = current_time_point().sec_since_epoch();
+            vote(voters_itr->owner, voter_prods, balance_tokens, now);
+
+        }
+
+        voters_itr++;
+    }
+
+    _producers.erase(_prod_itr);
+
+}
+
 void vdexdposvote::deluserinfo() {
     require_auth(_self);
     auto itr = _voters.begin();

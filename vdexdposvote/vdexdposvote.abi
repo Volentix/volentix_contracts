@@ -111,6 +111,16 @@
             ]
         },
         {
+            "name": "rmprod",
+            "base": "",
+            "fields": [
+                {
+                    "name": "prod",
+                    "type": "name"
+                }
+            ]
+        },
+        {
             "name": "setppweights",
             "base": "",
             "fields": [
@@ -204,6 +214,11 @@
         {
             "name": "regproducer",
             "type": "regproducer",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "rmprod",
+            "type": "rmprod",
             "ricardian_contract": ""
         },
         {

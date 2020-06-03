@@ -55,6 +55,9 @@ public:
     [[eosio::action]]
     void updatevotes(const name name_from, const name name_to);
 
+    [[eosio::action]]
+    void rmprod(name prod);
+
     using updatevotes_action = action_wrapper<"updatevotes"_n, &vdexdposvote::updatevotes>;
     
     static std::vector <name> get_voters_by_time(const name vouting_account, const uint64_t from, const uint64_t to, const name user) {
