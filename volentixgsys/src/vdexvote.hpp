@@ -1,8 +1,8 @@
-#include <eosiolib/symbol.hpp>
-#include <eosiolib/transaction.hpp>
+#include <eosio/symbol.hpp>
+#include <eosio/transaction.hpp>
 #include <cmath>
-#include <eosiolib/asset.hpp>
-#include <eosiolib/eosio.hpp>
+#include <eosio/asset.hpp>
+#include <eosio/eosio.hpp>
 
 using namespace eosio;
 

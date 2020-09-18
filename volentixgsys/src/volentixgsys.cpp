@@ -27,7 +27,7 @@ void volentixgsys::erestriction (name account)
     require_auth(treasury);
     restriction_index restrictions(_self, _self.value);
     auto iterator = restrictions.find( account.value );
-    eosio_assert(iterator != restrictions.end(), "restrictions does not exist");
+    check(iterator != restrictions.end(), "restrictions does not exist");
     restrictions.erase(iterator);
 }
 
